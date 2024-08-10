@@ -1,0 +1,156 @@
+---
+title: "Installation"
+---
+
+## pip (recommended)
+
+To install ESPEI from PyPI using pip:
+
+``` bash
+pip install -U pip
+pip install -U espei
+```
+
+A recommended best practice is to install Python packages into a virtual
+environment. To create an environment and install ESPEI on Linux and
+macOS/OSX:
+
+``` bash
+python -m venv calphad-env
+source calphad-env/bin/activate
+pip install -U pip
+pip install -U pycalphad
+```
+
+On Windows:
+
+``` batch
+python -m venv calphad-env
+calphad-env\Scripts\activate
+pip install -U pip
+pip install -U pycalphad
+```
+
+## Anaconda
+
+If you prefer using Anaconda, ESPEI is distributed on conda-forge. If
+you do not have Anaconda installed, we recommend you download and
+install [Miniconda3](https://docs.conda.io/en/latest/miniconda.html).
+ESPEI can be installed with the conda package manager by:
+
+``` bash
+conda install -c conda-forge espei
+```
+
+## Development versions {#installing-development-versions}
+
+To make changes to the ESPEI source code, the development version must
+be installed. If you\'ll need to make changes to pycalphad
+simultaneously, follow the [instructions to install the development
+version of
+pycalphad](https://pycalphad.org/docs/latest/INSTALLING.html#development-versions-advanced-users)
+first.
+
+We strongly recommend that users interested in developing packages work
+in a virtual environment. The steps below will create an environment
+called `calphad-dev`, which can be entered using
+`source calphad-dev/bin/activate` on Linux or macOS/OSX or
+`activate calphad-dev\bin\activate` on Windows. The environment name is
+arbitrary - you can use whatever name you prefer.
+
+ESPEI uses [Git](https://git-scm.com/book/en/v2) and
+[GitHub](https://github.com/PhasesResearchLab/ESPEI) for version
+control. Windows users: if you do not have a working version of Git,
+[download it here](https://git-scm.com/downloads) first.
+
+To install the latest development version of ESPEI using pip:
+
+``` bash
+python -m venv calphad-env
+source calphad-env/bin/activate
+git clone https://github.com/phasesresearchlab/espei.git
+cd espei
+pip install -U pip
+pip install -U --editable .[dev]
+```
+
+With the development version installed and your environment activated,
+you can run the automated tests by running
+
+``` bash
+pytest
+```
+
+If the test suite passes, you are ready to start using the development
+version or making changes yourself! See the
+`guide for contributing to ESPEI <Contributing guide>`{.interpreted-text
+role="ref"} to learn more. If any tests fail, please report the failure
+to the [ESPEI issue tracker on
+GitHub](https://github.com/phasesresearchlab/espei/issues).
+
+To upgrade your development version to the latest version, run
+`git pull` from the top level ESPEI directory (the directory containing
+the `setup.py` file).
+
+::: {#citations}
+
+[Bocklund2019]{#Bocklund2019 .citation-label}
+
+:   Bocklund *et al.*, MRS Communications 9(2) (2019) 1--10.
+    <doi:%6010.1557/mrc.2019.59>
+    \<<https://doi.org/10.1557/mrc.2019.59>\>\`\_
+
+[Coughanowr1991]{#Coughanowr1991 .citation-label}
+
+:   Coughanowr *et al.*, Assessment of the Cu-Mg system. Zeitschrift
+    f{ü}r Met. 82, 574--581 (1991).
+
+[Dinsdale1991]{#Dinsdale1991 .citation-label}
+
+:   Dinsdale, Calphad 15(4) (1991) 317-425,
+    <doi:%6010.1016/0364-5916(91)90030-N>
+    \<<https://doi.org/10.1016/0364-5916(91)90030-N>\>\`\_
+
+[Lukas2007]{#Lukas2007 .citation-label}
+
+:   Lukas, Fries, and Sundman, Computational Thermodynamics: The Calphad
+    Method. (Cambridge University Press, 2007).
+    <doi:%6010.1017/CBO9780511804137>
+    \<<https://doi.org/10.1017/CBO9780511804137>\>\`\_
+
+[Marker2018]{#Marker2018 .citation-label}
+
+:   Marker *et al.*, Computational Materials Science 142 (2018) 215-226.
+    <doi:%6010.1016/j.commatsci.2017.10.016>
+    \<<https://doi.org/10.1016/j.commatsci.2017.10.016>\>\`\_
+
+[Otis2016]{#Otis2016 .citation-label}
+
+:   Otis, Ph.D. Dissertation, The Pennsylvania State University (2016).
+    <https://etda.libraries.psu.edu/catalog/s1784k73d>
+
+[Otis2017]{#Otis2017 .citation-label}
+
+:   Otis *et al.*, JOM 69 (2017) <doi:%6010.1007/s11837-017-2318-6>
+    \<<http://doi.org/10.1007/s11837-017-2318-6>\>\`\_
+
+[Roslyakova2016]{#Roslyakova2016 .citation-label}
+
+:   Roslyakova *et al.*, Calphad 55 (2016) 165--180.
+    <doi:%6010.1016/j.calphad.2016.09.001>
+    \<<https://doi.org/10.1016/j.calphad.2016.09.001>\>\`\_
+
+[Shang2010]{#Shang2010 .citation-label}
+
+:   Shang, Wang, and Liu, Magnes. Technol. 2010 617-622 (2010).
+
+[Zhou2007]{#Zhou2007 .citation-label}
+
+:   Zhou *et al.*, J. Phase Equilibria Diffus. 28, 158--166 (2007).
+    <doi:%6010.1007/s11669-007-9022-0>
+    \<<https://doi.org/10.1007/s11669-007-9022-0>\>\`\_
+
+[Zuo1993]{#Zuo1993 .citation-label}
+
+:   Zuo and Chang, Zeitschrift f{ü}r Met. 84, 662--667 (1993).
+:::

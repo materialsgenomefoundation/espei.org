@@ -1,0 +1,8 @@
+# espei.org Quarto site
+
+## TODO:
+- Sort out references
+- Rename/reorganize files and fixup links
+- Make pages dynamic that run actual code, rather than static
+- Update png logos to the versions with transparency
+- Integrate previously external content (e.g. from workshops, gists)

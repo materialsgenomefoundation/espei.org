@@ -2,18 +2,54 @@ project:
   type: website
 
 website:
-  title: "espei.org"
-  navbar:
-    left:
-      - href: index.qmd
-        text: Home
-      - about.qmd
+  favicon: _static/ESPEI-logo.png
+  # See https://quarto.org/docs/websites/website-navigation.html for details on setup
+  title: "ESPEI"
+  sidebar:
+    logo: "_static/ESPEI-logo-withtext.png"
+    title: "ESPEI v0.9.0"
+    style: "floating"
+    search: true
+    contents:
+      - text: "Home"
+        href: index.qmd
+      - text: "Installation"
+        href: installation.qmd
+      - text: "Quickstart"
+        href: quickstart.qmd
+# TODO: changelog
+      - section: "Tutorials"
+        contents:
+          - tutorials/cu-mg-example.qmd
+          - tutorials/tutorial_gen_custom_mod_params.qmd
+      - section: "How-To"
+        contents:
+          - how-to/input_data.qmd
+          - how-to/specifying_priors.qmd
+          - how-to/howto_use_custom_unary.qmd
+          - how-to/advanced_schedulers.qmd
+      - section: "Reference"
+        contents:
+          - reference/writing_input.qmd
+          - reference/recipes.qmd
+          # TODO:
+          # - reference/api.qmd
+      - section: "Developer"
+        contents:
+          - developer/contributing.qmd
+          - developer/design.qmd
+          # TODO:
+          #- developer/releasing.qmd
+  page-navigation: true
+  back-to-top-navigation: true
+  page-footer: "Copyright © Materials Genome Foundation"
+  repo-url: https://github.com/materialsgenomefoundation/espei.org
+  repo-actions: [edit, issue]
 
 format:
   html:
-    theme: cosmo
+    theme:
+      light: cosmo
+      dark: solar  # TODO: would like to change to cosmo, requires https://github.com/quarto-dev/quarto-cli/issues/6741
     css: styles.css
     toc: true
-
-
-
