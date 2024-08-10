@@ -5,4 +5,5 @@
 - Rename/reorganize files and fixup links
 - Make pages dynamic that run actual code, rather than static
 - Update png logos to the versions with transparency
-- Integrate previously external content (e.g. from workshops, gists)
+- Integrate previously external content (e.g. from workshops (2022 Cr-Ni, 2023 Cu-Mg), custom parameters gists)
+- Recipes: does it make sense to convert them to be more self-contained, since they use different data?
