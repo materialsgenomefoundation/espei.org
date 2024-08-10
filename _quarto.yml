@@ -20,14 +20,14 @@ website:
 # TODO: changelog
       - section: "Tutorials"
         contents:
-          - tutorials/cu-mg-example.qmd
-          - tutorials/tutorial_gen_custom_mod_params.qmd
+          - tutorials/cu_mg_example.qmd
+          - tutorials/custom_model_parameter_selection.qmd
       - section: "How-To"
         contents:
-          - how-to/input_data.qmd
+          - how-to/dataset_schema.qmd
           - how-to/specifying_priors.qmd
-          - how-to/howto_use_custom_unary.qmd
-          - how-to/advanced_schedulers.qmd
+          - how-to/custom_unary_data.qmd
+          - how-to/schedulers.qmd
       - section: "Reference"
         contents:
           - reference/writing_input.qmd

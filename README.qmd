@@ -1,7 +1,7 @@
 # espei.org Quarto site
 
 ## TODO:
-- Rename/reorganize files and fixup cross-reference links
+- fix cross-reference links
 - Changelog
 - API docs
 - Make pages dynamic that run actual code, rather than static
