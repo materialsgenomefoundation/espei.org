@@ -46,6 +46,8 @@ website:
   repo-url: https://github.com/materialsgenomefoundation/espei.org
   repo-actions: [edit, issue]
 
+bibliography: references.bib
+
 format:
   html:
     theme:

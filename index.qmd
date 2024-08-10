@@ -63,23 +63,23 @@ role="ref">Cu-Mg Example</code>.</figcaption>
 # History
 
 The name ESPEI and early concept were developed by
-[\[Shang2010\]](#Shang2010){.citation} under the supervision of Zi-Kui
+[@shang2010] under the supervision of Zi-Kui
 Liu. After developing [pycalphad](http://pycalphad.org), Richard Otis
 and Zi-Kui Liu reimagined the concept and wrote
 [pycalphad-fitting](https://github.com/richardotis/pycalphad-fitting)
-(used in [\[Otis2016\]](#Otis2016){.citation} and
-[\[Otis2017\]](#Otis2017){.citation}), which formed the nucleus for the
-present version of ESPEI ([\[Bocklund2019\]](#Bocklund2019){.citation}).
+(used in [@otis2016] and
+[@otis2017]), which formed the nucleus for the
+present version of ESPEI [@bocklund2019].
 
 Details on the implementation of ESPEI can be found in the following
 publications:
 
--   B. Bocklund *et al.*, MRS Communications 9(2) (2019) 1--10.
-    <doi:%6010.1557/mrc.2019.59>
-    \<<https://doi.org/10.1557/mrc.2019.59>\>\`\_.
--   B. Bocklund, Ph.D. Dissertation (Chapter 3), The Pennsylvania State
-    University (2021),
-    <https://etda.libraries.psu.edu/catalog/21192bjb54>
+- B. Bocklund *et al.*, MRS Communications 9(2) (2019) 1--10.
+    [doi:10.1557/mrc.2019.59](https://doi.org/10.1557/mrc.2019.59).
+- B. Bocklund, Ph.D. Dissertation (Chapter 3), The Pennsylvania State
+    University (2021), <https://etda.libraries.psu.edu/catalog/21192bjb54>
+- B. Bocklund *et al.*, Calphad 86 (2024) 102720.
+    [doi:10.1016/j.calphad.2024.102720](https://doi.org/10.1016/j.calphad.2024.102720)
 
 We are thankful for the financial support provided to Brandon during his
 Ph.D. by the Computational Materials Education and Training (CoMET) NSF
@@ -103,8 +103,7 @@ cite the following publication:
 B.  Bocklund, R. Otis, A. Egorov, A. Obaied, I. Roslyakova, Z.-K. Liu,
     ESPEI for efficient thermodynamic database development,
     modification, and uncertainty quantification: application to Cu--Mg,
-    MRS Commun. (2019) 1--10. <doi:%6010.1557/mrc.2019.59>
-    \<<https://doi.org/10.1557/mrc.2019.59>\>\`\_.
+    MRS Commun. (2019) 1--10. [doi:10.1557/mrc.2019.59](https://doi.org/10.1557/mrc.2019.59).
 
 <!-- -->
 
@@ -126,38 +125,6 @@ B.  Bocklund, R. Otis, A. Egorov, A. Obaied, I. Roslyakova, Z.-K. Liu,
 
 See [what\'s new](CHANGES.html)!
 
-# Documentation
-
-::: {.toctree maxdepth="1"}
-self installation quickstart CHANGES
-:::
-
-\part{Tutorials}
-
-::: {.toctree maxdepth="1" caption="Tutorials"}
-cu-mg-example tutorial_gen_custom_mod_params
-:::
-
-\part{How-to}
-
-::: {.toctree maxdepth="1" caption="How-to"}
-input_data specifying_priors howto_use_custom_unary advanced_schedulers
-:::
-
-\part{Reference}
-
-::: {.toctree maxdepth="1" caption="Reference"}
-writing_input recipes api/modules
-:::
-
-\part{Developer}
-
-::: {.toctree maxdepth="1" caption="Developer"}
-contributing design releasing
-:::
-
-\part{Appendix}
-\chapter{Appendices}
 
 # License
 
@@ -186,78 +153,3 @@ ESPEI is MIT licensed.
     LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
     OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
     SOFTWARE.
-
-::: only
-html
-
-# Indices and tables
-
--   `genindex`{.interpreted-text role="ref"}
--   `modindex`{.interpreted-text role="ref"}
--   `search`{.interpreted-text role="ref"}
-:::
-
-# References
-
-::: {#citations}
-
-[Bocklund2019]{#Bocklund2019 .citation-label}
-
-:   Bocklund *et al.*, MRS Communications 9(2) (2019) 1--10.
-    <doi:%6010.1557/mrc.2019.59>
-    \<<https://doi.org/10.1557/mrc.2019.59>\>\`\_
-
-[Coughanowr1991]{#Coughanowr1991 .citation-label}
-
-:   Coughanowr *et al.*, Assessment of the Cu-Mg system. Zeitschrift
-    f{ü}r Met. 82, 574--581 (1991).
-
-[Dinsdale1991]{#Dinsdale1991 .citation-label}
-
-:   Dinsdale, Calphad 15(4) (1991) 317-425,
-    <doi:%6010.1016/0364-5916(91)90030-N>
-    \<<https://doi.org/10.1016/0364-5916(91)90030-N>\>\`\_
-
-[Lukas2007]{#Lukas2007 .citation-label}
-
-:   Lukas, Fries, and Sundman, Computational Thermodynamics: The Calphad
-    Method. (Cambridge University Press, 2007).
-    <doi:%6010.1017/CBO9780511804137>
-    \<<https://doi.org/10.1017/CBO9780511804137>\>\`\_
-
-[Marker2018]{#Marker2018 .citation-label}
-
-:   Marker *et al.*, Computational Materials Science 142 (2018) 215-226.
-    <doi:%6010.1016/j.commatsci.2017.10.016>
-    \<<https://doi.org/10.1016/j.commatsci.2017.10.016>\>\`\_
-
-[Otis2016]{#Otis2016 .citation-label}
-
-:   Otis, Ph.D. Dissertation, The Pennsylvania State University (2016).
-    <https://etda.libraries.psu.edu/catalog/s1784k73d>
-
-[Otis2017]{#Otis2017 .citation-label}
-
-:   Otis *et al.*, JOM 69 (2017) <doi:%6010.1007/s11837-017-2318-6>
-    \<<http://doi.org/10.1007/s11837-017-2318-6>\>\`\_
-
-[Roslyakova2016]{#Roslyakova2016 .citation-label}
-
-:   Roslyakova *et al.*, Calphad 55 (2016) 165--180.
-    <doi:%6010.1016/j.calphad.2016.09.001>
-    \<<https://doi.org/10.1016/j.calphad.2016.09.001>\>\`\_
-
-[Shang2010]{#Shang2010 .citation-label}
-
-:   Shang, Wang, and Liu, Magnes. Technol. 2010 617-622 (2010).
-
-[Zhou2007]{#Zhou2007 .citation-label}
-
-:   Zhou *et al.*, J. Phase Equilibria Diffus. 28, 158--166 (2007).
-    <doi:%6010.1007/s11669-007-9022-0>
-    \<<https://doi.org/10.1007/s11669-007-9022-0>\>\`\_
-
-[Zuo1993]{#Zuo1993 .citation-label}
-
-:   Zuo and Chang, Zeitschrift f{ü}r Met. 84, 662--667 (1993).
-:::
