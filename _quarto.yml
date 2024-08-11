@@ -49,7 +49,6 @@ website:
             - contents:
               - reference/api/generate_parameters.qmd
               - reference/api/run_espei.qmd
-              - reference/api/get_run_settings.qmd
               section: espei
             - contents:
               - reference/api/datasets.load_datasets.qmd
@@ -106,7 +105,6 @@ quartodoc:
     contents:
       - name: generate_parameters
       - name: run_espei
-      - name: get_run_settings
   - title: espei.datasets
     contents:
       - name: datasets.load_datasets
