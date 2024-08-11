@@ -25,14 +25,15 @@ website:
           - tutorials/custom_model_parameter_selection.qmd
       - section: "How-To"
         contents:
-          - how-to/dataset_schema.qmd
+          - how-to/recipes.qmd
           - how-to/specifying_priors.qmd
           - how-to/custom_unary_data.qmd
           - how-to/schedulers.qmd
       - section: "Reference"
         contents:
-          - reference/writing_input.qmd
-          - reference/recipes.qmd
+          - reference/phase_models_schema.qmd
+          - reference/dataset_schema.qmd
+          - reference/yaml_input_schema.qmd
           # Note: the API reference is somewhat hacky.
           # We generate _sidebar.yml with quartodoc build, which contains
           # (more or less) the structure below. Then it's copied here and modified.

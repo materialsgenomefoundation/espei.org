@@ -9,7 +9,7 @@ describes the phases in the system using the standard Calphad approach
 within the compound energy formalism. You also need to describe the data
 that ESPEI should fit to. You will need single-phase and multi-phase
 data for a full run. Fit settings and all datasets are stored as JSON
-files and described in detail at the [YAML input schema](reference/writing_input.qmd) page. All of your input datasets should be validated by
+files and described in detail at the [YAML input schema](reference/yaml_input_schema.qmd) page. All of your input datasets should be validated by
 running `espei --check-datasets my-input-datasets`, where
 `my-input-datasets` is a folder of all your JSON files.
 
@@ -21,7 +21,7 @@ iteration and chain (defaults to `lnprob.npy`).
 ## Parameter Generation only
 
 If you have only
-[non-equilibrium thermochemical data](how-to/dataset_schema.qmd#non_equilibrium_thermochemical_data), e.g. heat capacity, entropy and enthalpy data and mixing
+[non-equilibrium thermochemical data](reference/dataset_schema.qmd#non_equilibrium_thermochemical_data), e.g. heat capacity, entropy and enthalpy data and mixing
 data from first-principles calculations, you may want to see the
 starting point for your MCMC calculation.
 
@@ -94,7 +94,7 @@ mcmc:
 ## Input Customization
 
 ESPEI lets you control many aspects of your calculations with the input
-files shown above. See the [YAML input schema](reference/writing_input.qmd) for a full description of all possible inputs.
+files shown above. See the [YAML input schema](reference/yaml_input_schema.qmd) for a full description of all possible inputs.
 
 ## FAQ
 
@@ -118,7 +118,7 @@ arrays are preallocated with zeros. These filenames and settings can be
 changed using in the input file. You can then use these chains and
 corresponding log-probabilities to make corner plots, calculate
 autocorrelations, find optimal parameters for databases, etc.. Some
-examples are shown on the [Recipes](reference/recipes.qmd) page.
+examples are shown on the [Recipes](how-to/recipes.qmd) page.
 Finally, you can use `espei.plot`
 functions such as [`espei.plot.dataplot`](reference/api/plot.dataplot.qmd) in concert with pycalphad to plot phase diagrams with
 your input equilibria data. The
@@ -147,7 +147,7 @@ against. The log probability of each data type is calculated by the log
 probability density function of the error in this normal distribution
 with a mean of zero and the standard deviation as given by the data type
 and the adjustable weights (see
-[`data_weights` in YAML input schema](reference/writing_input.qmd#data_weights)). The total log
+[`data_weights` in YAML input schema](reference/yaml_input_schema.qmd#data_weights)). The total log
 probability is the sum of all log probabilities.
 
 Note that any probability density function always returns a positive
@@ -169,7 +169,7 @@ optimize or determine the uncertainty for a constituent unary, binary or
 ternary subsystem that you have data for, you can do that without any
 extra effort.
 
-You may be interested in the [input_mcmc_symbols](reference/writing_input.qmd#symbols) input parameter to specify which parameter subset to
+You may be interested in the [input_mcmc_symbols](reference/yaml_input_schema.qmd#symbols) input parameter to specify which parameter subset to
 optimize.
 
 Note that if you optimize parameters in a subsystem (e.g. Cu-Mg) that is

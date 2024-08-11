@@ -72,7 +72,7 @@ This will install the packaged, named
 `CustomRefstate2020`.
 
 We can use that by passing using `ref_state: CustomRefstate2020` in the
-[`generate_parameters` heading in ESPEI's YAML input](../reference/writing_input.qmd#generate_parameters). If you have ESPEI installed already, you can test that this
+[`generate_parameters` heading in ESPEI's YAML input](../reference/yaml_input_schema.qmd#generate_parameters). If you have ESPEI installed already, you can test that this
 works by:
 
 1.  Enter the `espei-example` directory: `cd espei-example`

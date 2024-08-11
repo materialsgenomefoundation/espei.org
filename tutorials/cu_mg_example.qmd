@@ -26,7 +26,7 @@ this repository to your computer. Files referred to throughout this
 tutorial are found in the [CU-MG]{.title-ref} folder. The input files
 will be very breifly explained in this tutorial so that you are able to
 know their use. A more detailed description of the files is found on the
-[YAML input schema](../reference/writing_input.qmd) page.
+[YAML input schema](../reference/yaml_input_schema.qmd) page.
 
 If you make changes or additions, you are encouraged to share these back
 to the ESPEI-datasets repository so that others may benefit from this
@@ -103,7 +103,7 @@ here on that you are in the `CU-MG` folder from
 The benefit of the this approach is that all of the datasets will be
 checked and reported at once. If there are any failures, a list of them
 will be reported with the two main types of errors being `JSONError`,
-for which you should read the JSON section of the [dataset schema](../how-to/dataset_schema.qmd#json-format), or `DatasetError`, which are
+for which you should read the JSON section of the [dataset schema](../reference/dataset_schema.qmd#json-format), or `DatasetError`, which are
 related to the validity of your datasets scientifically (maching
 conditions and values shape, etc.). The `DatasetError` messages are
 designed to be clear, so please open a [discussion on
@@ -127,7 +127,7 @@ with parameters selected and fit by ESPEI:
     espei --input espei-in.yaml
 
 where `espei-in.yaml` is an
-[ESPEI input file](../reference/writing_input.qmd)
+[ESPEI input file](../reference/yaml_input_schema.qmd)
 with the following contents
 
 ``` yaml
@@ -208,7 +208,7 @@ a MCMC optimization, creating a `cu-mg_mcmc.tdb`:
 
     espei --input espei-in.yaml
 
-where `espei-in.yaml` is an [ESPEI input file](../reference/writing_input.qmd) with the following structure
+where `espei-in.yaml` is an [ESPEI input file](../reference/yaml_input_schema.qmd) with the following structure
 
 ``` YAML
 system:

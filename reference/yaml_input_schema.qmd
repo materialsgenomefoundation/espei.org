@@ -1,5 +1,5 @@
 ---
-title: "YAML input schema"
+title: "YAML Input Schema"
 ---
 
 This page aims to completely describe the ESPEI input file in the YAML
@@ -77,7 +77,7 @@ default
 
 :   required
 
-The JSON file describing the Calphad models for each phase. See the [phase models description](../how-to/dataset_schema.qmd#phase-descriptions) for an example
+The JSON file describing the Calphad models for each phase. See the [phase models description](../reference/phase_models_schema.qmd) for an example
 of how to write this file.
 
 ### datasets
@@ -94,7 +94,7 @@ The path to a directory containing JSON files of input datasets. The
 file extension to each of the datasets must be named as `.json`, but
 they can otherwise be named freely.
 
-For an examples of writing these input JSON files, see the [dataset schema page](../how-to/dataset_schema.qmd).
+For an examples of writing these input JSON files, see the [dataset schema page](../reference/dataset_schema.qmd).
 
 ### tags
 
@@ -109,7 +109,7 @@ default
 Mapping of keys to values to add to datasets with matching tags. These
 can be used to dynamically drive values in datasets without adjusting
 the datasets themselves. Useful for adjusting weights or other values in
-datasets in bulk. For an examples of using tags in input JSON files, see the [Tags section in the dataset schema](../how-to/dataset_schema.qmd#tags).
+datasets in bulk. For an examples of using tags in input JSON files, see the [Tags section in the dataset schema](../reference/dataset_schema.qmd#tags).
 
 ## output
 
