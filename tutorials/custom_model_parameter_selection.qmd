@@ -9,8 +9,8 @@ capacity data. Using the `parameter_generation.fitting_description`
 parameter, ESPEI can support fitting different types of models and data
 too. For example, the built-in molar volume fitting description can be
 used to fit molar volume parameters (`V0` and `VA`) to `V0` and `VM`
-data (see `fitting_description` in
-`Writing input files`{.interpreted-text role="ref"} for more details).
+data (see
+[`fitting_description` in YAML input schema](../reference/writing_input.qmd#fitting_description) for more details).
 
 Through these fitting descrptions, ESPEI can be extended to fit custom
 PyCalphad models and model parameters without changing any of the source
@@ -25,8 +25,7 @@ generated parameters for three types of elastic constant parameters
 using DFT data from the literature.
 
 **To run ESPEI and generate the output in this tutorial, download the
-files from**
-[here](https://github.com/bocklund/espei-elastic-parameter-generation).
+files from [GitHub](https://github.com/bocklund/espei-elastic-parameter-generation)**.
 
 ## Implementing the elastic constant model
 
@@ -131,7 +130,7 @@ fractions to generate the output value are provided explictly. Other
 than the `"output"` key that must match one of the data types read by
 one of our fitting steps, there are no additional steps for ESPEI to be
 able to read these datasets. See
-`non_equilibrium_thermochemical_data`{.interpreted-text role="ref"} for
+[here](../how-to/dataset_schema.qmd#non_equilibrium_thermochemical_data) for
 a complete description of these type of datasets. Here\'s an example for
 pure BCC Ti from the `elastic-datasets` directory:
 
@@ -152,7 +151,7 @@ pure BCC Ti from the `elastic-datasets` directory:
 
 ## Running ESPEI
 
-`input_phase_descriptions`{.interpreted-text role="ref"} defined in
+The [phase models description](../how-to/dataset_schema.qmd#phase-descriptions) defined in
 `phase_model.json` are the same as for regular runs of ESPEI:
 
 ``` JSON

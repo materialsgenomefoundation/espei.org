@@ -26,7 +26,7 @@ this repository to your computer. Files referred to throughout this
 tutorial are found in the [CU-MG]{.title-ref} folder. The input files
 will be very breifly explained in this tutorial so that you are able to
 know their use. A more detailed description of the files is found on the
-`Input data`{.interpreted-text role="ref"} page.
+[YAML input schema](../reference/writing_input.qmd) page.
 
 If you make changes or additions, you are encouraged to share these back
 to the ESPEI-datasets repository so that others may benefit from this
@@ -103,12 +103,11 @@ here on that you are in the `CU-MG` folder from
 The benefit of the this approach is that all of the datasets will be
 checked and reported at once. If there are any failures, a list of them
 will be reported with the two main types of errors being `JSONError`,
-for which you should read the JSON section of
-`Input data`{.interpreted-text role="ref"}, or `DatasetError`, which are
+for which you should read the JSON section of the [dataset schema](../how-to/dataset_schema.qmd#json-format), or `DatasetError`, which are
 related to the validity of your datasets scientifically (maching
 conditions and values shape, etc.). The `DatasetError` messages are
-designed to be clear, so please open an [issue on
-GitHub](https://github.com/PhasesResearchLab/ESPEI/issues) if there is
+designed to be clear, so please open a [discussion on
+GitHub](https://github.com/PhasesResearchLab/ESPEI/discussions) if there is
 any confusion.
 
 ## First-principles phase diagram
@@ -127,8 +126,8 @@ with parameters selected and fit by ESPEI:
 
     espei --input espei-in.yaml
 
-where `espei-in.yaml` is a
-`ESPEI input file <Writing input files>`{.interpreted-text role="ref"}
+where `espei-in.yaml` is an
+[ESPEI input file](../reference/writing_input.qmd)
 with the following contents
 
 ``` yaml
@@ -209,9 +208,7 @@ a MCMC optimization, creating a `cu-mg_mcmc.tdb`:
 
     espei --input espei-in.yaml
 
-where `espei-in.yaml` is an
-`ESPEI input file <Writing input files>`{.interpreted-text role="ref"}
-with the following structure
+where `espei-in.yaml` is an [ESPEI input file](../reference/writing_input.qmd) with the following structure
 
 ``` YAML
 system:

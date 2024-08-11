@@ -42,8 +42,7 @@ directory as `input-schema.yaml` and is validated in the
     this.
 -   `error_functions` is a package with modules for each type of
     likelihood function.
--   `priors.py` defines priors to be used in MCMC, see
-    `Specifying priors`{.interpreted-text role="ref"}.
+-   `priors.py` defines priors to be used in MCMC, see [Specifying Priors](../how-to/specifying_priors.qmd).
 -   `paramselect.py` is where parameter generation happens.
 -   `mcmc.py` creates the likelihood function and runs MCMC. Deprecated.
     In the future, users should use `EmceeOptimizer`.

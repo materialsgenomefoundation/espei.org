@@ -7,7 +7,6 @@
 4. `quartodoc preview` (or your preferred command)
 
 ## TODO:
-- fix cross-reference links
 - Changelog
 - Get CLI documented
 - API docs:
@@ -17,3 +16,8 @@
 - Update png logos to the versions with transparency
 - Integrate previously external content (e.g. from workshops (2022 Cr-Ni, 2023 Cu-Mg), custom parameters gists)
 - Recipes: does it make sense to convert them to be more self-contained, since they use different data?
+- Enabled "tabbed" mode in tutorials and such for comparing command line vs. running interactively with Python code
+- Move recipes to how-to and the dataset schema to reference (... or fundamentals? - probably the "reference" page would just be a description of the fields? idk)
+- Rename writing_input to "yaml_input_schema"
+- Split up dataset schema into phase models schema and dataset schema and update links
+- Need to document equilibrium thermochemical data

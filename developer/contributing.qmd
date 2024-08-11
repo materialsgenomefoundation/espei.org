@@ -3,13 +3,11 @@ title: "Contributing Guide"
 ---
 
 This is the place to start as a new ESPEI contributor. This guide
-assumes you have
-`installed a development version of ESPEI <installing-development-versions>`{.interpreted-text
-role="ref"}.
+assumes you have [installed a development version of ESPEI](../installation.qmd#development-versions).
 
 The next sections lay out the basics of getting an ESPEI development set
 up and the development standards. Then the
-`Software design`{.interpreted-text role="ref"} sections walk through
+[Software design](../developer/design.qmd) sections walk through
 the key parts of the codebase.
 
 ## Tests
@@ -56,7 +54,7 @@ description, parameters, and return values, if applicable.
 
 Using `Examples` in the documentation is especially encouraged for
 utilities that are likely to be run by users. See
-`espei.analysis.truncate_arrays`{.interpreted-text role="py:func"} for
+[`espei.analysis.truncate_arrays`](../reference/api/analysis.truncate_arrays.qmd) for
 an example.
 
 ### Web documention

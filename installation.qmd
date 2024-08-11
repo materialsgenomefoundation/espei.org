@@ -83,8 +83,7 @@ pytest
 
 If the test suite passes, you are ready to start using the development
 version or making changes yourself! See the
-`guide for contributing to ESPEI <Contributing guide>`{.interpreted-text
-role="ref"} to learn more. If any tests fail, please report the failure
+[guide for contributing to ESPEI](developer/contributing.qmd) to learn more. If any tests fail, please report the failure
 to the [ESPEI issue tracker on
 GitHub](https://github.com/phasesresearchlab/espei/issues).
 

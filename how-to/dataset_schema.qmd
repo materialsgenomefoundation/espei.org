@@ -162,7 +162,7 @@ heat capacity for BCC_B2.
     `_FORM`) are supported. Support for changing reference states is
     planned but not yet implemented, so all thermodynamic quantities
     must be formation quantities (e.g. `HM_FORM` or `HM_MIX`, etc.).
-    This is tracked by `85`{.interpreted-text role="issue"} on GitHub.
+    This is tracked by [ESPEI issue #85](https://github.com/phasesresearchlab/espei/issues/85) on GitHub.
 
 -   `values` is a 3-dimensional array where each value is the `output`
     for a specific condition of pressure, temperature, and sublattice
@@ -291,15 +291,6 @@ compared to non-equilibrium thermochemical data are:
 
 This type of data can not be used in parameter selection, because a core
 assumption of parameter selection is that the site fractions are known.
-
-:::: note
-::: title
-Note
-:::
-
-Only activity data is supported at the moment. Support for other data
-types is tracked by `104`{.interpreted-text role="issue"}.
-::::
 
 Activity data is similar to non-equilibrium thermochemical data, except
 we must enter a reference state and the `solver` key is no longer
@@ -431,7 +422,7 @@ two-phase equilibrium in a three component system could be described by
 `[["ALPHA", ["CR", "NI"], [0.1, 0.25]], ["BETA", ["CR", "NI"], [null, null]]]`
 :::
 
-## Tags {#Datasets Tags}
+## Tags
 
 Tags are a flexible method to adjust many ESPEI datasets simultaneously
 and drive them via the ESPEI\'s input YAML file. Each dataset can have a

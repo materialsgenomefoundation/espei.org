@@ -77,8 +77,7 @@ default
 
 :   required
 
-The JSON file describing the Calphad models for each phase. See
-`input_phase_descriptions`{.interpreted-text role="ref"} for an example
+The JSON file describing the Calphad models for each phase. See the [phase models description](../how-to/dataset_schema.qmd#phase-descriptions) for an example
 of how to write this file.
 
 ### datasets
@@ -95,8 +94,7 @@ The path to a directory containing JSON files of input datasets. The
 file extension to each of the datasets must be named as `.json`, but
 they can otherwise be named freely.
 
-For an examples of writing these input JSON files, see
-`Input data`{.interpreted-text role="ref"}.
+For an examples of writing these input JSON files, see the [dataset schema page](../how-to/dataset_schema.qmd).
 
 ### tags
 
@@ -111,8 +109,7 @@ default
 Mapping of keys to values to add to datasets with matching tags. These
 can be used to dynamically drive values in datasets without adjusting
 the datasets themselves. Useful for adjusting weights or other values in
-datasets in bulk. For an examples of using tags in input JSON files, see
-`Datasets Tags`{.interpreted-text role="ref"}.
+datasets in bulk. For an examples of using tags in input JSON files, see the [Tags section in the dataset schema](../how-to/dataset_schema.qmd#tags).
 
 ## output
 
@@ -378,8 +375,8 @@ from espei.parameter_selection.fitting_descriptions import gibbs_energy_fitting_
 Because the fitting description given can be in *any* importable module,
 users can provide their own fitting descriptions that use ESPEI\'s
 built-in [FittingStep]{.title-ref} objects, custom fitting steps, or a
-combination ESPEI\'s fitting steps and custom fitting steps. The
-`Generating Custom Model Parameters`{.interpreted-text role="ref"}
+combination ESPEI\'s fitting steps and custom fitting steps.
+The [Generating Custom Model Parameters](../tutorials/custom_model_parameter_selection.qmd)
 tutorial gives an example of how to fit a custom PyCalphad model that
 uses custom parameters for BCC elastic constants.
 
@@ -422,8 +419,7 @@ default
 :   {\'name\': \'zero\'}
 
 Either a single prior dictionary or a list of prior dictionaries
-corresponding to the number of parameters. See
-`Specifying Priors`{.interpreted-text role="ref"} for examples and
+corresponding to the number of parameters. See [Specifying Priors](../how-to/specifying_priors.qmd) for examples and
 details on writing priors.
 
 ### save_interval
@@ -485,8 +481,7 @@ useful for debugging.
 
 Passing the path to a JSON scheduler file will use the resources set up
 by the scheduler. JSON file schedulers are most useful because
-schedulers can be started on MPI clusters using `dask-mpi` command. See
-`MPI`{.interpreted-text role="ref"} for more information.
+schedulers can be started on MPI clusters using `dask-mpi` command. See the [alternative schedulers page](../how-to/schedulers.qmd#mpi-based-dask-scheduler) for more information.
 
 ### input_db
 

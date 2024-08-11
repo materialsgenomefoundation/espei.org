@@ -122,8 +122,8 @@ fig.show()
 Parameter selection in ESPEI fits Calphad parameters to thermochemical
 data. MCMC can adjust these parameters. In both cases, it may be useful
 to compare the energies of specific interactions to the model
-predictions. The `espei.plot.plot_interaction`{.interpreted-text
-role="py:func"} code will plot the predicted interaction from the
+predictions. The [espei.plot.plot_interaction](../reference/api/plot.plot_interaction.qmd)
+code will plot the predicted interaction from the
 database against the available data, if any.
 
 ``` python

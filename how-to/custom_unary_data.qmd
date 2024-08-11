@@ -49,7 +49,7 @@ Using the template package below, you can create a Python package of
 custom reference data to install for yourself, and optionally to
 distribute to others.
 
-## Quickstart: Skeleton package {#quickstart_unary_skeleton}
+## Quickstart: Skeleton package
 
 If you are not comfortable developing a Python package using the details
 below, that\'s okay! We have provided a [skeleton
@@ -72,9 +72,7 @@ This will install the packaged, named
 `CustomRefstate2020`.
 
 We can use that by passing using `ref_state: CustomRefstate2020` in the
-`generate_parameters` heading in
-`ESPEI's YAML input <input_yaml_generate_ref_state>`{.interpreted-text
-role="ref"}. If you have ESPEI installed already, you can test that this
+[`generate_parameters` heading in ESPEI's YAML input](../reference/writing_input.qmd#generate_parameters). If you have ESPEI installed already, you can test that this
 works by:
 
 1.  Enter the `espei-example` directory: `cd espei-example`
@@ -125,9 +123,7 @@ Assuming that you are fresh (without the skeleton downloaded yet):
 3.  Update the `NAME = 'CustomRefstate2020'` parameter in `setup.py` to
     `NAME = 'Bocklund2019'`
 4.  In the `refstate.py` module, create the `Bockund2019Stable`,
-    `Bockund2019`, and (optionally) `Bocklund2019SER` dictionaries (see
-    `creating_refstate_dicts`{.interpreted-text role="ref"} for more
-    details)
+    `Bockund2019`, and (optionally) `Bocklund2019SER` dictionaries (see [creating refstate dicts](#creating-the-reference-state-dictionaries) for more details)
     1.  Delete the `CustomRefstate2020Stable` and `CustomRefstate2020`
         variables
 
@@ -165,7 +161,7 @@ Assuming that you are fresh (without the skeleton downloaded yet):
 6.  You can now use your reference state in ESPEI, and even change the
     definitions on the fly.
 
-## Creating the reference state dictionaries {#creating_refstate_dicts}
+## Creating the reference state dictionaries
 
 To define the reference Gibbs energy, lattice stabilities, and SER data
 you must define three ordered dictionaries:
@@ -215,7 +211,7 @@ feature of `setuptools` to treat additional reference states as plugins.
 A package providing a reference state to ESPEI should provide a module
 that has three dictionaries: `<NAME>Stable`, `<NAME>`, and (optional)
 `<NAME>SER`, according to the
-`creating_refstate_dicts`{.interpreted-text role="ref"} section above.
+[creating refstate dicts](#creating-the-reference-state-dictionaries) section above.
 The module can have any name, `<MODULE>`, (the skeleton uses
 `refstate.py`). ESPEI looks for the `entry_point` called
 `espei.reference_states` following the example from the [setuptools
@@ -250,9 +246,8 @@ print(espei.refdata.INSERTED_USER_REFERENCE_STATES)
 ```
 
 If you do this after installing the unchanged
-`skeleton package <quickstart_unary_skeleton>`{.interpreted-text
-role="ref"} package from this repository, you should find
-CustomRefstate2020 is printed and the dictionaries
+[skeleton package](#quickstart-skeleton-package) package from this repository,
+you should find CustomRefstate2020 is printed and the dictionaries
 `espei.refdata.CustomRefstate2020Stable` and
 `espei.refdata.CustomRefstate2020` should be defined in the
 `espei.refdata` module. For more details on the implementation, see the
