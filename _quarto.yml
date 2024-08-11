@@ -85,6 +85,7 @@ website:
         contents:
           - developer/contributing.qmd
           - developer/design.qmd
+          - developer/changelog.qmd
           # TODO:
           #- developer/releasing.qmd
   page-navigation: true

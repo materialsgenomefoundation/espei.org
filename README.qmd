@@ -7,7 +7,6 @@
 4. `quartodoc preview` (or your preferred command)
 
 ## TODO:
-- Changelog
 - Make examples and recipes dynamic that run actual code, rather than static
 - Update png logos to the versions with transparency (for dark mode)
 - Recipes: does it make sense to convert them to be more self-contained, since they use different data?
