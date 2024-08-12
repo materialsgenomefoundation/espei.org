@@ -734,6 +734,540 @@
     ]
   },
   {
+    "objectID": "reference/api/datasets.recursive_glob.html",
+    "href": "reference/api/datasets.recursive_glob.html",
+    "title": "datasets.recursive_glob",
+    "section": "",
+    "text": "datasets.recursive_glob(start, pattern='*.json')\nRecursively glob for the given pattern from the start directory.\n\n\n\n\n\n\n\n\n\n\n\nName\nType\nDescription\nDefault\n\n\n\n\nstart\nstr\nPath of the directory to walk while for file globbing\nrequired\n\n\npattern\nstr\nFilename pattern to match in the glob.\n'*.json'\n\n\n\n\n\n\n\n\n\nType\nDescription\n\n\n\n\n[str]\nList of matched filenames",
+    "crumbs": [
+      "Reference",
+      "API Reference",
+      "espei.datasets",
+      "datasets.recursive_glob"
+    ]
+  },
+  {
+    "objectID": "reference/api/datasets.recursive_glob.html#parameters",
+    "href": "reference/api/datasets.recursive_glob.html#parameters",
+    "title": "datasets.recursive_glob",
+    "section": "",
+    "text": "Name\nType\nDescription\nDefault\n\n\n\n\nstart\nstr\nPath of the directory to walk while for file globbing\nrequired\n\n\npattern\nstr\nFilename pattern to match in the glob.\n'*.json'",
+    "crumbs": [
+      "Reference",
+      "API Reference",
+      "espei.datasets",
+      "datasets.recursive_glob"
+    ]
+  },
+  {
+    "objectID": "reference/api/datasets.recursive_glob.html#returns",
+    "href": "reference/api/datasets.recursive_glob.html#returns",
+    "title": "datasets.recursive_glob",
+    "section": "",
+    "text": "Type\nDescription\n\n\n\n\n[str]\nList of matched filenames",
+    "crumbs": [
+      "Reference",
+      "API Reference",
+      "espei.datasets",
+      "datasets.recursive_glob"
+    ]
+  },
+  {
+    "objectID": "reference/api/index.html",
+    "href": "reference/api/index.html",
+    "title": "API Reference",
+    "section": "",
+    "text": "generate_parameters\nGenerate parameters from given phase models and datasets\n\n\nrun_espei\nWrapper around the ESPEI fitting procedure, taking only a settings dictionary.\n\n\n\n\n\n\n\n\n\ndatasets.load_datasets\nCreate a PickelableTinyDB with the data from a list of filenames.\n\n\ndatasets.recursive_glob\nRecursively glob for the given pattern from the start directory.\n\n\n\n\n\n\n\n\n\nanalysis.truncate_arrays\nReturn slides of ESPEI output arrays with any empty remaining iterations (zeros) removed.\n\n\n\n\n\n\nResidual functions\n\n\n\nerror_functions.residual_base.residual_function_registry\n\n\n\nerror_functions.residual_base.ResidualFunction\nProtocol class for computing the error (residual) between data and a model\n\n\nerror_functions.activity_error.ActivityResidual\n\n\n\nerror_functions.zpf_error.ZPFResidual\n\n\n\nerror_functions.equilibrium_thermochemical_error.EquilibriumPropertyResidual\n\n\n\nerror_functions.non_equilibrium_thermochemical_error.FixedConfigurationPropertyResidual\n\n\n\n\n\n\n\nFitting descriptions for custom model parameter generation\n\n\n\nparameter_selection.fitting_descriptions.ModelFittingDescription\n\n\n\n\n\n\n\nFitting steps for custom model parameter generation\n\n\n\nparameter_selection.fitting_steps\n\n\n\n\n\n\n\n\n\n\nutils.database_symbols_to_fit\nReturn names of the symbols to fit that match the regular expression\n\n\nutils.optimal_parameters\nReturn the optimal parameters in the trace based on the highest likelihood.\n\n\n\n\n\n\n\n\n\nplot.dataplot\nPlot datapoints corresponding to the components, phases, and conditions.\n\n\nplot.plot_interaction\nReturn one set of plotted Axes with data compared to calculated parameters\n\n\nplot.plot_endmember\nReturn one set of plotted Axes with data compared to calculated parameters",
+    "crumbs": [
+      "Reference",
+      "API Reference"
+    ]
+  },
+  {
+    "objectID": "reference/api/index.html#espei",
+    "href": "reference/api/index.html#espei",
+    "title": "API Reference",
+    "section": "",
+    "text": "generate_parameters\nGenerate parameters from given phase models and datasets\n\n\nrun_espei\nWrapper around the ESPEI fitting procedure, taking only a settings dictionary.",
+    "crumbs": [
+      "Reference",
+      "API Reference"
+    ]
+  },
+  {
+    "objectID": "reference/api/index.html#espei.datasets",
+    "href": "reference/api/index.html#espei.datasets",
+    "title": "API Reference",
+    "section": "",
+    "text": "datasets.load_datasets\nCreate a PickelableTinyDB with the data from a list of filenames.\n\n\ndatasets.recursive_glob\nRecursively glob for the given pattern from the start directory.",
+    "crumbs": [
+      "Reference",
+      "API Reference"
+    ]
+  },
+  {
+    "objectID": "reference/api/index.html#espei.analsys",
+    "href": "reference/api/index.html#espei.analsys",
+    "title": "API Reference",
+    "section": "",
+    "text": "analysis.truncate_arrays\nReturn slides of ESPEI output arrays with any empty remaining iterations (zeros) removed.",
+    "crumbs": [
+      "Reference",
+      "API Reference"
+    ]
+  },
+  {
+    "objectID": "reference/api/index.html#espei.error_functions",
+    "href": "reference/api/index.html#espei.error_functions",
+    "title": "API Reference",
+    "section": "",
+    "text": "Residual functions\n\n\n\nerror_functions.residual_base.residual_function_registry\n\n\n\nerror_functions.residual_base.ResidualFunction\nProtocol class for computing the error (residual) between data and a model\n\n\nerror_functions.activity_error.ActivityResidual\n\n\n\nerror_functions.zpf_error.ZPFResidual\n\n\n\nerror_functions.equilibrium_thermochemical_error.EquilibriumPropertyResidual\n\n\n\nerror_functions.non_equilibrium_thermochemical_error.FixedConfigurationPropertyResidual",
+    "crumbs": [
+      "Reference",
+      "API Reference"
+    ]
+  },
+  {
+    "objectID": "reference/api/index.html#espei.parameter_selection.fitting_descriptions",
+    "href": "reference/api/index.html#espei.parameter_selection.fitting_descriptions",
+    "title": "API Reference",
+    "section": "",
+    "text": "Fitting descriptions for custom model parameter generation\n\n\n\nparameter_selection.fitting_descriptions.ModelFittingDescription",
+    "crumbs": [
+      "Reference",
+      "API Reference"
+    ]
+  },
+  {
+    "objectID": "reference/api/index.html#espei.parameter_selection.fitting_steps",
+    "href": "reference/api/index.html#espei.parameter_selection.fitting_steps",
+    "title": "API Reference",
+    "section": "",
+    "text": "Fitting steps for custom model parameter generation\n\n\n\nparameter_selection.fitting_steps",
+    "crumbs": [
+      "Reference",
+      "API Reference"
+    ]
+  },
+  {
+    "objectID": "reference/api/index.html#espei.utils",
+    "href": "reference/api/index.html#espei.utils",
+    "title": "API Reference",
+    "section": "",
+    "text": "utils.database_symbols_to_fit\nReturn names of the symbols to fit that match the regular expression\n\n\nutils.optimal_parameters\nReturn the optimal parameters in the trace based on the highest likelihood.",
+    "crumbs": [
+      "Reference",
+      "API Reference"
+    ]
+  },
+  {
+    "objectID": "reference/api/index.html#espei.plot",
+    "href": "reference/api/index.html#espei.plot",
+    "title": "API Reference",
+    "section": "",
+    "text": "plot.dataplot\nPlot datapoints corresponding to the components, phases, and conditions.\n\n\nplot.plot_interaction\nReturn one set of plotted Axes with data compared to calculated parameters\n\n\nplot.plot_endmember\nReturn one set of plotted Axes with data compared to calculated parameters",
+    "crumbs": [
+      "Reference",
+      "API Reference"
+    ]
+  },
+  {
+    "objectID": "reference/api/error_functions.residual_base.residual_function_registry.html",
+    "href": "reference/api/error_functions.residual_base.residual_function_registry.html",
+    "title": "error_functions.residual_base.residual_function_registry",
+    "section": "",
+    "text": "error_functions.residual_base.residual_function_registry\nerror_functions.residual_base.residual_function_registry\n\n\n\n\n Back to top",
+    "crumbs": [
+      "Reference",
+      "API Reference",
+      "espei.error_functions",
+      "error_functions.residual_base.residual_function_registry"
+    ]
+  },
+  {
+    "objectID": "reference/api/utils.database_symbols_to_fit.html",
+    "href": "reference/api/utils.database_symbols_to_fit.html",
+    "title": "utils.database_symbols_to_fit",
+    "section": "",
+    "text": "utils.database_symbols_to_fit(dbf, symbol_regex='^V[V]?([0-9]+)$')\nReturn names of the symbols to fit that match the regular expression\n\n\n\n\n\n\n\n\n\n\n\nName\nType\nDescription\nDefault\n\n\n\n\ndbf\nDatabase\npycalphad Database\nrequired\n\n\nsymbol_regex\nstr\nRegular expression of the fitting symbols. Defaults to V or VV followed by one or more numbers.\n'^V[V]?([0-9]+)$'\n\n\n\n\n\n\n\n\n\n\n\n\n\nType\nDescription\n\n\n\n\ndict\nContext dictionary for different methods of calculation the error.",
+    "crumbs": [
+      "Reference",
+      "API Reference",
+      "espei.utils",
+      "utils.database_symbols_to_fit"
+    ]
+  },
+  {
+    "objectID": "reference/api/utils.database_symbols_to_fit.html#parameters",
+    "href": "reference/api/utils.database_symbols_to_fit.html#parameters",
+    "title": "utils.database_symbols_to_fit",
+    "section": "",
+    "text": "Name\nType\nDescription\nDefault\n\n\n\n\ndbf\nDatabase\npycalphad Database\nrequired\n\n\nsymbol_regex\nstr\nRegular expression of the fitting symbols. Defaults to V or VV followed by one or more numbers.\n'^V[V]?([0-9]+)$'",
+    "crumbs": [
+      "Reference",
+      "API Reference",
+      "espei.utils",
+      "utils.database_symbols_to_fit"
+    ]
+  },
+  {
+    "objectID": "reference/api/utils.database_symbols_to_fit.html#returns",
+    "href": "reference/api/utils.database_symbols_to_fit.html#returns",
+    "title": "utils.database_symbols_to_fit",
+    "section": "",
+    "text": "Type\nDescription\n\n\n\n\ndict\nContext dictionary for different methods of calculation the error.",
+    "crumbs": [
+      "Reference",
+      "API Reference",
+      "espei.utils",
+      "utils.database_symbols_to_fit"
+    ]
+  },
+  {
+    "objectID": "reference/api/error_functions.residual_base.ResidualFunction.html",
+    "href": "reference/api/error_functions.residual_base.ResidualFunction.html",
+    "title": "error_functions.residual_base.ResidualFunction",
+    "section": "",
+    "text": "error_functions.residual_base.ResidualFunction(self, database, datasets, phase_models, symbols_to_fit=None, weight=None)\nProtocol class for computing the error (residual) between data and a model prediction given a set of parameters.\nClasses that implement this protocol typically will concerned with implementing a residual/likelihood function for a certain type of data. The protocol is intentitionally left to be simple to implement while enabling flexibility to implement additional methods and attributes for performance and debugging purposes.\n\n\n\n\n\n\n\n\n\n\n\nName\nType\nDescription\nDefault\n\n\n\n\ndatabase\nDatabase\n\nrequired\n\n\ndatasets\nPickleableTinyDB\nThe candidate datasets for the a contribution. Usually the datasets are a superset (in components, phases, data types, etc.) of the actual data used to compute the residual for any particular contribution.\nrequired\n\n\nphase_models\nPhaseModels\nDefines the active set of components that should be fit and any user-provided overrides to the PyCalphad Model class for each phase.\nrequired\n\n\nsymbols_to_fit\nOptional[List[SymbolName]]\nUser-provided symbols to fit. By default, the symbols to fit should be set by espei.utils.database_symbols_to_fit.\nNone\n\n\nweight\nOptional[float]\nWhen computing the likelihood, this should be used to modify the probability distribution. Higher weights should correspond to narrower probability distributions, but it’s exact use will depend on the particular probability distribution.\nNone\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nName\nType\nDescription\n\n\n\n\nweight\nOptional[Union[float, Dict[str, float]]]\n\n\n\n\n\n\n\n\n\n\nName\nDescription\n\n\n\n\nget_likelihood\nReturn log-likelihood for the set of parameters.\n\n\nget_residuals\nReturn the residual comparing the selected data to the set of parameters.\n\n\n\n\n\nerror_functions.residual_base.ResidualFunction.get_likelihood(parameters)\nReturn log-likelihood for the set of parameters.\n\n\n\n\n\n\n\n\n\n\n\nName\nType\nDescription\nDefault\n\n\n\n\nparameters\nArrayLike\n1D parameter vector. The size of the parameters array should match the number of fitting symbols used to build the models. This is not checked.\nrequired\n\n\n\n\n\n\n\n\n\nType\nDescription\n\n\n\n\nfloat\nValue of log-likelihood for the given set of parameters\n\n\n\n\n\n\n\nerror_functions.residual_base.ResidualFunction.get_residuals(parameters)\nReturn the residual comparing the selected data to the set of parameters.\nThe residual is zero if the database predictions under the given parameters agrees with the data exactly.\n\n\n\n\n\n\n\n\n\n\n\nName\nType\nDescription\nDefault\n\n\n\n\nparameters\nArrayLike\n1D parameter vector. The size of the parameters array should match the number of fitting symbols used to build the models. This is not checked.\nrequired\n\n\n\n\n\n\n\n\n\n\n\n\n\nType\nDescription\n\n\n\n\nTuple[List[float], List[float]]\nTuple of (residuals, weights), which must obey len(residuals) == len(weights)",
+    "crumbs": [
+      "Reference",
+      "API Reference",
+      "espei.error_functions",
+      "error_functions.residual_base.ResidualFunction"
+    ]
+  },
+  {
+    "objectID": "reference/api/error_functions.residual_base.ResidualFunction.html#parameters",
+    "href": "reference/api/error_functions.residual_base.ResidualFunction.html#parameters",
+    "title": "error_functions.residual_base.ResidualFunction",
+    "section": "",
+    "text": "Name\nType\nDescription\nDefault\n\n\n\n\ndatabase\nDatabase\n\nrequired\n\n\ndatasets\nPickleableTinyDB\nThe candidate datasets for the a contribution. Usually the datasets are a superset (in components, phases, data types, etc.) of the actual data used to compute the residual for any particular contribution.\nrequired\n\n\nphase_models\nPhaseModels\nDefines the active set of components that should be fit and any user-provided overrides to the PyCalphad Model class for each phase.\nrequired\n\n\nsymbols_to_fit\nOptional[List[SymbolName]]\nUser-provided symbols to fit. By default, the symbols to fit should be set by espei.utils.database_symbols_to_fit.\nNone\n\n\nweight\nOptional[float]\nWhen computing the likelihood, this should be used to modify the probability distribution. Higher weights should correspond to narrower probability distributions, but it’s exact use will depend on the particular probability distribution.\nNone",
+    "crumbs": [
+      "Reference",
+      "API Reference",
+      "espei.error_functions",
+      "error_functions.residual_base.ResidualFunction"
+    ]
+  },
+  {
+    "objectID": "reference/api/error_functions.residual_base.ResidualFunction.html#attributes",
+    "href": "reference/api/error_functions.residual_base.ResidualFunction.html#attributes",
+    "title": "error_functions.residual_base.ResidualFunction",
+    "section": "",
+    "text": "Name\nType\nDescription\n\n\n\n\nweight\nOptional[Union[float, Dict[str, float]]]",
+    "crumbs": [
+      "Reference",
+      "API Reference",
+      "espei.error_functions",
+      "error_functions.residual_base.ResidualFunction"
+    ]
+  },
+  {
+    "objectID": "reference/api/error_functions.residual_base.ResidualFunction.html#methods",
+    "href": "reference/api/error_functions.residual_base.ResidualFunction.html#methods",
+    "title": "error_functions.residual_base.ResidualFunction",
+    "section": "",
+    "text": "Name\nDescription\n\n\n\n\nget_likelihood\nReturn log-likelihood for the set of parameters.\n\n\nget_residuals\nReturn the residual comparing the selected data to the set of parameters.\n\n\n\n\n\nerror_functions.residual_base.ResidualFunction.get_likelihood(parameters)\nReturn log-likelihood for the set of parameters.\n\n\n\n\n\n\n\n\n\n\n\nName\nType\nDescription\nDefault\n\n\n\n\nparameters\nArrayLike\n1D parameter vector. The size of the parameters array should match the number of fitting symbols used to build the models. This is not checked.\nrequired\n\n\n\n\n\n\n\n\n\nType\nDescription\n\n\n\n\nfloat\nValue of log-likelihood for the given set of parameters\n\n\n\n\n\n\n\nerror_functions.residual_base.ResidualFunction.get_residuals(parameters)\nReturn the residual comparing the selected data to the set of parameters.\nThe residual is zero if the database predictions under the given parameters agrees with the data exactly.\n\n\n\n\n\n\n\n\n\n\n\nName\nType\nDescription\nDefault\n\n\n\n\nparameters\nArrayLike\n1D parameter vector. The size of the parameters array should match the number of fitting symbols used to build the models. This is not checked.\nrequired\n\n\n\n\n\n\n\n\n\n\n\n\n\nType\nDescription\n\n\n\n\nTuple[List[float], List[float]]\nTuple of (residuals, weights), which must obey len(residuals) == len(weights)",
+    "crumbs": [
+      "Reference",
+      "API Reference",
+      "espei.error_functions",
+      "error_functions.residual_base.ResidualFunction"
+    ]
+  },
+  {
+    "objectID": "reference/api/generate_parameters.html",
+    "href": "reference/api/generate_parameters.html",
+    "title": "generate_parameters",
+    "section": "",
+    "text": "generate_parameters(phase_models, datasets, ref_state, excess_model, ridge_alpha=None, aicc_penalty_factor=None, dbf=None, fitting_description=gibbs_energy_fitting_description)\nGenerate parameters from given phase models and datasets\n\n\n\n\n\n\n\n\n\n\n\nName\nType\nDescription\nDefault\n\n\n\n\nphase_models\ndict\nDictionary of components and phases to fit.\nrequired\n\n\ndatasets\nPickleableTinyDB\ndatabase of single- and multi-phase to fit.\nrequired\n\n\nref_state\nstr\nString of the reference data to use, e.g. ‘SGTE91’ or ‘SR2016’\nrequired\n\n\nexcess_model\nstr\nString of the type of excess model to fit to, e.g. ‘linear’\nrequired\n\n\nridge_alpha\nfloat\nValue of the :math:\\alpha hyperparameter used in ridge regression. Defaults to None, which falls back to ordinary least squares regression. For now, the parameter is applied to all features.\nNone\n\n\naicc_penalty_factor\ndict\nMap of phase name to feature to a multiplication factor for the AICc’s parameter penalty.\nNone\n\n\ndbf\nDatabase\nInitial pycalphad Database that can have parameters that would not be fit by ESPEI\nNone\n\n\nfitting_description\nType[ModelFittingDescription]\nModelFittingDescription object describing the fitting steps and model\ngibbs_energy_fitting_description\n\n\n\n\n\n\n\n\n\nType\nDescription\n\n\n\n\npycalphad.Database",
+    "crumbs": [
+      "Reference",
+      "API Reference",
+      "espei",
+      "generate_parameters"
+    ]
+  },
+  {
+    "objectID": "reference/api/generate_parameters.html#parameters",
+    "href": "reference/api/generate_parameters.html#parameters",
+    "title": "generate_parameters",
+    "section": "",
+    "text": "Name\nType\nDescription\nDefault\n\n\n\n\nphase_models\ndict\nDictionary of components and phases to fit.\nrequired\n\n\ndatasets\nPickleableTinyDB\ndatabase of single- and multi-phase to fit.\nrequired\n\n\nref_state\nstr\nString of the reference data to use, e.g. ‘SGTE91’ or ‘SR2016’\nrequired\n\n\nexcess_model\nstr\nString of the type of excess model to fit to, e.g. ‘linear’\nrequired\n\n\nridge_alpha\nfloat\nValue of the :math:\\alpha hyperparameter used in ridge regression. Defaults to None, which falls back to ordinary least squares regression. For now, the parameter is applied to all features.\nNone\n\n\naicc_penalty_factor\ndict\nMap of phase name to feature to a multiplication factor for the AICc’s parameter penalty.\nNone\n\n\ndbf\nDatabase\nInitial pycalphad Database that can have parameters that would not be fit by ESPEI\nNone\n\n\nfitting_description\nType[ModelFittingDescription]\nModelFittingDescription object describing the fitting steps and model\ngibbs_energy_fitting_description",
+    "crumbs": [
+      "Reference",
+      "API Reference",
+      "espei",
+      "generate_parameters"
+    ]
+  },
+  {
+    "objectID": "reference/api/generate_parameters.html#returns",
+    "href": "reference/api/generate_parameters.html#returns",
+    "title": "generate_parameters",
+    "section": "",
+    "text": "Type\nDescription\n\n\n\n\npycalphad.Database",
+    "crumbs": [
+      "Reference",
+      "API Reference",
+      "espei",
+      "generate_parameters"
+    ]
+  },
+  {
+    "objectID": "reference/api/utils.optimal_parameters.html",
+    "href": "reference/api/utils.optimal_parameters.html",
+    "title": "utils.optimal_parameters",
+    "section": "",
+    "text": "utils.optimal_parameters(trace_array, lnprob_array, kth=0)\nReturn the optimal parameters in the trace based on the highest likelihood. If kth is specified, return the kth set of unique optimal parameters.\n\n\n\n\n\n\n\n\n\n\n\nName\nType\nDescription\nDefault\n\n\n\n\ntrace_array\nndarray\nArray of shape (number of chains, iterations, number of parameters)\nrequired\n\n\nlnprob_array\nndarray\nArray of shape (number of chains, iterations)\nrequired\n\n\nkth\nint\nZero-indexed optimum. 0 (the default) is the most optimal solution. 1 is the second most optimal, etc.. Only unique solutions will be returned.\n0\n\n\n\n\n\n\n\n\n\nType\nDescription\n\n\n\n\nArray of optimal parameters\n\n\n\n\n\n\n\nIt is ok if the calculation did not finish and the arrays are padded with zeros. The number of chains and iterations in the trace and lnprob arrays must match.\n\n\n\n&gt;&gt;&gt; from espei.utils import optimal_parameters\n&gt;&gt;&gt; trace = np.array([[[1, 0], [2, 0], [3, 0], [0, 0]], [[0, 2], [0, 4], [0, 6], [0, 0]]])  # 3 iterations of 4 allocated\n&gt;&gt;&gt; lnprob = np.array([[-6, -4, -2, 0], [-3, -1, -2, 0]])\n&gt;&gt;&gt; np.all(np.isclose(optimal_parameters(trace, lnprob), np.array([0, 4])))\nTrue",
+    "crumbs": [
+      "Reference",
+      "API Reference",
+      "espei.utils",
+      "utils.optimal_parameters"
+    ]
+  },
+  {
+    "objectID": "reference/api/utils.optimal_parameters.html#parameters",
+    "href": "reference/api/utils.optimal_parameters.html#parameters",
+    "title": "utils.optimal_parameters",
+    "section": "",
+    "text": "Name\nType\nDescription\nDefault\n\n\n\n\ntrace_array\nndarray\nArray of shape (number of chains, iterations, number of parameters)\nrequired\n\n\nlnprob_array\nndarray\nArray of shape (number of chains, iterations)\nrequired\n\n\nkth\nint\nZero-indexed optimum. 0 (the default) is the most optimal solution. 1 is the second most optimal, etc.. Only unique solutions will be returned.\n0",
+    "crumbs": [
+      "Reference",
+      "API Reference",
+      "espei.utils",
+      "utils.optimal_parameters"
+    ]
+  },
+  {
+    "objectID": "reference/api/utils.optimal_parameters.html#returns",
+    "href": "reference/api/utils.optimal_parameters.html#returns",
+    "title": "utils.optimal_parameters",
+    "section": "",
+    "text": "Type\nDescription\n\n\n\n\nArray of optimal parameters",
+    "crumbs": [
+      "Reference",
+      "API Reference",
+      "espei.utils",
+      "utils.optimal_parameters"
+    ]
+  },
+  {
+    "objectID": "reference/api/utils.optimal_parameters.html#notes",
+    "href": "reference/api/utils.optimal_parameters.html#notes",
+    "title": "utils.optimal_parameters",
+    "section": "",
+    "text": "It is ok if the calculation did not finish and the arrays are padded with zeros. The number of chains and iterations in the trace and lnprob arrays must match.",
+    "crumbs": [
+      "Reference",
+      "API Reference",
+      "espei.utils",
+      "utils.optimal_parameters"
+    ]
+  },
+  {
+    "objectID": "reference/api/utils.optimal_parameters.html#examples",
+    "href": "reference/api/utils.optimal_parameters.html#examples",
+    "title": "utils.optimal_parameters",
+    "section": "",
+    "text": "&gt;&gt;&gt; from espei.utils import optimal_parameters\n&gt;&gt;&gt; trace = np.array([[[1, 0], [2, 0], [3, 0], [0, 0]], [[0, 2], [0, 4], [0, 6], [0, 0]]])  # 3 iterations of 4 allocated\n&gt;&gt;&gt; lnprob = np.array([[-6, -4, -2, 0], [-3, -1, -2, 0]])\n&gt;&gt;&gt; np.all(np.isclose(optimal_parameters(trace, lnprob), np.array([0, 4])))\nTrue",
+    "crumbs": [
+      "Reference",
+      "API Reference",
+      "espei.utils",
+      "utils.optimal_parameters"
+    ]
+  },
+  {
+    "objectID": "reference/api/error_functions.activity_error.ActivityResidual.html",
+    "href": "reference/api/error_functions.activity_error.ActivityResidual.html",
+    "title": "error_functions.activity_error.ActivityResidual",
+    "section": "",
+    "text": "error_functions.activity_error.ActivityResidual\nerror_functions.activity_error.ActivityResidual(self, database, datasets, phase_models, symbols_to_fit=None, weight=None)\n\n\n\n\n Back to top",
+    "crumbs": [
+      "Reference",
+      "API Reference",
+      "espei.error_functions",
+      "error_functions.activity_error.ActivityResidual"
+    ]
+  },
+  {
+    "objectID": "reference/api/plot.plot_interaction.html",
+    "href": "reference/api/plot.plot_interaction.html",
+    "title": "plot.plot_interaction",
+    "section": "",
+    "text": "plot.plot_interaction(dbf, comps, phase_name, configuration, output, datasets=None, symmetry=None, ax=None, plot_kwargs=None, dataplot_kwargs=None)\nReturn one set of plotted Axes with data compared to calculated parameters\n\n\n\n\n\n\n\n\n\n\n\nName\nType\nDescription\nDefault\n\n\n\n\ndbf\nDatabase\npycalphad thermodynamic database containing the relevant parameters.\nrequired\n\n\ncomps\nSequence[str]\nNames of components to consider in the calculation.\nrequired\n\n\nphase_name\nstr\nName of the considered phase phase\nrequired\n\n\nconfiguration\nTuple[Tuple[str]]\nESPEI-style configuration\nrequired\n\n\noutput\nstr\nModel property to plot on the y-axis e.g. 'HM_MIX', or 'SM_MIX'. Must be a '_MIX' property.\nrequired\n\n\ndatasets\ntinydb.TinyDB\n\nNone\n\n\nsymmetry\nlist\nList of lists containing indices of symmetric sublattices e.g. [[0, 1], [2, 3]]\nNone\n\n\nax\nplt.Axes\nDefault axes used if not specified.\nNone\n\n\nplot_kwargs\nOptional[Dict[str, Any]]\nKeyword arguments to ax.plot for the predicted data.\nNone\n\n\ndataplot_kwargs\nOptional[Dict[str, Any]]\nKeyword arguments to ax.plot the observed data.\nNone\n\n\n\n\n\n\n\n\n\nType\nDescription\n\n\n\n\nplt.Axes",
+    "crumbs": [
+      "Reference",
+      "API Reference",
+      "espei.plot",
+      "plot.plot_interaction"
+    ]
+  },
+  {
+    "objectID": "reference/api/plot.plot_interaction.html#parameters",
+    "href": "reference/api/plot.plot_interaction.html#parameters",
+    "title": "plot.plot_interaction",
+    "section": "",
+    "text": "Name\nType\nDescription\nDefault\n\n\n\n\ndbf\nDatabase\npycalphad thermodynamic database containing the relevant parameters.\nrequired\n\n\ncomps\nSequence[str]\nNames of components to consider in the calculation.\nrequired\n\n\nphase_name\nstr\nName of the considered phase phase\nrequired\n\n\nconfiguration\nTuple[Tuple[str]]\nESPEI-style configuration\nrequired\n\n\noutput\nstr\nModel property to plot on the y-axis e.g. 'HM_MIX', or 'SM_MIX'. Must be a '_MIX' property.\nrequired\n\n\ndatasets\ntinydb.TinyDB\n\nNone\n\n\nsymmetry\nlist\nList of lists containing indices of symmetric sublattices e.g. [[0, 1], [2, 3]]\nNone\n\n\nax\nplt.Axes\nDefault axes used if not specified.\nNone\n\n\nplot_kwargs\nOptional[Dict[str, Any]]\nKeyword arguments to ax.plot for the predicted data.\nNone\n\n\ndataplot_kwargs\nOptional[Dict[str, Any]]\nKeyword arguments to ax.plot the observed data.\nNone",
+    "crumbs": [
+      "Reference",
+      "API Reference",
+      "espei.plot",
+      "plot.plot_interaction"
+    ]
+  },
+  {
+    "objectID": "reference/api/plot.plot_interaction.html#returns",
+    "href": "reference/api/plot.plot_interaction.html#returns",
+    "title": "plot.plot_interaction",
+    "section": "",
+    "text": "Type\nDescription\n\n\n\n\nplt.Axes",
+    "crumbs": [
+      "Reference",
+      "API Reference",
+      "espei.plot",
+      "plot.plot_interaction"
+    ]
+  },
+  {
+    "objectID": "reference/api/parameter_selection.fitting_steps.html",
+    "href": "reference/api/parameter_selection.fitting_steps.html",
+    "title": "parameter_selection.fitting_steps",
+    "section": "",
+    "text": "parameter_selection.fitting_steps\n\n\n\n\n\nName\nDescription\n\n\n\n\nAbstractLinearPropertyStep\nThis class is a base class for generic linear properties.\n\n\n\n\n\nparameter_selection.fitting_steps.AbstractLinearPropertyStep()\nThis class is a base class for generic linear properties.\n“Generic” meaning, essentially, that property_name == parameter_name == data_type and PyCalphad models set this property something like\nself.&lt;parameter_name&gt; = self.redlich_kister_sum(phase, param_search, &lt;param_name&gt;_query)\nNote that redlich_kister_sum specifically is an implementation detail and isn’t relevant for this class in particular. Any mixing model could work, although ESPEI currently only generates features by build_redlich_kister_candidate_models.\nFitting steps that want to use this base class should need to subclass this class, override the parameter_name and data_type_read (typically these match), and optionally override the features if a desired.\nFor models that are ‘nearly linear’, and the transform_data method can be overriden to try to linearize the data with respect to the model parameters.\nMost parameters are fit per mole of formula units, but there are some exceptions (e.g. VA parameters). The normalize_parameter_per_mole_formula attribute handles normalization.\n\n\n\n\n\nName\nDescription\n\n\n\n\ntransform_data\nHelper function to linearize data in terms of the model parameters.\n\n\n\n\n\nparameter_selection.fitting_steps.AbstractLinearPropertyStep.transform_data(d, model=None)\nHelper function to linearize data in terms of the model parameters.\nIf data is already linear w.r.t. the parameters, the default implementation of identity (return d can be preserved).",
+    "crumbs": [
+      "Reference",
+      "API Reference",
+      "espei.parameter_selection.fitting_steps",
+      "parameter_selection.fitting_steps"
+    ]
+  },
+  {
+    "objectID": "reference/api/parameter_selection.fitting_steps.html#classes",
+    "href": "reference/api/parameter_selection.fitting_steps.html#classes",
+    "title": "parameter_selection.fitting_steps",
+    "section": "",
+    "text": "Name\nDescription\n\n\n\n\nAbstractLinearPropertyStep\nThis class is a base class for generic linear properties.\n\n\n\n\n\nparameter_selection.fitting_steps.AbstractLinearPropertyStep()\nThis class is a base class for generic linear properties.\n“Generic” meaning, essentially, that property_name == parameter_name == data_type and PyCalphad models set this property something like\nself.&lt;parameter_name&gt; = self.redlich_kister_sum(phase, param_search, &lt;param_name&gt;_query)\nNote that redlich_kister_sum specifically is an implementation detail and isn’t relevant for this class in particular. Any mixing model could work, although ESPEI currently only generates features by build_redlich_kister_candidate_models.\nFitting steps that want to use this base class should need to subclass this class, override the parameter_name and data_type_read (typically these match), and optionally override the features if a desired.\nFor models that are ‘nearly linear’, and the transform_data method can be overriden to try to linearize the data with respect to the model parameters.\nMost parameters are fit per mole of formula units, but there are some exceptions (e.g. VA parameters). The normalize_parameter_per_mole_formula attribute handles normalization.\n\n\n\n\n\nName\nDescription\n\n\n\n\ntransform_data\nHelper function to linearize data in terms of the model parameters.\n\n\n\n\n\nparameter_selection.fitting_steps.AbstractLinearPropertyStep.transform_data(d, model=None)\nHelper function to linearize data in terms of the model parameters.\nIf data is already linear w.r.t. the parameters, the default implementation of identity (return d can be preserved).",
+    "crumbs": [
+      "Reference",
+      "API Reference",
+      "espei.parameter_selection.fitting_steps",
+      "parameter_selection.fitting_steps"
+    ]
+  },
+  {
+    "objectID": "quickstart.html",
+    "href": "quickstart.html",
+    "title": "Quickstart",
+    "section": "",
+    "text": "ESPEI has two different fitting modes: parameter generation and Bayesian parameter estimation, which uses Markov Chain Monte Carlo (MCMC). You can run either of these modes or both of them sequentially.\nTo run either of the modes, you need to have a phase models file that describes the phases in the system using the standard Calphad approach within the compound energy formalism. You also need to describe the data that ESPEI should fit to. You will need single-phase and multi-phase data for a full run. Fit settings and all datasets are stored as JSON files and described in detail at the YAML input schema page. All of your input datasets should be validated by running espei --check-datasets my-input-datasets, where my-input-datasets is a folder of all your JSON files.\nThe main output result is going to be a database (defaults to out.tdb), an array of the steps in the MCMC trace (defaults to trace.npy), and the an array of the log-probabilities for each iteration and chain (defaults to lnprob.npy).\n\n\nIf you have only non-equilibrium thermochemical data, e.g. heat capacity, entropy and enthalpy data and mixing data from first-principles calculations, you may want to see the starting point for your MCMC calculation.\nCreate an input file called espei-in.yaml.\nsystem:\n  phase_models: my-phases.json\n  datasets: my-input-datasets\ngenerate_parameters:\n  excess_model: linear\n  ref_state: SGTE91\nThen ESPEI can be run by running\nespei --input espei-in.yaml\n\n\n\nIf you have a database already and want to do a Bayesian parameter estimation, you can specify a starting TDB file (named my-tdb.tdb) with\nsystem:\n  phase_models: my-phases.json\n  datasets: my-input-data\nmcmc:\n  iterations: 1000\n  input_db: my-tdb.tdb\nThe TDB file you input must have all of the degrees of freedom you want as FUNCTIONs with names beginning with VV.\n\n\n\nIf you've run an MCMC fitting already in ESPEI and have a trace file called my-previous-trace.npy , then you can resume the calculation with the following input file\nsystem:\n  phase_models: my-phases.json\n  datasets: my-input-data\nmcmc:\n  iterations: 1000\n  input_db: my-tdb.tdb\n  restart_trace: my-previous-trace.npy\n\n\n\nA minimal full run of ESPEI is done by the following\nsystem:\n  phase_models: my-phases.json\n  datasets: my-input-data\ngenerate_parameters:\n  excess_model: linear\n  ref_state: SGTE91\nmcmc:\n  iterations: 1000\n\n\n\nESPEI lets you control many aspects of your calculations with the input files shown above. See the YAML input schema for a full description of all possible inputs.\n\n\n\n\n\nA: Common mistakes are using single quotes instead of the double quotes required by JSON files. Another common source of errors is misaligned open/closing brackets.\nMany mistakes are found with ESPEI's check-datasets utility. Run espei check-datasets my-input-datasets on your directory my-input-datasets.\n\n\n\nA: By default, ESPEI will create trace.npy and lnprob.npy for the MCMC chain at the specified save interval and according to the save interval (defaults to ever iteration). These are created from arrays via numpy.save() and can thus be loaded with numpy.load(). Note that the arrays are preallocated with zeros. These filenames and settings can be changed using in the input file. You can then use these chains and corresponding log-probabilities to make corner plots, calculate autocorrelations, find optimal parameters for databases, etc.. Some examples are shown on the Recipes page. Finally, you can use espei.plot functions such as espei.plot.dataplot in concert with pycalphad to plot phase diagrams with your input equilibria data. The espei.plot.plot_endmember and espei.plot.plot_interaction functions can be used to compare single-phase data (e.g. formation and mixing data) with the properties calculated from your database.\n\n\n\nA: Yes! ESPEI has MPI support. See the page on alternative schedulers for more details.\n\n\n\nMCMC simulation requires determining the probability of the data given a set of parameters, \\(p(D|\\theta)\\). In MCMC, the log probability is often used to avoid floating point errors that arise from multiplying many small floating point numbers. For each type of data the error, often interpreted as the absolute difference between the expected and calculated value, is determined. For the types of data and how the error is calculated, refer to the ESPEI paper (Bocklund et al. 2019).\nThe error is assumed to be normally distributed around the experimental data point that the prediction of a set of parameters is being compared against. The log probability of each data type is calculated by the log probability density function of the error in this normal distribution with a mean of zero and the standard deviation as given by the data type and the adjustable weights (see data_weights in YAML input schema). The total log probability is the sum of all log probabilities.\nNote that any probability density function always returns a positive value between 0 and 1, so the log probability density function should return negative numbers and the log probability reported by ESPEI should be negative.\n\n\n\nA: A version number of '0+unknown' indicates that you do not have git installed. This can occur on Windows where git is not in the PATH (and the Python interpreter cannot see it). You can install git using conda install git on Windows.\n\n\n\nA: Yes, if you have a multicomponent Calphad database, but want to optimize or determine the uncertainty for a constituent unary, binary or ternary subsystem that you have data for, you can do that without any extra effort.\nYou may be interested in the input_mcmc_symbols input parameter to specify which parameter subset to optimize.\nNote that if you optimize parameters in a subsystem (e.g. Cu-Mg) that is used in a higher order description (e.g. Al-Cu-Mg), you may need to reoptimize the parameters for the higher order system as well.",
+    "crumbs": [
+      "Quickstart"
+    ]
+  },
+  {
+    "objectID": "quickstart.html#parameter-generation-only",
+    "href": "quickstart.html#parameter-generation-only",
+    "title": "Quickstart",
+    "section": "",
+    "text": "If you have only non-equilibrium thermochemical data, e.g. heat capacity, entropy and enthalpy data and mixing data from first-principles calculations, you may want to see the starting point for your MCMC calculation.\nCreate an input file called espei-in.yaml.\nsystem:\n  phase_models: my-phases.json\n  datasets: my-input-datasets\ngenerate_parameters:\n  excess_model: linear\n  ref_state: SGTE91\nThen ESPEI can be run by running\nespei --input espei-in.yaml",
+    "crumbs": [
+      "Quickstart"
+    ]
+  },
+  {
+    "objectID": "quickstart.html#bayesian-parameter-estimation-mcmc-only",
+    "href": "quickstart.html#bayesian-parameter-estimation-mcmc-only",
+    "title": "Quickstart",
+    "section": "",
+    "text": "If you have a database already and want to do a Bayesian parameter estimation, you can specify a starting TDB file (named my-tdb.tdb) with\nsystem:\n  phase_models: my-phases.json\n  datasets: my-input-data\nmcmc:\n  iterations: 1000\n  input_db: my-tdb.tdb\nThe TDB file you input must have all of the degrees of freedom you want as FUNCTIONs with names beginning with VV.",
+    "crumbs": [
+      "Quickstart"
+    ]
+  },
+  {
+    "objectID": "quickstart.html#restart-from-previous-run-phase-only",
+    "href": "quickstart.html#restart-from-previous-run-phase-only",
+    "title": "Quickstart",
+    "section": "",
+    "text": "If you've run an MCMC fitting already in ESPEI and have a trace file called my-previous-trace.npy , then you can resume the calculation with the following input file\nsystem:\n  phase_models: my-phases.json\n  datasets: my-input-data\nmcmc:\n  iterations: 1000\n  input_db: my-tdb.tdb\n  restart_trace: my-previous-trace.npy",
+    "crumbs": [
+      "Quickstart"
+    ]
+  },
+  {
+    "objectID": "quickstart.html#full-run",
+    "href": "quickstart.html#full-run",
+    "title": "Quickstart",
+    "section": "",
+    "text": "A minimal full run of ESPEI is done by the following\nsystem:\n  phase_models: my-phases.json\n  datasets: my-input-data\ngenerate_parameters:\n  excess_model: linear\n  ref_state: SGTE91\nmcmc:\n  iterations: 1000",
+    "crumbs": [
+      "Quickstart"
+    ]
+  },
+  {
+    "objectID": "quickstart.html#input-customization",
+    "href": "quickstart.html#input-customization",
+    "title": "Quickstart",
+    "section": "",
+    "text": "ESPEI lets you control many aspects of your calculations with the input files shown above. See the YAML input schema for a full description of all possible inputs.",
+    "crumbs": [
+      "Quickstart"
+    ]
+  },
+  {
+    "objectID": "quickstart.html#faq",
+    "href": "quickstart.html#faq",
+    "title": "Quickstart",
+    "section": "",
+    "text": "A: Common mistakes are using single quotes instead of the double quotes required by JSON files. Another common source of errors is misaligned open/closing brackets.\nMany mistakes are found with ESPEI's check-datasets utility. Run espei check-datasets my-input-datasets on your directory my-input-datasets.\n\n\n\nA: By default, ESPEI will create trace.npy and lnprob.npy for the MCMC chain at the specified save interval and according to the save interval (defaults to ever iteration). These are created from arrays via numpy.save() and can thus be loaded with numpy.load(). Note that the arrays are preallocated with zeros. These filenames and settings can be changed using in the input file. You can then use these chains and corresponding log-probabilities to make corner plots, calculate autocorrelations, find optimal parameters for databases, etc.. Some examples are shown on the Recipes page. Finally, you can use espei.plot functions such as espei.plot.dataplot in concert with pycalphad to plot phase diagrams with your input equilibria data. The espei.plot.plot_endmember and espei.plot.plot_interaction functions can be used to compare single-phase data (e.g. formation and mixing data) with the properties calculated from your database.\n\n\n\nA: Yes! ESPEI has MPI support. See the page on alternative schedulers for more details.\n\n\n\nMCMC simulation requires determining the probability of the data given a set of parameters, \\(p(D|\\theta)\\). In MCMC, the log probability is often used to avoid floating point errors that arise from multiplying many small floating point numbers. For each type of data the error, often interpreted as the absolute difference between the expected and calculated value, is determined. For the types of data and how the error is calculated, refer to the ESPEI paper (Bocklund et al. 2019).\nThe error is assumed to be normally distributed around the experimental data point that the prediction of a set of parameters is being compared against. The log probability of each data type is calculated by the log probability density function of the error in this normal distribution with a mean of zero and the standard deviation as given by the data type and the adjustable weights (see data_weights in YAML input schema). The total log probability is the sum of all log probabilities.\nNote that any probability density function always returns a positive value between 0 and 1, so the log probability density function should return negative numbers and the log probability reported by ESPEI should be negative.\n\n\n\nA: A version number of '0+unknown' indicates that you do not have git installed. This can occur on Windows where git is not in the PATH (and the Python interpreter cannot see it). You can install git using conda install git on Windows.\n\n\n\nA: Yes, if you have a multicomponent Calphad database, but want to optimize or determine the uncertainty for a constituent unary, binary or ternary subsystem that you have data for, you can do that without any extra effort.\nYou may be interested in the input_mcmc_symbols input parameter to specify which parameter subset to optimize.\nNote that if you optimize parameters in a subsystem (e.g. Cu-Mg) that is used in a higher order description (e.g. Al-Cu-Mg), you may need to reoptimize the parameters for the higher order system as well.",
+    "crumbs": [
+      "Quickstart"
+    ]
+  },
+  {
+    "objectID": "installation.html",
+    "href": "installation.html",
+    "title": "Installation",
+    "section": "",
+    "text": "To install ESPEI from PyPI using pip:\npip install -U pip\npip install -U espei\nA recommended best practice is to install Python packages into a virtual environment. To create an environment and install ESPEI on Linux and macOS/OSX:\npython -m venv calphad-env\nsource calphad-env/bin/activate\npip install -U pip\npip install -U pycalphad\nOn Windows:\npython -m venv calphad-env\ncalphad-env\\Scripts\\activate\npip install -U pip\npip install -U pycalphad",
+    "crumbs": [
+      "Installation"
+    ]
+  },
+  {
+    "objectID": "installation.html#pip-recommended",
+    "href": "installation.html#pip-recommended",
+    "title": "Installation",
+    "section": "",
+    "text": "To install ESPEI from PyPI using pip:\npip install -U pip\npip install -U espei\nA recommended best practice is to install Python packages into a virtual environment. To create an environment and install ESPEI on Linux and macOS/OSX:\npython -m venv calphad-env\nsource calphad-env/bin/activate\npip install -U pip\npip install -U pycalphad\nOn Windows:\npython -m venv calphad-env\ncalphad-env\\Scripts\\activate\npip install -U pip\npip install -U pycalphad",
+    "crumbs": [
+      "Installation"
+    ]
+  },
+  {
+    "objectID": "installation.html#anaconda",
+    "href": "installation.html#anaconda",
+    "title": "Installation",
+    "section": "Anaconda",
+    "text": "Anaconda\nIf you prefer using Anaconda, ESPEI is distributed on conda-forge. If you do not have Anaconda installed, we recommend you download and install Miniconda3. ESPEI can be installed with the conda package manager by:\nconda install -c conda-forge espei",
+    "crumbs": [
+      "Installation"
+    ]
+  },
+  {
+    "objectID": "installation.html#installing-development-versions",
+    "href": "installation.html#installing-development-versions",
+    "title": "Installation",
+    "section": "Development versions",
+    "text": "Development versions\nTo make changes to the ESPEI source code, the development version must be installed. If you'll need to make changes to pycalphad simultaneously, follow the instructions to install the development version of pycalphad first.\nWe strongly recommend that users interested in developing packages work in a virtual environment. The steps below will create an environment called calphad-dev, which can be entered using source calphad-dev/bin/activate on Linux or macOS/OSX or activate calphad-dev\\bin\\activate on Windows. The environment name is arbitrary - you can use whatever name you prefer.\nESPEI uses Git and GitHub for version control. Windows users: if you do not have a working version of Git, download it here first.\nTo install the latest development version of ESPEI using pip:\npython -m venv calphad-env\nsource calphad-env/bin/activate\ngit clone https://github.com/phasesresearchlab/espei.git\ncd espei\npip install -U pip\npip install -U --editable .[dev]\nWith the development version installed and your environment activated, you can run the automated tests by running\npytest\nIf the test suite passes, you are ready to start using the development version or making changes yourself! See the guide for contributing to ESPEI to learn more. If any tests fail, please report the failure to the ESPEI issue tracker on GitHub.\nTo upgrade your development version to the latest version, run git pull from the top level ESPEI directory (the directory containing the setup.py file).",
+    "crumbs": [
+      "Installation"
+    ]
+  },
+  {
     "objectID": "reference/dataset_schema.html",
     "href": "reference/dataset_schema.html",
     "title": "ESPEI Dataset Schema",
@@ -811,113 +1345,289 @@
     ]
   },
   {
-    "objectID": "installation.html",
-    "href": "installation.html",
-    "title": "Installation",
+    "objectID": "reference/api/datasets.load_datasets.html",
+    "href": "reference/api/datasets.load_datasets.html",
+    "title": "datasets.load_datasets",
     "section": "",
-    "text": "To install ESPEI from PyPI using pip:\npip install -U pip\npip install -U espei\nA recommended best practice is to install Python packages into a virtual environment. To create an environment and install ESPEI on Linux and macOS/OSX:\npython -m venv calphad-env\nsource calphad-env/bin/activate\npip install -U pip\npip install -U pycalphad\nOn Windows:\npython -m venv calphad-env\ncalphad-env\\Scripts\\activate\npip install -U pip\npip install -U pycalphad",
+    "text": "datasets.load_datasets(dataset_filenames, include_disabled=False)\nCreate a PickelableTinyDB with the data from a list of filenames.\n\n\n\n\n\n\n\n\n\n\n\nName\nType\nDescription\nDefault\n\n\n\n\ndataset_filenames\n[str]\nList of filenames to load as datasets\nrequired\n\n\n\n\n\n\n\n\n\nType\nDescription\n\n\n\n\nPickleableTinyDB",
     "crumbs": [
-      "Installation"
+      "Reference",
+      "API Reference",
+      "espei.datasets",
+      "datasets.load_datasets"
     ]
   },
   {
-    "objectID": "installation.html#pip-recommended",
-    "href": "installation.html#pip-recommended",
-    "title": "Installation",
+    "objectID": "reference/api/datasets.load_datasets.html#parameters",
+    "href": "reference/api/datasets.load_datasets.html#parameters",
+    "title": "datasets.load_datasets",
     "section": "",
-    "text": "To install ESPEI from PyPI using pip:\npip install -U pip\npip install -U espei\nA recommended best practice is to install Python packages into a virtual environment. To create an environment and install ESPEI on Linux and macOS/OSX:\npython -m venv calphad-env\nsource calphad-env/bin/activate\npip install -U pip\npip install -U pycalphad\nOn Windows:\npython -m venv calphad-env\ncalphad-env\\Scripts\\activate\npip install -U pip\npip install -U pycalphad",
+    "text": "Name\nType\nDescription\nDefault\n\n\n\n\ndataset_filenames\n[str]\nList of filenames to load as datasets\nrequired",
     "crumbs": [
-      "Installation"
+      "Reference",
+      "API Reference",
+      "espei.datasets",
+      "datasets.load_datasets"
     ]
   },
   {
-    "objectID": "installation.html#anaconda",
-    "href": "installation.html#anaconda",
-    "title": "Installation",
-    "section": "Anaconda",
-    "text": "Anaconda\nIf you prefer using Anaconda, ESPEI is distributed on conda-forge. If you do not have Anaconda installed, we recommend you download and install Miniconda3. ESPEI can be installed with the conda package manager by:\nconda install -c conda-forge espei",
-    "crumbs": [
-      "Installation"
-    ]
-  },
-  {
-    "objectID": "installation.html#installing-development-versions",
-    "href": "installation.html#installing-development-versions",
-    "title": "Installation",
-    "section": "Development versions",
-    "text": "Development versions\nTo make changes to the ESPEI source code, the development version must be installed. If you'll need to make changes to pycalphad simultaneously, follow the instructions to install the development version of pycalphad first.\nWe strongly recommend that users interested in developing packages work in a virtual environment. The steps below will create an environment called calphad-dev, which can be entered using source calphad-dev/bin/activate on Linux or macOS/OSX or activate calphad-dev\\bin\\activate on Windows. The environment name is arbitrary - you can use whatever name you prefer.\nESPEI uses Git and GitHub for version control. Windows users: if you do not have a working version of Git, download it here first.\nTo install the latest development version of ESPEI using pip:\npython -m venv calphad-env\nsource calphad-env/bin/activate\ngit clone https://github.com/phasesresearchlab/espei.git\ncd espei\npip install -U pip\npip install -U --editable .[dev]\nWith the development version installed and your environment activated, you can run the automated tests by running\npytest\nIf the test suite passes, you are ready to start using the development version or making changes yourself! See the guide for contributing to ESPEI to learn more. If any tests fail, please report the failure to the ESPEI issue tracker on GitHub.\nTo upgrade your development version to the latest version, run git pull from the top level ESPEI directory (the directory containing the setup.py file).",
-    "crumbs": [
-      "Installation"
-    ]
-  },
-  {
-    "objectID": "quickstart.html",
-    "href": "quickstart.html",
-    "title": "Quickstart",
+    "objectID": "reference/api/datasets.load_datasets.html#returns",
+    "href": "reference/api/datasets.load_datasets.html#returns",
+    "title": "datasets.load_datasets",
     "section": "",
-    "text": "ESPEI has two different fitting modes: parameter generation and Bayesian parameter estimation, which uses Markov Chain Monte Carlo (MCMC). You can run either of these modes or both of them sequentially.\nTo run either of the modes, you need to have a phase models file that describes the phases in the system using the standard Calphad approach within the compound energy formalism. You also need to describe the data that ESPEI should fit to. You will need single-phase and multi-phase data for a full run. Fit settings and all datasets are stored as JSON files and described in detail at the YAML input schema page. All of your input datasets should be validated by running espei --check-datasets my-input-datasets, where my-input-datasets is a folder of all your JSON files.\nThe main output result is going to be a database (defaults to out.tdb), an array of the steps in the MCMC trace (defaults to trace.npy), and the an array of the log-probabilities for each iteration and chain (defaults to lnprob.npy).\n\n\nIf you have only non-equilibrium thermochemical data, e.g. heat capacity, entropy and enthalpy data and mixing data from first-principles calculations, you may want to see the starting point for your MCMC calculation.\nCreate an input file called espei-in.yaml.\nsystem:\n  phase_models: my-phases.json\n  datasets: my-input-datasets\ngenerate_parameters:\n  excess_model: linear\n  ref_state: SGTE91\nThen ESPEI can be run by running\nespei --input espei-in.yaml\n\n\n\nIf you have a database already and want to do a Bayesian parameter estimation, you can specify a starting TDB file (named my-tdb.tdb) with\nsystem:\n  phase_models: my-phases.json\n  datasets: my-input-data\nmcmc:\n  iterations: 1000\n  input_db: my-tdb.tdb\nThe TDB file you input must have all of the degrees of freedom you want as FUNCTIONs with names beginning with VV.\n\n\n\nIf you've run an MCMC fitting already in ESPEI and have a trace file called my-previous-trace.npy , then you can resume the calculation with the following input file\nsystem:\n  phase_models: my-phases.json\n  datasets: my-input-data\nmcmc:\n  iterations: 1000\n  input_db: my-tdb.tdb\n  restart_trace: my-previous-trace.npy\n\n\n\nA minimal full run of ESPEI is done by the following\nsystem:\n  phase_models: my-phases.json\n  datasets: my-input-data\ngenerate_parameters:\n  excess_model: linear\n  ref_state: SGTE91\nmcmc:\n  iterations: 1000\n\n\n\nESPEI lets you control many aspects of your calculations with the input files shown above. See the YAML input schema for a full description of all possible inputs.\n\n\n\n\n\nA: Common mistakes are using single quotes instead of the double quotes required by JSON files. Another common source of errors is misaligned open/closing brackets.\nMany mistakes are found with ESPEI's check-datasets utility. Run espei check-datasets my-input-datasets on your directory my-input-datasets.\n\n\n\nA: By default, ESPEI will create trace.npy and lnprob.npy for the MCMC chain at the specified save interval and according to the save interval (defaults to ever iteration). These are created from arrays via numpy.save() and can thus be loaded with numpy.load(). Note that the arrays are preallocated with zeros. These filenames and settings can be changed using in the input file. You can then use these chains and corresponding log-probabilities to make corner plots, calculate autocorrelations, find optimal parameters for databases, etc.. Some examples are shown on the Recipes page. Finally, you can use espei.plot functions such as espei.plot.dataplot in concert with pycalphad to plot phase diagrams with your input equilibria data. The espei.plot.plot_endmember and espei.plot.plot_interaction functions can be used to compare single-phase data (e.g. formation and mixing data) with the properties calculated from your database.\n\n\n\nA: Yes! ESPEI has MPI support. See the page on alternative schedulers for more details.\n\n\n\nMCMC simulation requires determining the probability of the data given a set of parameters, \\(p(D|\\theta)\\). In MCMC, the log probability is often used to avoid floating point errors that arise from multiplying many small floating point numbers. For each type of data the error, often interpreted as the absolute difference between the expected and calculated value, is determined. For the types of data and how the error is calculated, refer to the ESPEI paper (Bocklund et al. 2019).\nThe error is assumed to be normally distributed around the experimental data point that the prediction of a set of parameters is being compared against. The log probability of each data type is calculated by the log probability density function of the error in this normal distribution with a mean of zero and the standard deviation as given by the data type and the adjustable weights (see data_weights in YAML input schema). The total log probability is the sum of all log probabilities.\nNote that any probability density function always returns a positive value between 0 and 1, so the log probability density function should return negative numbers and the log probability reported by ESPEI should be negative.\n\n\n\nA: A version number of '0+unknown' indicates that you do not have git installed. This can occur on Windows where git is not in the PATH (and the Python interpreter cannot see it). You can install git using conda install git on Windows.\n\n\n\nA: Yes, if you have a multicomponent Calphad database, but want to optimize or determine the uncertainty for a constituent unary, binary or ternary subsystem that you have data for, you can do that without any extra effort.\nYou may be interested in the input_mcmc_symbols input parameter to specify which parameter subset to optimize.\nNote that if you optimize parameters in a subsystem (e.g. Cu-Mg) that is used in a higher order description (e.g. Al-Cu-Mg), you may need to reoptimize the parameters for the higher order system as well.",
+    "text": "Type\nDescription\n\n\n\n\nPickleableTinyDB",
     "crumbs": [
-      "Quickstart"
+      "Reference",
+      "API Reference",
+      "espei.datasets",
+      "datasets.load_datasets"
     ]
   },
   {
-    "objectID": "quickstart.html#parameter-generation-only",
-    "href": "quickstart.html#parameter-generation-only",
-    "title": "Quickstart",
+    "objectID": "reference/api/plot.plot_endmember.html",
+    "href": "reference/api/plot.plot_endmember.html",
+    "title": "plot.plot_endmember",
     "section": "",
-    "text": "If you have only non-equilibrium thermochemical data, e.g. heat capacity, entropy and enthalpy data and mixing data from first-principles calculations, you may want to see the starting point for your MCMC calculation.\nCreate an input file called espei-in.yaml.\nsystem:\n  phase_models: my-phases.json\n  datasets: my-input-datasets\ngenerate_parameters:\n  excess_model: linear\n  ref_state: SGTE91\nThen ESPEI can be run by running\nespei --input espei-in.yaml",
+    "text": "plot.plot_endmember(dbf, comps, phase_name, configuration, output, datasets=None, symmetry=None, x='T', ax=None, plot_kwargs=None, dataplot_kwargs=None)\nReturn one set of plotted Axes with data compared to calculated parameters\n\n\n\n\n\n\n\n\n\n\n\nName\nType\nDescription\nDefault\n\n\n\n\ndbf\nDatabase\npycalphad thermodynamic database containing the relevant parameters.\nrequired\n\n\ncomps\nSequence[str]\nNames of components to consider in the calculation.\nrequired\n\n\nphase_name\nstr\nName of the considered phase phase\nrequired\n\n\nconfiguration\nTuple[Tuple[str]]\nESPEI-style configuration\nrequired\n\n\noutput\nstr\nModel property to plot on the y-axis e.g. 'HM_MIX', or 'SM_MIX'. Must be a '_MIX' property.\nrequired\n\n\ndatasets\ntinydb.TinyDB\n\nNone\n\n\nsymmetry\nlist\nList of lists containing indices of symmetric sublattices e.g. [[0, 1], [2, 3]]\nNone\n\n\nax\nplt.Axes\nDefault axes used if not specified.\nNone\n\n\nplot_kwargs\nOptional[Dict[str, Any]]\nKeyword arguments to ax.plot for the predicted data.\nNone\n\n\ndataplot_kwargs\nOptional[Dict[str, Any]]\nKeyword arguments to ax.plot the observed data.\nNone\n\n\n\n\n\n\n\n\n\nType\nDescription\n\n\n\n\nplt.Axes",
     "crumbs": [
-      "Quickstart"
+      "Reference",
+      "API Reference",
+      "espei.plot",
+      "plot.plot_endmember"
     ]
   },
   {
-    "objectID": "quickstart.html#bayesian-parameter-estimation-mcmc-only",
-    "href": "quickstart.html#bayesian-parameter-estimation-mcmc-only",
-    "title": "Quickstart",
+    "objectID": "reference/api/plot.plot_endmember.html#parameters",
+    "href": "reference/api/plot.plot_endmember.html#parameters",
+    "title": "plot.plot_endmember",
     "section": "",
-    "text": "If you have a database already and want to do a Bayesian parameter estimation, you can specify a starting TDB file (named my-tdb.tdb) with\nsystem:\n  phase_models: my-phases.json\n  datasets: my-input-data\nmcmc:\n  iterations: 1000\n  input_db: my-tdb.tdb\nThe TDB file you input must have all of the degrees of freedom you want as FUNCTIONs with names beginning with VV.",
+    "text": "Name\nType\nDescription\nDefault\n\n\n\n\ndbf\nDatabase\npycalphad thermodynamic database containing the relevant parameters.\nrequired\n\n\ncomps\nSequence[str]\nNames of components to consider in the calculation.\nrequired\n\n\nphase_name\nstr\nName of the considered phase phase\nrequired\n\n\nconfiguration\nTuple[Tuple[str]]\nESPEI-style configuration\nrequired\n\n\noutput\nstr\nModel property to plot on the y-axis e.g. 'HM_MIX', or 'SM_MIX'. Must be a '_MIX' property.\nrequired\n\n\ndatasets\ntinydb.TinyDB\n\nNone\n\n\nsymmetry\nlist\nList of lists containing indices of symmetric sublattices e.g. [[0, 1], [2, 3]]\nNone\n\n\nax\nplt.Axes\nDefault axes used if not specified.\nNone\n\n\nplot_kwargs\nOptional[Dict[str, Any]]\nKeyword arguments to ax.plot for the predicted data.\nNone\n\n\ndataplot_kwargs\nOptional[Dict[str, Any]]\nKeyword arguments to ax.plot the observed data.\nNone",
     "crumbs": [
-      "Quickstart"
+      "Reference",
+      "API Reference",
+      "espei.plot",
+      "plot.plot_endmember"
     ]
   },
   {
-    "objectID": "quickstart.html#restart-from-previous-run-phase-only",
-    "href": "quickstart.html#restart-from-previous-run-phase-only",
-    "title": "Quickstart",
+    "objectID": "reference/api/plot.plot_endmember.html#returns",
+    "href": "reference/api/plot.plot_endmember.html#returns",
+    "title": "plot.plot_endmember",
     "section": "",
-    "text": "If you've run an MCMC fitting already in ESPEI and have a trace file called my-previous-trace.npy , then you can resume the calculation with the following input file\nsystem:\n  phase_models: my-phases.json\n  datasets: my-input-data\nmcmc:\n  iterations: 1000\n  input_db: my-tdb.tdb\n  restart_trace: my-previous-trace.npy",
+    "text": "Type\nDescription\n\n\n\n\nplt.Axes",
     "crumbs": [
-      "Quickstart"
+      "Reference",
+      "API Reference",
+      "espei.plot",
+      "plot.plot_endmember"
     ]
   },
   {
-    "objectID": "quickstart.html#full-run",
-    "href": "quickstart.html#full-run",
-    "title": "Quickstart",
+    "objectID": "reference/api/run_espei.html",
+    "href": "reference/api/run_espei.html",
+    "title": "run_espei",
     "section": "",
-    "text": "A minimal full run of ESPEI is done by the following\nsystem:\n  phase_models: my-phases.json\n  datasets: my-input-data\ngenerate_parameters:\n  excess_model: linear\n  ref_state: SGTE91\nmcmc:\n  iterations: 1000",
+    "text": "run_espei(run_settings)\nWrapper around the ESPEI fitting procedure, taking only a settings dictionary.\n\n\n\n\n\nName\nType\nDescription\nDefault\n\n\n\n\nrun_settings\ndict\nDictionary of input settings\nrequired\n\n\n\n\n\n\n\n\n\n\n\n\n\nType\nDescription\n\n\n\n\nEither a Database (for generate parameters only) or a tuple of (Database, sampler)",
     "crumbs": [
-      "Quickstart"
+      "Reference",
+      "API Reference",
+      "espei",
+      "run_espei"
     ]
   },
   {
-    "objectID": "quickstart.html#input-customization",
-    "href": "quickstart.html#input-customization",
-    "title": "Quickstart",
+    "objectID": "reference/api/run_espei.html#parameters",
+    "href": "reference/api/run_espei.html#parameters",
+    "title": "run_espei",
     "section": "",
-    "text": "ESPEI lets you control many aspects of your calculations with the input files shown above. See the YAML input schema for a full description of all possible inputs.",
+    "text": "Name\nType\nDescription\nDefault\n\n\n\n\nrun_settings\ndict\nDictionary of input settings\nrequired",
     "crumbs": [
-      "Quickstart"
+      "Reference",
+      "API Reference",
+      "espei",
+      "run_espei"
     ]
   },
   {
-    "objectID": "quickstart.html#faq",
-    "href": "quickstart.html#faq",
-    "title": "Quickstart",
+    "objectID": "reference/api/run_espei.html#returns",
+    "href": "reference/api/run_espei.html#returns",
+    "title": "run_espei",
     "section": "",
-    "text": "A: Common mistakes are using single quotes instead of the double quotes required by JSON files. Another common source of errors is misaligned open/closing brackets.\nMany mistakes are found with ESPEI's check-datasets utility. Run espei check-datasets my-input-datasets on your directory my-input-datasets.\n\n\n\nA: By default, ESPEI will create trace.npy and lnprob.npy for the MCMC chain at the specified save interval and according to the save interval (defaults to ever iteration). These are created from arrays via numpy.save() and can thus be loaded with numpy.load(). Note that the arrays are preallocated with zeros. These filenames and settings can be changed using in the input file. You can then use these chains and corresponding log-probabilities to make corner plots, calculate autocorrelations, find optimal parameters for databases, etc.. Some examples are shown on the Recipes page. Finally, you can use espei.plot functions such as espei.plot.dataplot in concert with pycalphad to plot phase diagrams with your input equilibria data. The espei.plot.plot_endmember and espei.plot.plot_interaction functions can be used to compare single-phase data (e.g. formation and mixing data) with the properties calculated from your database.\n\n\n\nA: Yes! ESPEI has MPI support. See the page on alternative schedulers for more details.\n\n\n\nMCMC simulation requires determining the probability of the data given a set of parameters, \\(p(D|\\theta)\\). In MCMC, the log probability is often used to avoid floating point errors that arise from multiplying many small floating point numbers. For each type of data the error, often interpreted as the absolute difference between the expected and calculated value, is determined. For the types of data and how the error is calculated, refer to the ESPEI paper (Bocklund et al. 2019).\nThe error is assumed to be normally distributed around the experimental data point that the prediction of a set of parameters is being compared against. The log probability of each data type is calculated by the log probability density function of the error in this normal distribution with a mean of zero and the standard deviation as given by the data type and the adjustable weights (see data_weights in YAML input schema). The total log probability is the sum of all log probabilities.\nNote that any probability density function always returns a positive value between 0 and 1, so the log probability density function should return negative numbers and the log probability reported by ESPEI should be negative.\n\n\n\nA: A version number of '0+unknown' indicates that you do not have git installed. This can occur on Windows where git is not in the PATH (and the Python interpreter cannot see it). You can install git using conda install git on Windows.\n\n\n\nA: Yes, if you have a multicomponent Calphad database, but want to optimize or determine the uncertainty for a constituent unary, binary or ternary subsystem that you have data for, you can do that without any extra effort.\nYou may be interested in the input_mcmc_symbols input parameter to specify which parameter subset to optimize.\nNote that if you optimize parameters in a subsystem (e.g. Cu-Mg) that is used in a higher order description (e.g. Al-Cu-Mg), you may need to reoptimize the parameters for the higher order system as well.",
+    "text": "Type\nDescription\n\n\n\n\nEither a Database (for generate parameters only) or a tuple of (Database, sampler)",
     "crumbs": [
-      "Quickstart"
+      "Reference",
+      "API Reference",
+      "espei",
+      "run_espei"
+    ]
+  },
+  {
+    "objectID": "reference/api/error_functions.zpf_error.ZPFResidual.html",
+    "href": "reference/api/error_functions.zpf_error.ZPFResidual.html",
+    "title": "error_functions.zpf_error.ZPFResidual",
+    "section": "",
+    "text": "error_functions.zpf_error.ZPFResidual\nerror_functions.zpf_error.ZPFResidual(self, database, datasets, phase_models, symbols_to_fit=None, weight=None)\n\n\n\n\n Back to top",
+    "crumbs": [
+      "Reference",
+      "API Reference",
+      "espei.error_functions",
+      "error_functions.zpf_error.ZPFResidual"
+    ]
+  },
+  {
+    "objectID": "reference/api/error_functions.equilibrium_thermochemical_error.EquilibriumPropertyResidual.html",
+    "href": "reference/api/error_functions.equilibrium_thermochemical_error.EquilibriumPropertyResidual.html",
+    "title": "error_functions.equilibrium_thermochemical_error.EquilibriumPropertyResidual",
+    "section": "",
+    "text": "error_functions.equilibrium_thermochemical_error.EquilibriumPropertyResidual\nerror_functions.equilibrium_thermochemical_error.EquilibriumPropertyResidual(self, database, datasets, phase_models, symbols_to_fit=None, weight=None)\n\n\n\n\n Back to top",
+    "crumbs": [
+      "Reference",
+      "API Reference",
+      "espei.error_functions",
+      "error_functions.equilibrium_thermochemical_error.EquilibriumPropertyResidual"
+    ]
+  },
+  {
+    "objectID": "reference/api/error_functions.non_equilibrium_thermochemical_error.FixedConfigurationPropertyResidual.html",
+    "href": "reference/api/error_functions.non_equilibrium_thermochemical_error.FixedConfigurationPropertyResidual.html",
+    "title": "error_functions.non_equilibrium_thermochemical_error.FixedConfigurationPropertyResidual",
+    "section": "",
+    "text": "error_functions.non_equilibrium_thermochemical_error.FixedConfigurationPropertyResidual\nerror_functions.non_equilibrium_thermochemical_error.FixedConfigurationPropertyResidual(self, database, datasets, phase_models, symbols_to_fit=None, weight=None)\n\n\n\n\n Back to top",
+    "crumbs": [
+      "Reference",
+      "API Reference",
+      "espei.error_functions",
+      "error_functions.non_equilibrium_thermochemical_error.FixedConfigurationPropertyResidual"
+    ]
+  },
+  {
+    "objectID": "reference/api/analysis.truncate_arrays.html",
+    "href": "reference/api/analysis.truncate_arrays.html",
+    "title": "analysis.truncate_arrays",
+    "section": "",
+    "text": "analysis.truncate_arrays(trace_array, prob_array=None)\nReturn slides of ESPEI output arrays with any empty remaining iterations (zeros) removed.\n\n\n\n\n\n\n\n\n\n\n\nName\nType\nDescription\nDefault\n\n\n\n\ntrace_array\nnp.ndarray\nArray of the trace from an ESPEI run. Should have shape (chains, iterations, parameters)\nrequired\n\n\nprob_array\nnp.ndarray\nArray of the lnprob output from an ESPEI run. Should have shape (chains, iterations)\nNone\n\n\n\n\n\n\n\n\n\n\n\n\n\nType\nDescription\n\n\n\n\nnp.ndarry or (np.ndarray, np.ndarray)\nA slide of the zeros-removed trace array is returned if only the trace is passed. Otherwise a tuple of both the trace and lnprob are returned.\n\n\n\n\n\n\n&gt;&gt;&gt; from espei.analysis import truncate_arrays\n&gt;&gt;&gt; trace = np.array([[[1, 0], [2, 0], [3, 0], [0, 0]], [[0, 2], [0, 4], [0, 6], [0, 0]]])  # 3 iterations of 4 allocated\n&gt;&gt;&gt; truncate_arrays(trace).shape\n(2, 3, 2)",
+    "crumbs": [
+      "Reference",
+      "API Reference",
+      "espei.analsys",
+      "analysis.truncate_arrays"
+    ]
+  },
+  {
+    "objectID": "reference/api/analysis.truncate_arrays.html#parameters",
+    "href": "reference/api/analysis.truncate_arrays.html#parameters",
+    "title": "analysis.truncate_arrays",
+    "section": "",
+    "text": "Name\nType\nDescription\nDefault\n\n\n\n\ntrace_array\nnp.ndarray\nArray of the trace from an ESPEI run. Should have shape (chains, iterations, parameters)\nrequired\n\n\nprob_array\nnp.ndarray\nArray of the lnprob output from an ESPEI run. Should have shape (chains, iterations)\nNone",
+    "crumbs": [
+      "Reference",
+      "API Reference",
+      "espei.analsys",
+      "analysis.truncate_arrays"
+    ]
+  },
+  {
+    "objectID": "reference/api/analysis.truncate_arrays.html#returns",
+    "href": "reference/api/analysis.truncate_arrays.html#returns",
+    "title": "analysis.truncate_arrays",
+    "section": "",
+    "text": "Type\nDescription\n\n\n\n\nnp.ndarry or (np.ndarray, np.ndarray)\nA slide of the zeros-removed trace array is returned if only the trace is passed. Otherwise a tuple of both the trace and lnprob are returned.",
+    "crumbs": [
+      "Reference",
+      "API Reference",
+      "espei.analsys",
+      "analysis.truncate_arrays"
+    ]
+  },
+  {
+    "objectID": "reference/api/analysis.truncate_arrays.html#examples",
+    "href": "reference/api/analysis.truncate_arrays.html#examples",
+    "title": "analysis.truncate_arrays",
+    "section": "",
+    "text": "&gt;&gt;&gt; from espei.analysis import truncate_arrays\n&gt;&gt;&gt; trace = np.array([[[1, 0], [2, 0], [3, 0], [0, 0]], [[0, 2], [0, 4], [0, 6], [0, 0]]])  # 3 iterations of 4 allocated\n&gt;&gt;&gt; truncate_arrays(trace).shape\n(2, 3, 2)",
+    "crumbs": [
+      "Reference",
+      "API Reference",
+      "espei.analsys",
+      "analysis.truncate_arrays"
+    ]
+  },
+  {
+    "objectID": "reference/api/plot.dataplot.html",
+    "href": "reference/api/plot.dataplot.html",
+    "title": "plot.dataplot",
+    "section": "",
+    "text": "plot.dataplot(comps, phases, conds, datasets, tielines=True, ax=None, plot_kwargs=None, tieline_plot_kwargs=None)\nPlot datapoints corresponding to the components, phases, and conditions.\n\n\n\n\n\n\n\n\n\n\n\nName\nType\nDescription\nDefault\n\n\n\n\ncomps\nlist\nNames of components to consider in the calculation.\nrequired\n\n\nphases\n[]\nNames of phases to consider in the calculation.\nrequired\n\n\nconds\ndict\nMaps StateVariables to values and/or iterables of values.\nrequired\n\n\ndatasets\nPickleableTinyDB\n\nrequired\n\n\ntielines\nbool\nIf True (default), plot the tie-lines from the data\nTrue\n\n\nax\nmatplotlib.Axes\nDefault axes used if not specified.\nNone\n\n\nplot_kwargs\ndict\nAdditional keyword arguments to pass to the matplotlib plot function for points\nNone\n\n\ntieline_plot_kwargs\ndict\nAdditional keyword arguments to pass to the matplotlib plot function for tielines\nNone\n\n\n\n\n\n\n\n\n\nType\nDescription\n\n\n\n\nmatplotlib.Axes\nA plot of phase equilibria points as a figure\n\n\n\n\n\n\n&gt;&gt;&gt; from espei.datasets import load_datasets, recursive_glob\n&gt;&gt;&gt; from espei.plot import dataplot\n&gt;&gt;&gt; datasets = load_datasets(recursive_glob('.', '*.json'))\n&gt;&gt;&gt; my_phases = ['BCC_A2', 'CUMG2', 'FCC_A1', 'LAVES_C15', 'LIQUID']\n&gt;&gt;&gt; my_components = ['CU', 'MG' 'VA']\n&gt;&gt;&gt; conditions = {v.P: 101325, v.T: (500, 1000, 10), v.X('MG'): (0, 1, 0.01)}\n&gt;&gt;&gt; dataplot(my_components, my_phases, conditions, datasets)",
+    "crumbs": [
+      "Reference",
+      "API Reference",
+      "espei.plot",
+      "plot.dataplot"
+    ]
+  },
+  {
+    "objectID": "reference/api/plot.dataplot.html#parameters",
+    "href": "reference/api/plot.dataplot.html#parameters",
+    "title": "plot.dataplot",
+    "section": "",
+    "text": "Name\nType\nDescription\nDefault\n\n\n\n\ncomps\nlist\nNames of components to consider in the calculation.\nrequired\n\n\nphases\n[]\nNames of phases to consider in the calculation.\nrequired\n\n\nconds\ndict\nMaps StateVariables to values and/or iterables of values.\nrequired\n\n\ndatasets\nPickleableTinyDB\n\nrequired\n\n\ntielines\nbool\nIf True (default), plot the tie-lines from the data\nTrue\n\n\nax\nmatplotlib.Axes\nDefault axes used if not specified.\nNone\n\n\nplot_kwargs\ndict\nAdditional keyword arguments to pass to the matplotlib plot function for points\nNone\n\n\ntieline_plot_kwargs\ndict\nAdditional keyword arguments to pass to the matplotlib plot function for tielines\nNone",
+    "crumbs": [
+      "Reference",
+      "API Reference",
+      "espei.plot",
+      "plot.dataplot"
+    ]
+  },
+  {
+    "objectID": "reference/api/plot.dataplot.html#returns",
+    "href": "reference/api/plot.dataplot.html#returns",
+    "title": "plot.dataplot",
+    "section": "",
+    "text": "Type\nDescription\n\n\n\n\nmatplotlib.Axes\nA plot of phase equilibria points as a figure",
+    "crumbs": [
+      "Reference",
+      "API Reference",
+      "espei.plot",
+      "plot.dataplot"
+    ]
+  },
+  {
+    "objectID": "reference/api/plot.dataplot.html#examples",
+    "href": "reference/api/plot.dataplot.html#examples",
+    "title": "plot.dataplot",
+    "section": "",
+    "text": "&gt;&gt;&gt; from espei.datasets import load_datasets, recursive_glob\n&gt;&gt;&gt; from espei.plot import dataplot\n&gt;&gt;&gt; datasets = load_datasets(recursive_glob('.', '*.json'))\n&gt;&gt;&gt; my_phases = ['BCC_A2', 'CUMG2', 'FCC_A1', 'LAVES_C15', 'LIQUID']\n&gt;&gt;&gt; my_components = ['CU', 'MG' 'VA']\n&gt;&gt;&gt; conditions = {v.P: 101325, v.T: (500, 1000, 10), v.X('MG'): (0, 1, 0.01)}\n&gt;&gt;&gt; dataplot(my_components, my_phases, conditions, datasets)",
+    "crumbs": [
+      "Reference",
+      "API Reference",
+      "espei.plot",
+      "plot.dataplot"
+    ]
+  },
+  {
+    "objectID": "reference/api/parameter_selection.fitting_descriptions.ModelFittingDescription.html",
+    "href": "reference/api/parameter_selection.fitting_descriptions.ModelFittingDescription.html",
+    "title": "parameter_selection.fitting_descriptions.ModelFittingDescription",
+    "section": "",
+    "text": "parameter_selection.fitting_descriptions.ModelFittingDescription(self, fitting_steps, model=Model)\n\n\n\n\n\nName\nType\nDescription\n\n\n\n\nfitting_steps\n[FittingStep]\n\n\n\nmodel\nType[Model]",
+    "crumbs": [
+      "Reference",
+      "API Reference",
+      "espei.parameter_selection.fitting_descriptions",
+      "parameter_selection.fitting_descriptions.ModelFittingDescription"
+    ]
+  },
+  {
+    "objectID": "reference/api/parameter_selection.fitting_descriptions.ModelFittingDescription.html#attributes",
+    "href": "reference/api/parameter_selection.fitting_descriptions.ModelFittingDescription.html#attributes",
+    "title": "parameter_selection.fitting_descriptions.ModelFittingDescription",
+    "section": "",
+    "text": "Name\nType\nDescription\n\n\n\n\nfitting_steps\n[FittingStep]\n\n\n\nmodel\nType[Model]",
+    "crumbs": [
+      "Reference",
+      "API Reference",
+      "espei.parameter_selection.fitting_descriptions",
+      "parameter_selection.fitting_descriptions.ModelFittingDescription"
     ]
   },
   {
