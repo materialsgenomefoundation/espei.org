@@ -25,6 +25,9 @@ jobs:
       - run: pip install jupyter
       - run: pip install -r requirements.txt
 
+      - name: quartodoc build (API docs)
+        run: quartodoc build
+
       - name: Render and Publish
         uses: quarto-dev/quarto-actions/publish@v2
         with:
