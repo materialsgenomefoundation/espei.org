@@ -1,0 +1,1461 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.5.56">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>Make ESPEI Datasets – ESPEI</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+/* CSS for citations */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+  margin-bottom: 0em;
+}
+.hanging-indent div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}</style>
+
+
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<link href="../how-to/specifying_priors.html" rel="next">
+<link href="../tutorials/custom_model_parameter_selection.html" rel="prev">
+<link href="../_static/ESPEI-logo.png" rel="icon" type="image/png">
+<script src="../site_libs/quarto-html/quarto.js"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-dark.min.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+
+<link rel="stylesheet" href="../styles.css">
+</head>
+
+<body class="nav-sidebar floating">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../how-to/dataset_schema.html">How-To</a></li><li class="breadcrumb-item"><a href="../how-to/dataset_schema.html">Make ESPEI Datasets</a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header sidebar-header-stacked">
+      <a href="../index.html" class="sidebar-logo-link">
+      <img src="../_static/ESPEI-logo-withtext.png" alt="" class="sidebar-logo py-0 d-lg-inline d-none">
+      </a>
+    <div class="sidebar-title mb-0 py-0">
+      <a href="../">ESPEI v0.9.0</a> 
+        <div class="sidebar-tools-main">
+  <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
+</div>
+    </div>
+      </div>
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Home</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../installation.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Installation</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../quickstart.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Quickstart</span></a>
+  </div>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true">
+ <span class="menu-text">Tutorials</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../tutorials/cu_mg_example.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Cu-Mg Example</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../tutorials/custom_model_parameter_selection.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Generating Custom Model Parameters</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true">
+ <span class="menu-text">How-To</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../how-to/dataset_schema.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text">Make ESPEI Datasets</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../how-to/specifying_priors.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">MCMC Priors</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../how-to/custom_unary_data.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Custom unary reference states</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../how-to/schedulers.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Alternative Schedulers</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true">
+ <span class="menu-text">Reference</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../reference/writing_input.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">YAML input schema</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../reference/recipes.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Recipes</span></a>
+  </div>
+</li>
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="../reference/api/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">API Reference</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth2 ">  
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="false">
+ <span class="menu-text">espei</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth3 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../reference/api/generate_parameters.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">generate_parameters</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../reference/api/run_espei.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">run_espei</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../reference/api/get_run_settings.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">get_run_settings</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" role="navigation" aria-expanded="false">
+ <span class="menu-text">espei.datasets</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" role="navigation" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-6" class="collapse list-unstyled sidebar-section depth3 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../reference/api/datasets.load_datasets.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">datasets.load_datasets</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../reference/api/datasets.recursive_glob.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">datasets.recursive_glob</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-7" role="navigation" aria-expanded="false">
+ <span class="menu-text">espei.analsys</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-7" role="navigation" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-7" class="collapse list-unstyled sidebar-section depth3 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../reference/api/analysis.truncate_arrays.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">analysis.truncate_arrays</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-8" role="navigation" aria-expanded="false">
+ <span class="menu-text">espei.error_functions</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-8" role="navigation" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-8" class="collapse list-unstyled sidebar-section depth3 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../reference/api/error_functions.residual_base.residual_function_registry.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">error_functions.residual_base.residual_function_registry</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../reference/api/error_functions.residual_base.ResidualFunction.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">error_functions.residual_base.ResidualFunction</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../reference/api/error_functions.activity_error.ActivityResidual.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">error_functions.activity_error.ActivityResidual</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../reference/api/error_functions.zpf_error.ZPFResidual.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">error_functions.zpf_error.ZPFResidual</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../reference/api/error_functions.equilibrium_thermochemical_error.EquilibriumPropertyResidual.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">error_functions.equilibrium_thermochemical_error.EquilibriumPropertyResidual</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../reference/api/error_functions.non_equilibrium_thermochemical_error.FixedConfigurationPropertyResidual.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">error_functions.non_equilibrium_thermochemical_error.FixedConfigurationPropertyResidual</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-9" role="navigation" aria-expanded="false">
+ <span class="menu-text">espei.parameter_selection.fitting_descriptions</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-9" role="navigation" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-9" class="collapse list-unstyled sidebar-section depth3 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../reference/api/parameter_selection.fitting_descriptions.ModelFittingDescription.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">parameter_selection.fitting_descriptions.ModelFittingDescription</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-10" role="navigation" aria-expanded="false">
+ <span class="menu-text">espei.parameter_selection.fitting_steps</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-10" role="navigation" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-10" class="collapse list-unstyled sidebar-section depth3 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../reference/api/parameter_selection.fitting_steps.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">parameter_selection.fitting_steps</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-11" role="navigation" aria-expanded="false">
+ <span class="menu-text">espei.utils</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-11" role="navigation" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-11" class="collapse list-unstyled sidebar-section depth3 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../reference/api/utils.database_symbols_to_fit.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">utils.database_symbols_to_fit</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../reference/api/utils.optimal_parameters.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">utils.optimal_parameters</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-12" role="navigation" aria-expanded="false">
+ <span class="menu-text">espei.plot</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-12" role="navigation" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-12" class="collapse list-unstyled sidebar-section depth3 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../reference/api/plot.dataplot.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">plot.dataplot</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../reference/api/plot.plot_interaction.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">plot.plot_interaction</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../reference/api/plot.plot_endmember.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">plot.plot_endmember</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+      </ul>
+  </li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-13" role="navigation" aria-expanded="true">
+ <span class="menu-text">Developer</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-13" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-13" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../developer/contributing.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Contributing Guide</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../developer/design.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Design Guidelines</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#json-format" id="toc-json-format" class="nav-link active" data-scroll-target="#json-format">JSON Format</a></li>
+  <li><a href="#input_phase_descriptions" id="toc-input_phase_descriptions" class="nav-link" data-scroll-target="#input_phase_descriptions">Phase Descriptions</a></li>
+  <li><a href="#units" id="toc-units" class="nav-link" data-scroll-target="#units">Units</a></li>
+  <li><a href="#non_equilibrium_thermochemical_data" id="toc-non_equilibrium_thermochemical_data" class="nav-link" data-scroll-target="#non_equilibrium_thermochemical_data">Non-equilibrium Thermochemical Data</a></li>
+  <li><a href="#equilibrium-thermochemical-data" id="toc-equilibrium-thermochemical-data" class="nav-link" data-scroll-target="#equilibrium-thermochemical-data">Equilibrium Thermochemical Data</a></li>
+  <li><a href="#phase_boundary_data" id="toc-phase_boundary_data" class="nav-link" data-scroll-target="#phase_boundary_data">Phase Diagram Data</a>
+  <ul class="collapse">
+  <li><a href="#example" id="toc-example" class="nav-link" data-scroll-target="#example">Example</a></li>
+  </ul></li>
+  <li><a href="#tags-datasets-tags" id="toc-tags-datasets-tags" class="nav-link" data-scroll-target="#tags-datasets-tags">Tags {#Datasets Tags}</a></li>
+  <li><a href="#common-mistakes-and-notes" id="toc-common-mistakes-and-notes" class="nav-link" data-scroll-target="#common-mistakes-and-notes">Common Mistakes and Notes</a></li>
+  </ul>
+<div class="toc-actions"><ul><li><a href="https://github.com/materialsgenomefoundation/espei.org/edit/main/how-to/dataset_schema.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/materialsgenomefoundation/espei.org/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../how-to/dataset_schema.html">How-To</a></li><li class="breadcrumb-item"><a href="../how-to/dataset_schema.html">Make ESPEI Datasets</a></li></ol></nav>
+<div class="quarto-title">
+<h1 class="title">Make ESPEI Datasets</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<section id="json-format" class="level2">
+<h2 class="anchored" data-anchor-id="json-format">JSON Format</h2>
+<p>ESPEI has a single input style in JSON format that is used for all data entry. For those unfamiliar with JSON, it is fairly similar to Python dictionaries with some rigid requirements</p>
+<blockquote class="blockquote">
+<ul>
+<li>All string quotes must be double quotes. Use <code>"key"</code> instead of <code>'key'</code>.</li>
+<li>Numbers should not have leading zeros. <code>00.123</code> should be <code>0.123</code> and <code>012.34</code> must be <code>12.34</code>.</li>
+<li>Lists and nested key-value pairs cannot have trailing commas. <code>{"nums": [1,2,3,],}</code> is invalid and should be <code>{"nums": [1,2,3]}</code>.</li>
+</ul>
+</blockquote>
+<p>These errors can be challenging to track down, particularly if you are only reading the JSON error messages in Python. A visual editor is encouraged for debugging JSON files such as <a href="https://jsonlint.com">JSONLint</a>. A quick reference to the format can be found at <a href="https://learnxinyminutes.com/docs/json/">Learn JSON in Y minutes</a>.</p>
+<p>ESPEI has support for checking all of your input datasets for errors, which you should always use before you attempt to run ESPEI. This error checking will report all of the errors at once and all errors should be fixed. Errors in the datasets will prevent fitting. To check the datasets at path <code>my-input-data/</code> you can run <code>espei --check-datasets my-input-data</code>.</p>
+</section>
+<section id="input_phase_descriptions" class="level2">
+<h2 class="anchored" data-anchor-id="input_phase_descriptions">Phase Descriptions</h2>
+<p>The JSON file for describing Calphad phases is conceptually similar to a setup file in Thermo-Calc's PARROT module. At the top of the file there is the <code>refdata</code> key that describes which reference state you would like to choose. Currently the reference states are strings referring to dictionaries in <code>pycalphad.refdata</code> only <code>"SGTE91"</code> is implemented.</p>
+<p>Each phase is described with the phase name as they key in the dictionary of phases. The details of that phase is a dictionary of values for that key. There are 4 possible entries to describe a phase: <code>sublattice_model</code>, <code>sublattice_site_ratios</code>, <code>equivalent_sublattices</code>, and <code>aliases</code>. <code>sublattice_model</code> is a list of lists, where each internal list contains all of the components in that sublattice. The <code>BCC_B2</code> sublattice model is <code>[["AL", "NI", "VA"], ["AL", "NI", "VA"], ["VA"]]</code>, thus there are three sublattices where the first two have Al, Ni, and vacancies. <code>sublattice_site_ratios</code> should be of the same length as the sublattice model (e.g.&nbsp;3 for <code>BCC_B2</code>). The sublattice site ratios can be fractional or integers and do not have to sum to unity.</p>
+<p>The optional <code>equivalent_sublattices</code> key is a list of lists that describe which sublattices are symmetrically equivalent. Each sub-list in <code>equivalent_sublattices</code> describes the indices (zero-indexed) of sublattices that are equivalent. For <code>BCC_B2</code> the equivalent sublattices are <code>[[0, 1]]</code>, meaning that the sublattice at index 0 and index 1 are equivalent. There can be multiple different sets (multiple sub-lists) of equivalent sublattices and there can be many equivalent sublattices within a sublattice (see <code>FCC_L12</code>). If no <code>equivalent_sublattice</code> key exists, it is assumed that there are none.a</p>
+<p>Finally, the <code>aliases</code> key is used to refer to other phases that this sublattice model can describe when symmetry is accounted for. Aliases are used here to describe the <code>BCC_A2</code> and <code>FCC_A1</code>, which are the disordered phases of <code>BCC_B2</code> and <code>FCC_L12</code>, respectively. Notice that the aliased phases are not otherwise described in the input file. Multiple phases can exist with aliases to the same phase, e.g.&nbsp;<code>FCC_L12</code> and <code>FCC_L10</code> can both have <code>FCC_A1</code> as an alias.</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode json code-with-copy"><code class="sourceCode json"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">{</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>  <span class="dt">"refdata"</span><span class="fu">:</span> <span class="st">"SGTE91"</span><span class="fu">,</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>  <span class="dt">"components"</span><span class="fu">:</span> <span class="ot">[</span><span class="st">"AL"</span><span class="ot">,</span> <span class="st">"NI"</span><span class="ot">,</span> <span class="st">"VA"</span><span class="ot">]</span><span class="fu">,</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>  <span class="dt">"phases"</span><span class="fu">:</span> <span class="fu">{</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>      <span class="dt">"LIQUID"</span> <span class="fu">:</span> <span class="fu">{</span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>      <span class="dt">"sublattice_model"</span><span class="fu">:</span> <span class="ot">[[</span><span class="st">"AL"</span><span class="ot">,</span> <span class="st">"NI"</span><span class="ot">]]</span><span class="fu">,</span></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>      <span class="dt">"sublattice_site_ratios"</span><span class="fu">:</span> <span class="ot">[</span><span class="dv">1</span><span class="ot">]</span></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>      <span class="fu">},</span></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>      <span class="dt">"BCC_B2"</span><span class="fu">:</span> <span class="fu">{</span></span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>      <span class="dt">"aliases"</span><span class="fu">:</span> <span class="ot">[</span><span class="st">"BCC_A2"</span><span class="ot">]</span><span class="fu">,</span></span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>      <span class="dt">"sublattice_model"</span><span class="fu">:</span> <span class="ot">[[</span><span class="st">"AL"</span><span class="ot">,</span> <span class="st">"NI"</span><span class="ot">,</span> <span class="st">"VA"</span><span class="ot">],</span> <span class="ot">[</span><span class="st">"AL"</span><span class="ot">,</span> <span class="st">"NI"</span><span class="ot">,</span> <span class="st">"VA"</span><span class="ot">],</span> <span class="ot">[</span><span class="st">"VA"</span><span class="ot">]]</span><span class="fu">,</span></span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>      <span class="dt">"sublattice_site_ratios"</span><span class="fu">:</span> <span class="ot">[</span><span class="dv">0</span><span class="er">.</span><span class="dv">5</span><span class="ot">,</span> <span class="dv">0</span><span class="er">.</span><span class="dv">5</span><span class="ot">,</span> <span class="dv">1</span><span class="ot">]</span><span class="fu">,</span></span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>      <span class="dt">"equivalent_sublattices"</span><span class="fu">:</span> <span class="ot">[[</span><span class="dv">0</span><span class="ot">,</span> <span class="dv">1</span><span class="ot">]]</span></span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>      <span class="fu">},</span></span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>      <span class="dt">"FCC_L12"</span><span class="fu">:</span> <span class="fu">{</span></span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>      <span class="dt">"aliases"</span><span class="fu">:</span> <span class="ot">[</span><span class="st">"FCC_A1"</span><span class="ot">]</span><span class="fu">,</span></span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a>      <span class="dt">"sublattice_model"</span><span class="fu">:</span> <span class="ot">[[</span><span class="st">"AL"</span><span class="ot">,</span> <span class="st">"NI"</span><span class="ot">],</span> <span class="ot">[</span><span class="st">"AL"</span><span class="ot">,</span> <span class="st">"NI"</span><span class="ot">],</span> <span class="ot">[</span><span class="st">"AL"</span><span class="ot">,</span> <span class="st">"NI"</span><span class="ot">],</span> <span class="ot">[</span><span class="st">"AL"</span><span class="ot">,</span> <span class="st">"NI"</span><span class="ot">],</span> <span class="ot">[</span><span class="st">"VA"</span><span class="ot">]]</span><span class="fu">,</span></span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a>      <span class="dt">"sublattice_site_ratios"</span><span class="fu">:</span> <span class="ot">[</span><span class="dv">0</span><span class="er">.</span><span class="dv">25</span><span class="ot">,</span> <span class="dv">0</span><span class="er">.</span><span class="dv">25</span><span class="ot">,</span> <span class="dv">0</span><span class="er">.</span><span class="dv">25</span><span class="ot">,</span> <span class="dv">0</span><span class="er">.</span><span class="dv">25</span><span class="ot">,</span> <span class="dv">1</span><span class="ot">]</span><span class="fu">,</span></span>
+<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a>      <span class="dt">"equivalent_sublattices"</span><span class="fu">:</span> <span class="ot">[[</span><span class="dv">0</span><span class="ot">,</span> <span class="dv">1</span><span class="ot">,</span> <span class="dv">2</span><span class="ot">,</span> <span class="dv">3</span><span class="ot">]]</span></span>
+<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a>      <span class="fu">},</span></span>
+<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a>      <span class="dt">"AL3NI1"</span><span class="fu">:</span> <span class="fu">{</span></span>
+<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a>      <span class="dt">"sublattice_site_ratios"</span><span class="fu">:</span> <span class="ot">[</span><span class="dv">0</span><span class="er">.</span><span class="dv">75</span><span class="ot">,</span> <span class="dv">0</span><span class="er">.</span><span class="dv">25</span><span class="ot">]</span><span class="fu">,</span></span>
+<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a>      <span class="dt">"sublattice_model"</span><span class="fu">:</span> <span class="ot">[[</span><span class="st">"AL"</span><span class="ot">],</span> <span class="ot">[</span><span class="st">"NI"</span><span class="ot">]]</span></span>
+<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a>      <span class="fu">},</span></span>
+<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a>      <span class="dt">"AL3NI2"</span><span class="fu">:</span> <span class="fu">{</span></span>
+<span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a>      <span class="dt">"sublattice_site_ratios"</span><span class="fu">:</span> <span class="ot">[</span><span class="dv">3</span><span class="ot">,</span> <span class="dv">2</span><span class="ot">,</span> <span class="dv">1</span><span class="ot">]</span><span class="fu">,</span></span>
+<span id="cb1-27"><a href="#cb1-27" aria-hidden="true" tabindex="-1"></a>      <span class="dt">"sublattice_model"</span><span class="fu">:</span> <span class="ot">[[</span><span class="st">"AL"</span><span class="ot">],</span> <span class="ot">[</span><span class="st">"AL"</span><span class="ot">,</span> <span class="st">"NI"</span><span class="ot">],</span> <span class="ot">[</span><span class="st">"NI"</span><span class="ot">,</span> <span class="st">"VA"</span><span class="ot">]]</span></span>
+<span id="cb1-28"><a href="#cb1-28" aria-hidden="true" tabindex="-1"></a>      <span class="fu">},</span></span>
+<span id="cb1-29"><a href="#cb1-29" aria-hidden="true" tabindex="-1"></a>      <span class="dt">"AL3NI5"</span><span class="fu">:</span> <span class="fu">{</span></span>
+<span id="cb1-30"><a href="#cb1-30" aria-hidden="true" tabindex="-1"></a>      <span class="dt">"sublattice_site_ratios"</span><span class="fu">:</span> <span class="ot">[</span><span class="dv">0</span><span class="er">.</span><span class="dv">375</span><span class="ot">,</span> <span class="dv">0</span><span class="er">.</span><span class="dv">625</span><span class="ot">]</span><span class="fu">,</span></span>
+<span id="cb1-31"><a href="#cb1-31" aria-hidden="true" tabindex="-1"></a>      <span class="dt">"sublattice_model"</span><span class="fu">:</span> <span class="ot">[[</span><span class="st">"AL"</span><span class="ot">],</span> <span class="ot">[</span><span class="st">"NI"</span><span class="ot">]]</span></span>
+<span id="cb1-32"><a href="#cb1-32" aria-hidden="true" tabindex="-1"></a>      <span class="fu">}</span></span>
+<span id="cb1-33"><a href="#cb1-33" aria-hidden="true" tabindex="-1"></a>    <span class="fu">}</span></span>
+<span id="cb1-34"><a href="#cb1-34" aria-hidden="true" tabindex="-1"></a><span class="fu">}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="units" class="level2">
+<h2 class="anchored" data-anchor-id="units">Units</h2>
+<ul>
+<li>Energies are in <code>J/mol-atom</code> (and the derivatives follow)</li>
+<li>All compositions are mole fractions</li>
+<li>Temperatures are in Kelvin</li>
+<li>Pressures in Pascal</li>
+</ul>
+</section>
+<section id="non_equilibrium_thermochemical_data" class="level2">
+<h2 class="anchored" data-anchor-id="non_equilibrium_thermochemical_data">Non-equilibrium Thermochemical Data</h2>
+<p>Non-equilibrium thermochemical data is used where the internal degrees of freedom for a phase are known. This type of data is the only data that can be used for parameter generation, but it can also be used in Bayesian parameter estimation.</p>
+<p>Two examples follow. The first dataset has some data for the formation heat capacity for BCC_B2.</p>
+<ul>
+<li><p>The <code>components</code> and <code>phases</code> keys simply describe those found in this entry.</p></li>
+<li><p>Use the <code>reference</code> key for bookkeeping the source of the data.</p></li>
+<li><p>The <code>comment</code> key and value can be used anywhere in the data to keep notes for your reference. It takes no effect.</p></li>
+<li><p>The <code>solver</code> the internal degrees of freedom and and site ratios are described for the phase.</p>
+<blockquote class="blockquote">
+<p><code>sublattice_configurations</code> is a list of different configurations, that should correspond to the sublattices for the phase descriptions. Non-mixing sublattices are represented as a string, while mixing sublattices are represented as a lists. Thus an endmember for <code>BCC_B2</code> (as in this example) is <code>["AL", "NI", VA"]</code> and if there were mixing (as in the next example) it might be <code>["AL", ["AL", "NI"], "VA"]</code>. Mixing also means that the <code>sublattice_occupancies</code> key must be specified, but that is not the case in this example. It is important to note that any mixing configurations must have any ideal mixing contributions removed. Regardless of whether there is mixing or not, the length of this list should always equal the number of sublattices in the phase, though the sub-lists can have mixing up to the number of components in that sublattice. Note that the <code>sublattice_configurations</code> is a <em>list</em> of these lists. That is, there can be multiple sublattice configurations in a single dataset. See the second example in this section for such an example.</p>
+</blockquote></li>
+<li><p>The <code>conditions</code> describe temperatures (<code>T</code>) and pressures (<code>P</code>) as either scalars or one-dimensional lists.</p></li>
+<li><p>The type of quantity is expressed using the <code>output</code> key. This can in principle be any thermodynamic quantity, but currently only <code>CPM*</code>, <code>SM*</code>, and <code>HM*</code> (where <code>*</code> is either nothing, <code>_MIX</code> or <code>_FORM</code>) are supported. Support for changing reference states is planned but not yet implemented, so all thermodynamic quantities must be formation quantities (e.g.&nbsp;<code>HM_FORM</code> or <code>HM_MIX</code>, etc.). This is tracked by <code class="interpreted-text" role="issue">85</code> on GitHub.</p></li>
+<li><p><code>values</code> is a 3-dimensional array where each value is the <code>output</code> for a specific condition of pressure, temperature, and sublattice configurations from outside to inside. Alternatively, the size of the array must be <code>(len(P), len(T), len(subl_config))</code>. In the example below, the shape of the <code>values</code> array is (1, 12, 1) as there is one pressure scalar, one sublattice configuration, and 12 temperatures.</p></li>
+<li><p>There is also a key, <code>excluded_model_contributions</code>, which will make those contributions of pycalphad's <code>Model</code> not be fit to when doing parameter selection or MCMC. This is useful for cases where the type of data used does not include some specific <code>Model</code> contributions that parameters may already exist for. For example, DFT formation energies do not include ideal mixing or (Calphad-type) magnetic model contributions, but formation energies from experiments would include these contributions so experimental formation energies should not be excluded.</p></li>
+</ul>
+<div class="sourceCode" id="cb2"><pre class="sourceCode json code-with-copy"><code class="sourceCode json"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">{</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>  <span class="dt">"reference"</span><span class="fu">:</span> <span class="st">"Yi Wang et al 2009"</span><span class="fu">,</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>  <span class="dt">"components"</span><span class="fu">:</span> <span class="ot">[</span><span class="st">"AL"</span><span class="ot">,</span> <span class="st">"NI"</span><span class="ot">,</span> <span class="st">"VA"</span><span class="ot">]</span><span class="fu">,</span></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>  <span class="dt">"phases"</span><span class="fu">:</span> <span class="ot">[</span><span class="st">"BCC_B2"</span><span class="ot">]</span><span class="fu">,</span></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>  <span class="dt">"solver"</span><span class="fu">:</span> <span class="fu">{</span></span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>    <span class="dt">"mode"</span><span class="fu">:</span> <span class="st">"manual"</span><span class="fu">,</span></span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>      <span class="dt">"sublattice_site_ratios"</span><span class="fu">:</span> <span class="ot">[</span><span class="dv">0</span><span class="er">.</span><span class="dv">5</span><span class="ot">,</span> <span class="dv">0</span><span class="er">.</span><span class="dv">5</span><span class="ot">,</span> <span class="dv">1</span><span class="ot">]</span><span class="fu">,</span></span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>      <span class="dt">"sublattice_configurations"</span><span class="fu">:</span> <span class="ot">[[</span><span class="st">"AL"</span><span class="ot">,</span> <span class="st">"NI"</span><span class="ot">,</span> <span class="st">"VA"</span><span class="ot">]]</span><span class="fu">,</span></span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>      <span class="dt">"comment"</span><span class="fu">:</span> <span class="st">"NiAl sublattice configuration (2SL)"</span></span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">},</span></span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>  <span class="dt">"conditions"</span><span class="fu">:</span> <span class="fu">{</span></span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a>      <span class="dt">"P"</span><span class="fu">:</span> <span class="dv">101325</span><span class="fu">,</span></span>
+<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a>      <span class="dt">"T"</span><span class="fu">:</span> <span class="ot">[</span>  <span class="dv">0</span><span class="ot">,</span>  <span class="dv">10</span><span class="ot">,</span>  <span class="dv">20</span><span class="ot">,</span>  <span class="dv">30</span><span class="ot">,</span>  <span class="dv">40</span><span class="ot">,</span>  <span class="dv">50</span><span class="ot">,</span>  <span class="dv">60</span><span class="ot">,</span>  <span class="dv">70</span><span class="ot">,</span>  <span class="dv">80</span><span class="ot">,</span>  <span class="dv">90</span><span class="ot">,</span> <span class="dv">100</span><span class="ot">,</span> <span class="dv">110</span><span class="ot">]</span></span>
+<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">},</span></span>
+<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a>  <span class="dt">"excluded_model_contributions"</span><span class="fu">:</span> <span class="ot">[</span><span class="st">"idmix"</span><span class="ot">,</span> <span class="st">"mag"</span><span class="ot">]</span><span class="fu">,</span></span>
+<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a>  <span class="dt">"output"</span><span class="fu">:</span> <span class="st">"CPM_FORM"</span><span class="fu">,</span></span>
+<span id="cb2-17"><a href="#cb2-17" aria-hidden="true" tabindex="-1"></a>  <span class="dt">"values"</span><span class="fu">:</span>   <span class="ot">[[[</span> <span class="dv">0</span>      <span class="ot">],</span></span>
+<span id="cb2-18"><a href="#cb2-18" aria-hidden="true" tabindex="-1"></a>                <span class="ot">[</span><span class="dv">-0</span><span class="er">.0173</span> <span class="ot">],</span></span>
+<span id="cb2-19"><a href="#cb2-19" aria-hidden="true" tabindex="-1"></a>                <span class="ot">[</span><span class="dv">-0</span><span class="er">.01205</span><span class="ot">],</span></span>
+<span id="cb2-20"><a href="#cb2-20" aria-hidden="true" tabindex="-1"></a>                <span class="ot">[</span> <span class="dv">0</span><span class="er">.</span><span class="dv">12915</span><span class="ot">],</span></span>
+<span id="cb2-21"><a href="#cb2-21" aria-hidden="true" tabindex="-1"></a>                <span class="ot">[</span> <span class="dv">0</span><span class="er">.</span><span class="dv">24355</span><span class="ot">],</span></span>
+<span id="cb2-22"><a href="#cb2-22" aria-hidden="true" tabindex="-1"></a>                <span class="ot">[</span> <span class="dv">0</span><span class="er">.</span><span class="dv">13305</span><span class="ot">],</span></span>
+<span id="cb2-23"><a href="#cb2-23" aria-hidden="true" tabindex="-1"></a>                <span class="ot">[</span><span class="dv">-0</span><span class="er">.</span><span class="dv">1617</span> <span class="ot">],</span></span>
+<span id="cb2-24"><a href="#cb2-24" aria-hidden="true" tabindex="-1"></a>                <span class="ot">[</span><span class="dv">-0</span><span class="er">.</span><span class="dv">51625</span><span class="ot">],</span></span>
+<span id="cb2-25"><a href="#cb2-25" aria-hidden="true" tabindex="-1"></a>                <span class="ot">[</span><span class="dv">-0</span><span class="er">.</span><span class="dv">841</span>  <span class="ot">],</span></span>
+<span id="cb2-26"><a href="#cb2-26" aria-hidden="true" tabindex="-1"></a>                <span class="ot">[</span><span class="fl">-1.0975</span> <span class="ot">],</span></span>
+<span id="cb2-27"><a href="#cb2-27" aria-hidden="true" tabindex="-1"></a>                <span class="ot">[</span><span class="fl">-1.28045</span><span class="ot">],</span></span>
+<span id="cb2-28"><a href="#cb2-28" aria-hidden="true" tabindex="-1"></a>                <span class="ot">[</span><span class="fl">-1.3997</span> <span class="ot">]]]</span></span>
+<span id="cb2-29"><a href="#cb2-29" aria-hidden="true" tabindex="-1"></a><span class="fu">}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>In the second example below, there is formation enthalpy data for multiple sublattice configurations. All of the keys and values are conceptually similar. Here, instead of describing how the <code>output</code> quantity changes with temperature or pressure, we are instead only comparing <code>HM_FORM</code> values for different sublattice configurations. The key differences from the previous example are that there are 9 different sublattice configurations described by <code>sublattice_configurations</code> and <code>sublattice_occupancies</code>. Note that the <code>sublattice_configurations</code> and <code>sublattice_occupancies</code> should have exactly the same shape. Sublattices without mixing should have single strings and occupancies of one. Sublattices that do have mixing should have a site ratio for each active component in that sublattice. If the sublattice of a phase is <code>["AL", "NI", "VA"]</code>, it should only have two occupancies if only <code>["AL", "NI"]</code> are active in the sublattice configuration.</p>
+<p>The last difference to note is the shape of the <code>values</code> array. Here there is one pressure, one temperature, and 9 sublattice configurations to give a shape of (1, 1, 9).</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode json code-with-copy"><code class="sourceCode json"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">{</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>  <span class="dt">"reference"</span><span class="fu">:</span> <span class="st">"C. Jiang 2009 (constrained SQS)"</span><span class="fu">,</span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>  <span class="dt">"components"</span><span class="fu">:</span> <span class="ot">[</span><span class="st">"AL"</span><span class="ot">,</span> <span class="st">"NI"</span><span class="ot">,</span> <span class="st">"VA"</span><span class="ot">]</span><span class="fu">,</span></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>  <span class="dt">"phases"</span><span class="fu">:</span> <span class="ot">[</span><span class="st">"BCC_B2"</span><span class="ot">]</span><span class="fu">,</span></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>  <span class="dt">"solver"</span><span class="fu">:</span> <span class="fu">{</span></span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>      <span class="dt">"sublattice_occupancies"</span><span class="fu">:</span> <span class="ot">[</span></span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>                     <span class="ot">[</span><span class="dv">1</span><span class="ot">,</span> <span class="ot">[</span><span class="dv">0</span><span class="er">.</span><span class="dv">5</span><span class="ot">,</span> <span class="dv">0</span><span class="er">.</span><span class="dv">5</span><span class="ot">],</span> <span class="dv">1</span><span class="ot">],</span></span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>                     <span class="ot">[</span><span class="dv">1</span><span class="ot">,</span> <span class="ot">[</span><span class="dv">0</span><span class="er">.</span><span class="dv">75</span><span class="ot">,</span> <span class="dv">0</span><span class="er">.</span><span class="dv">25</span><span class="ot">],</span> <span class="dv">1</span><span class="ot">],</span></span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>                     <span class="ot">[</span><span class="dv">1</span><span class="ot">,</span> <span class="ot">[</span><span class="dv">0</span><span class="er">.</span><span class="dv">75</span><span class="ot">,</span> <span class="dv">0</span><span class="er">.</span><span class="dv">25</span><span class="ot">],</span> <span class="dv">1</span><span class="ot">],</span></span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>                     <span class="ot">[</span><span class="dv">1</span><span class="ot">,</span> <span class="ot">[</span><span class="dv">0</span><span class="er">.</span><span class="dv">5</span><span class="ot">,</span> <span class="dv">0</span><span class="er">.</span><span class="dv">5</span><span class="ot">],</span> <span class="dv">1</span><span class="ot">],</span></span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>                     <span class="ot">[</span><span class="dv">1</span><span class="ot">,</span> <span class="ot">[</span><span class="dv">0</span><span class="er">.</span><span class="dv">5</span><span class="ot">,</span> <span class="dv">0</span><span class="er">.</span><span class="dv">5</span><span class="ot">],</span> <span class="dv">1</span><span class="ot">],</span></span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a>                     <span class="ot">[</span><span class="dv">1</span><span class="ot">,</span> <span class="ot">[</span><span class="dv">0</span><span class="er">.</span><span class="dv">25</span><span class="ot">,</span> <span class="dv">0</span><span class="er">.</span><span class="dv">75</span><span class="ot">],</span> <span class="dv">1</span><span class="ot">],</span></span>
+<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a>                     <span class="ot">[</span><span class="dv">1</span><span class="ot">,</span> <span class="ot">[</span><span class="dv">0</span><span class="er">.</span><span class="dv">75</span><span class="ot">,</span> <span class="dv">0</span><span class="er">.</span><span class="dv">25</span><span class="ot">],</span> <span class="dv">1</span><span class="ot">],</span></span>
+<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a>                     <span class="ot">[</span><span class="dv">1</span><span class="ot">,</span> <span class="ot">[</span><span class="dv">0</span><span class="er">.</span><span class="dv">5</span><span class="ot">,</span> <span class="dv">0</span><span class="er">.</span><span class="dv">5</span><span class="ot">],</span> <span class="dv">1</span><span class="ot">],</span></span>
+<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a>                     <span class="ot">[</span><span class="dv">1</span><span class="ot">,</span> <span class="ot">[</span><span class="dv">0</span><span class="er">.</span><span class="dv">5</span><span class="ot">,</span> <span class="dv">0</span><span class="er">.</span><span class="dv">5</span><span class="ot">],</span> <span class="dv">1</span><span class="ot">]</span></span>
+<span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a>                    <span class="ot">]</span><span class="fu">,</span></span>
+<span id="cb3-17"><a href="#cb3-17" aria-hidden="true" tabindex="-1"></a>      <span class="dt">"sublattice_site_ratios"</span><span class="fu">:</span> <span class="ot">[</span><span class="dv">0</span><span class="er">.</span><span class="dv">5</span><span class="ot">,</span> <span class="dv">0</span><span class="er">.</span><span class="dv">5</span><span class="ot">,</span> <span class="dv">1</span><span class="ot">]</span><span class="fu">,</span></span>
+<span id="cb3-18"><a href="#cb3-18" aria-hidden="true" tabindex="-1"></a>      <span class="dt">"sublattice_configurations"</span><span class="fu">:</span> <span class="ot">[</span></span>
+<span id="cb3-19"><a href="#cb3-19" aria-hidden="true" tabindex="-1"></a>                        <span class="ot">[</span><span class="st">"AL"</span><span class="ot">,</span> <span class="ot">[</span><span class="st">"NI"</span><span class="ot">,</span> <span class="st">"VA"</span><span class="ot">],</span> <span class="st">"VA"</span><span class="ot">],</span></span>
+<span id="cb3-20"><a href="#cb3-20" aria-hidden="true" tabindex="-1"></a>                        <span class="ot">[</span><span class="st">"AL"</span><span class="ot">,</span> <span class="ot">[</span><span class="st">"NI"</span><span class="ot">,</span> <span class="st">"VA"</span><span class="ot">],</span> <span class="st">"VA"</span><span class="ot">],</span></span>
+<span id="cb3-21"><a href="#cb3-21" aria-hidden="true" tabindex="-1"></a>                        <span class="ot">[</span><span class="st">"NI"</span><span class="ot">,</span> <span class="ot">[</span><span class="st">"AL"</span><span class="ot">,</span> <span class="st">"NI"</span><span class="ot">],</span> <span class="st">"VA"</span><span class="ot">],</span></span>
+<span id="cb3-22"><a href="#cb3-22" aria-hidden="true" tabindex="-1"></a>                        <span class="ot">[</span><span class="st">"NI"</span><span class="ot">,</span> <span class="ot">[</span><span class="st">"AL"</span><span class="ot">,</span> <span class="st">"NI"</span><span class="ot">],</span> <span class="st">"VA"</span><span class="ot">],</span></span>
+<span id="cb3-23"><a href="#cb3-23" aria-hidden="true" tabindex="-1"></a>                        <span class="ot">[</span><span class="st">"AL"</span><span class="ot">,</span> <span class="ot">[</span><span class="st">"AL"</span><span class="ot">,</span> <span class="st">"NI"</span><span class="ot">],</span> <span class="st">"VA"</span><span class="ot">],</span></span>
+<span id="cb3-24"><a href="#cb3-24" aria-hidden="true" tabindex="-1"></a>                        <span class="ot">[</span><span class="st">"AL"</span><span class="ot">,</span> <span class="ot">[</span><span class="st">"AL"</span><span class="ot">,</span> <span class="st">"NI"</span><span class="ot">],</span> <span class="st">"VA"</span><span class="ot">],</span></span>
+<span id="cb3-25"><a href="#cb3-25" aria-hidden="true" tabindex="-1"></a>                        <span class="ot">[</span><span class="st">"NI"</span><span class="ot">,</span> <span class="ot">[</span><span class="st">"AL"</span><span class="ot">,</span> <span class="st">"VA"</span><span class="ot">],</span> <span class="st">"VA"</span><span class="ot">],</span></span>
+<span id="cb3-26"><a href="#cb3-26" aria-hidden="true" tabindex="-1"></a>                        <span class="ot">[</span><span class="st">"NI"</span><span class="ot">,</span> <span class="ot">[</span><span class="st">"AL"</span><span class="ot">,</span> <span class="st">"VA"</span><span class="ot">],</span> <span class="st">"VA"</span><span class="ot">],</span></span>
+<span id="cb3-27"><a href="#cb3-27" aria-hidden="true" tabindex="-1"></a>                        <span class="ot">[</span><span class="st">"VA"</span><span class="ot">,</span> <span class="ot">[</span><span class="st">"AL"</span><span class="ot">,</span> <span class="st">"NI"</span><span class="ot">],</span> <span class="st">"VA"</span><span class="ot">]</span></span>
+<span id="cb3-28"><a href="#cb3-28" aria-hidden="true" tabindex="-1"></a>                       <span class="ot">]</span><span class="fu">,</span></span>
+<span id="cb3-29"><a href="#cb3-29" aria-hidden="true" tabindex="-1"></a>      <span class="dt">"comment"</span><span class="fu">:</span> <span class="st">"BCC_B2 sublattice configuration (2SL)"</span></span>
+<span id="cb3-30"><a href="#cb3-30" aria-hidden="true" tabindex="-1"></a>  <span class="fu">},</span></span>
+<span id="cb3-31"><a href="#cb3-31" aria-hidden="true" tabindex="-1"></a>  <span class="dt">"conditions"</span><span class="fu">:</span> <span class="fu">{</span></span>
+<span id="cb3-32"><a href="#cb3-32" aria-hidden="true" tabindex="-1"></a>      <span class="dt">"P"</span><span class="fu">:</span> <span class="dv">101325</span><span class="fu">,</span></span>
+<span id="cb3-33"><a href="#cb3-33" aria-hidden="true" tabindex="-1"></a>      <span class="dt">"T"</span><span class="fu">:</span> <span class="dv">300</span></span>
+<span id="cb3-34"><a href="#cb3-34" aria-hidden="true" tabindex="-1"></a>  <span class="fu">},</span></span>
+<span id="cb3-35"><a href="#cb3-35" aria-hidden="true" tabindex="-1"></a>  <span class="dt">"output"</span><span class="fu">:</span> <span class="st">"HM_FORM"</span><span class="fu">,</span></span>
+<span id="cb3-36"><a href="#cb3-36" aria-hidden="true" tabindex="-1"></a>  <span class="dt">"values"</span><span class="fu">:</span>   <span class="ot">[[[</span><span class="fl">-40316.61077</span><span class="ot">,</span> <span class="fl">-56361.58554</span><span class="ot">,</span></span>
+<span id="cb3-37"><a href="#cb3-37" aria-hidden="true" tabindex="-1"></a>             <span class="fl">-49636.39281</span><span class="ot">,</span> <span class="fl">-32471.25149</span><span class="ot">,</span> <span class="fl">-10890.09929</span><span class="ot">,</span></span>
+<span id="cb3-38"><a href="#cb3-38" aria-hidden="true" tabindex="-1"></a>             <span class="fl">-35190.49282</span><span class="ot">,</span> <span class="fl">-38147.99217</span><span class="ot">,</span> <span class="fl">-2463.55684</span><span class="ot">,</span></span>
+<span id="cb3-39"><a href="#cb3-39" aria-hidden="true" tabindex="-1"></a>             <span class="fl">-15183.13371</span><span class="ot">]]]</span></span>
+<span id="cb3-40"><a href="#cb3-40" aria-hidden="true" tabindex="-1"></a><span class="fu">}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="equilibrium-thermochemical-data" class="level2">
+<h2 class="anchored" data-anchor-id="equilibrium-thermochemical-data">Equilibrium Thermochemical Data</h2>
+<p>Equilibrium thermochemical data is used when the internal degrees of freedom are not known. This is typically true for experimental thermochemical data. Some cases where this type of data is useful, compared to non-equilibrium thermochemical data are:</p>
+<ol type="1">
+<li>Activity data</li>
+<li>Enthalpy of formation data in region with two or more phases in equilibrium</li>
+<li>Enthalpy of formation for a phase with multiple sublattice, e.g.&nbsp;the σ phase</li>
+</ol>
+<p>This type of data can not be used in parameter selection, because a core assumption of parameter selection is that the site fractions are known.</p>
+<div class="note">
+<div class="title">
+<p>Note</p>
+</div>
+<p>Only activity data is supported at the moment. Support for other data types is tracked by <code class="interpreted-text" role="issue">104</code>.</p>
+</div>
+<p>Activity data is similar to non-equilibrium thermochemical data, except we must enter a reference state and the <code>solver</code> key is no longer required, since we do not know the internal degrees of freedom. A key detail is that the <code>phases</code> key must specify all phases that are possible to form.</p>
+<p>An example for Mg activties in Cu-Mg follows, with data digitized from S.P. Garg, Y.J. Bhatt, C. V. Sundaram, Thermodynamic study of liquid Cu-Mg alloys by vapor pressure measurements, Metall. Trans. 4 (1973) 283–289. <a href="doi:10.1007/BF02649628" class="uri">doi:10.1007/BF02649628</a>.</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode json code-with-copy"><code class="sourceCode json"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">{</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>  <span class="dt">"components"</span><span class="fu">:</span> <span class="ot">[</span><span class="st">"CU"</span><span class="ot">,</span> <span class="st">"MG"</span><span class="ot">,</span> <span class="st">"VA"</span><span class="ot">]</span><span class="fu">,</span></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>  <span class="dt">"phases"</span><span class="fu">:</span> <span class="ot">[</span><span class="st">"LIQUID"</span><span class="ot">,</span> <span class="st">"FCC_A1"</span><span class="ot">,</span> <span class="st">"HCP_A3"</span><span class="ot">]</span><span class="fu">,</span></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>  <span class="dt">"reference_state"</span><span class="fu">:</span> <span class="fu">{</span></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>    <span class="dt">"phases"</span><span class="fu">:</span> <span class="ot">[</span><span class="st">"LIQUID"</span><span class="ot">]</span><span class="fu">,</span></span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>    <span class="dt">"conditions"</span><span class="fu">:</span> <span class="fu">{</span></span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>      <span class="dt">"P"</span><span class="fu">:</span> <span class="dv">101325</span><span class="fu">,</span></span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>      <span class="dt">"T"</span><span class="fu">:</span> <span class="dv">1200</span><span class="fu">,</span></span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>      <span class="dt">"X_MG"</span><span class="fu">:</span> <span class="fl">1.0</span></span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a>    <span class="fu">}</span></span>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">},</span></span>
+<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a>  <span class="dt">"conditions"</span><span class="fu">:</span> <span class="fu">{</span></span>
+<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a>    <span class="dt">"P"</span><span class="fu">:</span> <span class="dv">101325</span><span class="fu">,</span></span>
+<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a>    <span class="dt">"T"</span><span class="fu">:</span> <span class="dv">1200</span><span class="fu">,</span></span>
+<span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a>    <span class="dt">"X_CU"</span><span class="fu">:</span> <span class="ot">[</span><span class="dv">0</span><span class="er">.</span><span class="dv">9</span><span class="ot">,</span> <span class="dv">0</span><span class="er">.</span><span class="dv">8</span><span class="ot">,</span> <span class="dv">0</span><span class="er">.</span><span class="dv">7</span><span class="ot">,</span> <span class="dv">0</span><span class="er">.</span><span class="dv">6</span><span class="ot">,</span> <span class="dv">0</span><span class="er">.</span><span class="dv">5</span><span class="ot">,</span> <span class="dv">0</span><span class="er">.</span><span class="dv">4</span><span class="ot">,</span> <span class="dv">0</span><span class="er">.</span><span class="dv">3</span><span class="ot">,</span> <span class="dv">0</span><span class="er">.</span><span class="dv">2</span><span class="ot">,</span> <span class="dv">0</span><span class="er">.</span><span class="dv">1</span><span class="ot">,</span> <span class="dv">0</span><span class="er">.</span><span class="dv">0</span><span class="ot">]</span></span>
+<span id="cb4-16"><a href="#cb4-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">},</span></span>
+<span id="cb4-17"><a href="#cb4-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-18"><a href="#cb4-18" aria-hidden="true" tabindex="-1"></a>  <span class="dt">"output"</span><span class="fu">:</span> <span class="st">"ACR_MG"</span><span class="fu">,</span></span>
+<span id="cb4-19"><a href="#cb4-19" aria-hidden="true" tabindex="-1"></a>    <span class="dt">"values"</span><span class="fu">:</span>   <span class="ot">[[[</span><span class="dv">0</span><span class="er">.0057</span><span class="ot">,</span><span class="dv">0</span><span class="er">.0264</span><span class="ot">,</span><span class="dv">0</span><span class="er">.0825</span><span class="ot">,</span><span class="dv">0</span><span class="er">.</span><span class="dv">1812</span><span class="ot">,</span><span class="dv">0</span><span class="er">.</span><span class="dv">2645</span><span class="ot">,</span><span class="dv">0</span><span class="er">.</span><span class="dv">4374</span><span class="ot">,</span><span class="dv">0</span><span class="er">.</span><span class="dv">5852</span><span class="ot">,</span><span class="dv">0</span><span class="er">.</span><span class="dv">7296</span><span class="ot">,</span><span class="dv">0</span><span class="er">.</span><span class="dv">882</span><span class="ot">,</span><span class="fl">1.0</span><span class="ot">]]]</span><span class="fu">,</span></span>
+<span id="cb4-20"><a href="#cb4-20" aria-hidden="true" tabindex="-1"></a>  <span class="dt">"reference"</span><span class="fu">:</span> <span class="st">"garg1973thermodynamic"</span><span class="fu">,</span></span>
+<span id="cb4-21"><a href="#cb4-21" aria-hidden="true" tabindex="-1"></a>  <span class="dt">"comment"</span><span class="fu">:</span> <span class="st">"Digitized Figure 3 and converted from activity coefficients."</span></span>
+<span id="cb4-22"><a href="#cb4-22" aria-hidden="true" tabindex="-1"></a><span class="fu">}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="phase_boundary_data" class="level2">
+<h2 class="anchored" data-anchor-id="phase_boundary_data">Phase Diagram Data</h2>
+<p>ESPEI can consider multi-component phase diagram data with an arbitrary number of phases in equilibrium. Phase diagram data JSON datasets are distingished by using <code>"output": "ZPF"</code><a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a>. Each entry in the JSON <code>values</code> corresponds to a <em>phase region</em> where one or more phases are participating in equilibrium under the given temperature and pressure conditions.</p>
+<p>Each phase in the phase region must give its <em>phase composition</em>, i.e. the internal composition of that phase (<em>not</em> the overall composition). The "phase composition" is the same as a "tie-line composition" in a two-phase region of a binary phase diagram, but is a more general term for cases where the meaning of a tie-line is ambiguous like a single phase equilibrum or an equilibrium with three or more phases.</p>
+<p>Sometimes there may be a phase equilibrium where one or more of the phase compositions are unknown. This is especially common for phase diagram data determined by equilibrated alloys or by scanning calorimetry in binary systems, where one phase composition is determined, but the phase composition of the other phase(s) in equilibrium are not. In these cases, phase compositions can be given as <code>null</code> and ESPEI will estimate the phase composition.</p>
+<div class="admonition important">
+<p>Important</p>
+<p>Each phase region must have at least one phase with a prescribed phase composition. If all phases in a phase region have <code>null</code> phase compositions, the <em>target hyperplane</em> (described by Figure 1 in <span class="citation" data-cites="bocklund2019">(<a href="#ref-bocklund2019" role="doc-biblioref">Bocklund et al. 2019</a>)</span>) will be undefined and no driving forces will be computed.</p>
+</div>
+<div class="admonition important">
+<p>Important</p>
+<p>For a dataset with <code>c</code> components, each phase composition must be specified by <code>c-1</code> components. There is an implicit <code>N=1</code> condition.</p>
+</div>
+<section id="example" class="level3">
+<h3 class="anchored" data-anchor-id="example">Example</h3>
+<div class="sourceCode" id="cb5"><pre class="sourceCode json code-with-copy"><code class="sourceCode json"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">{</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>  <span class="dt">"components"</span><span class="fu">:</span> <span class="ot">[</span><span class="st">"AL"</span><span class="ot">,</span> <span class="st">"NI"</span><span class="ot">]</span><span class="fu">,</span></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>  <span class="dt">"phases"</span><span class="fu">:</span> <span class="ot">[</span><span class="st">"AL3NI2"</span><span class="ot">,</span> <span class="st">"BCC_B2"</span><span class="ot">,</span> <span class="st">"LIQUID"</span><span class="ot">]</span><span class="fu">,</span></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>  <span class="dt">"conditions"</span><span class="fu">:</span> <span class="fu">{</span></span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>    <span class="dt">"P"</span><span class="fu">:</span> <span class="dv">101325</span><span class="fu">,</span></span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>     <span class="dt">"T"</span><span class="fu">:</span> <span class="ot">[</span><span class="dv">2500</span><span class="ot">,</span> <span class="dv">1348</span><span class="ot">,</span> <span class="dv">1176</span><span class="ot">,</span> <span class="dv">977</span><span class="ot">]</span></span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">},</span></span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>  <span class="dt">"output"</span><span class="fu">:</span> <span class="st">"ZPF"</span><span class="fu">,</span></span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>  <span class="dt">"values"</span><span class="fu">:</span> <span class="ot">[</span></span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a>    <span class="ot">[[</span><span class="st">"LIQUID"</span><span class="ot">,</span> <span class="ot">[</span><span class="st">"NI"</span><span class="ot">],</span> <span class="ot">[</span><span class="dv">0</span><span class="er">.</span><span class="dv">5</span><span class="ot">]]],</span></span>
+<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a>    <span class="ot">[[</span><span class="st">"AL3NI2"</span><span class="ot">,</span> <span class="ot">[</span><span class="st">"NI"</span><span class="ot">],</span> <span class="ot">[</span><span class="dv">0</span><span class="er">.</span><span class="dv">4083</span><span class="ot">]],</span> <span class="ot">[</span><span class="st">"BCC_B2"</span><span class="ot">,</span> <span class="ot">[</span><span class="st">"NI"</span><span class="ot">],</span> <span class="ot">[</span><span class="dv">0</span><span class="er">.</span><span class="dv">4340</span><span class="ot">]]],</span></span>
+<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a>    <span class="ot">[[</span><span class="st">"AL3NI2"</span><span class="ot">,</span> <span class="ot">[</span><span class="st">"NI"</span><span class="ot">],</span> <span class="ot">[</span><span class="dv">0</span><span class="er">.</span><span class="dv">4114</span><span class="ot">]],</span> <span class="ot">[</span><span class="st">"BCC_B2"</span><span class="ot">,</span> <span class="ot">[</span><span class="st">"NI"</span><span class="ot">],</span> <span class="ot">[</span><span class="kw">null</span><span class="ot">]]],</span></span>
+<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a>    <span class="ot">[[</span><span class="st">"BCC_B2"</span><span class="ot">,</span> <span class="ot">[</span><span class="st">"NI"</span><span class="ot">],</span> <span class="ot">[</span><span class="dv">0</span><span class="er">.</span><span class="dv">71</span><span class="ot">]],</span> <span class="ot">[</span><span class="st">"LIQUID"</span><span class="ot">,</span> <span class="ot">[</span><span class="st">"NI"</span><span class="ot">],</span> <span class="ot">[</span><span class="dv">0</span><span class="er">.</span><span class="dv">752</span><span class="ot">]],</span> <span class="ot">[</span><span class="st">"FCC_L12"</span><span class="ot">,</span> <span class="ot">[</span><span class="st">"NI"</span><span class="ot">],</span> <span class="ot">[</span><span class="dv">0</span><span class="er">.</span><span class="dv">76</span><span class="ot">]]]</span></span>
+<span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a>  <span class="ot">]</span><span class="fu">,</span></span>
+<span id="cb5-15"><a href="#cb5-15" aria-hidden="true" tabindex="-1"></a>  <span class="dt">"reference"</span><span class="fu">:</span> <span class="st">"37ALE"</span></span>
+<span id="cb5-16"><a href="#cb5-16" aria-hidden="true" tabindex="-1"></a><span class="fu">}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Each entry in the <code>values</code> list is a list of all phases in equilibrium in a phase region. There are four phase regions:</p>
+<dl>
+<dt><code>[["LIQUID", ["NI"], [0.5]]]</code></dt>
+<dd>
+<p>Single phase equilibrium with <code>LIQUID</code> having a phase composition of <code>X(NI,LIQUID)=0.5</code>.</p>
+</dd>
+<dt><code>[["AL3NI2", ["NI"], [0.4083]], ["BCC_B2", ["NI"], [0.4340]]]</code></dt>
+<dd>
+<p>Two phase equilibrium between <code>AL3NI2</code> and <code>BCC_B2</code>, which have phase compositions of <code>X(NI,AL3NI2)=0.4083</code> and <code>X(NI,BCC_B2)=0.4340</code>, respectively.</p>
+</dd>
+<dt><code>[["AL3NI2", ["NI"], [0.4114]], ["BCC_B2", ["NI"], [null]]]</code></dt>
+<dd>
+<p>Two phase equilibrium between <code>AL3NI2</code> and <code>BCC_B2</code> where the phase composition of <code>BCC_B2</code> is unknown.</p>
+</dd>
+<dt><code>[["BCC_B2", ["NI"], [0.71]], ["LIQUID", ["NI"], [0.752]], ["FCC_L12", ["NI"], [0.76]]]</code></dt>
+<dd>
+<p>Eutectic reaction between <code>LIQUID</code>, <code>BCC_B2</code> and <code>FCC_L12</code>.</p>
+</dd>
+</dl>
+<div class="admonition Tip">
+<p>Tip: Multi-component phase regions</p>
+<p>To describe multi-component phase regions, simply include more components and compositions in each phase composition. For example, a two-phase equilibrium in a three component system could be described by <code>[["ALPHA", ["CR", "NI"], [0.1, 0.25]], ["BETA", ["CR", "NI"], [null, null]]]</code></p>
+</div>
+</section>
+</section>
+<section id="tags-datasets-tags" class="level2">
+<h2 class="anchored" data-anchor-id="tags-datasets-tags">Tags {#Datasets Tags}</h2>
+<p>Tags are a flexible method to adjust many ESPEI datasets simultaneously and drive them via the ESPEI's input YAML file. Each dataset can have a <code>"tags"</code> key, with a corresponding value of a list of tags, e.g. <code>["dft"]</code>. Any tag modifications present in the input YAML file are applied to the datasets before ESPEI is run.</p>
+<p>They can be used in many creative ways, but some suggested ways include to add weights or to exclude model contributions, e.g.&nbsp;for DFT data that should not have contributions for a Calphad magnetic model or ideal mixing energy. An example of using the tags in an input file looks like:</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode json code-with-copy"><code class="sourceCode json"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">{</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>  <span class="dt">"components"</span><span class="fu">:</span> <span class="ot">[</span><span class="st">"CR"</span><span class="ot">,</span> <span class="st">"FE"</span><span class="ot">,</span> <span class="st">"VA"</span><span class="ot">]</span><span class="fu">,</span><span class="dt">"phases"</span><span class="fu">:</span> <span class="ot">[</span><span class="st">"BCC_A2"</span><span class="ot">]</span><span class="fu">,</span></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>  <span class="dt">"solver"</span><span class="fu">:</span> <span class="fu">{</span><span class="dt">"mode"</span><span class="fu">:</span> <span class="st">"manual"</span><span class="fu">,</span> <span class="dt">"sublattice_site_ratios"</span><span class="fu">:</span> <span class="ot">[</span><span class="dv">1</span><span class="ot">,</span> <span class="dv">3</span><span class="ot">]</span><span class="fu">,</span></span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>             <span class="dt">"sublattice_configurations"</span><span class="fu">:</span> <span class="ot">[[[</span><span class="st">"CR"</span><span class="ot">,</span> <span class="st">"FE"</span><span class="ot">],</span> <span class="st">"VA"</span><span class="ot">]]</span><span class="fu">,</span></span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>  <span class="dt">"sublattice_occupancies"</span><span class="fu">:</span> <span class="ot">[[[</span><span class="dv">0</span><span class="er">.</span><span class="dv">5</span><span class="ot">,</span> <span class="dv">0</span><span class="er">.</span><span class="dv">5</span><span class="ot">],</span> <span class="fl">1.0</span><span class="ot">]]</span><span class="fu">},</span></span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>  <span class="dt">"conditions"</span><span class="fu">:</span> <span class="fu">{</span><span class="dt">"P"</span><span class="fu">:</span> <span class="dv">101325</span><span class="fu">,</span> <span class="dt">"T"</span><span class="fu">:</span> <span class="dv">300</span><span class="fu">},</span></span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>  <span class="dt">"output"</span><span class="fu">:</span> <span class="st">"HM_MIX"</span><span class="fu">,</span></span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>  <span class="dt">"values"</span><span class="fu">:</span> <span class="ot">[[[</span><span class="dv">10000</span><span class="ot">]]]</span><span class="fu">,</span></span>
+<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a>  <span class="dt">"tags"</span><span class="fu">:</span> <span class="ot">[</span><span class="st">"dft"</span><span class="ot">]</span></span>
+<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a><span class="fu">}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>An example input YAML looks like</p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode yaml code-with-copy"><code class="sourceCode yaml"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">system</span><span class="kw">:</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">phase_models</span><span class="kw">:</span><span class="at"> CR-FE.json</span></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">datasets</span><span class="kw">:</span><span class="at"> FE-NI-datasets-sep</span></span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">tags</span><span class="kw">:</span></span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">dft</span><span class="kw">:</span></span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a><span class="at">      </span><span class="fu">excluded_model_contributions</span><span class="kw">:</span><span class="at"> </span><span class="kw">[</span><span class="st">"idmix"</span><span class="kw">,</span><span class="at"> </span><span class="st">"mag"</span><span class="kw">]</span></span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a><span class="fu">generate_parameters</span><span class="kw">:</span></span>
+<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">excess_model</span><span class="kw">:</span><span class="at"> linear</span></span>
+<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">ref_state</span><span class="kw">:</span><span class="at"> SGTE91</span></span>
+<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">ridge_alpha</span><span class="kw">:</span><span class="at"> </span><span class="fl">1.0e-20</span></span>
+<span id="cb7-12"><a href="#cb7-12" aria-hidden="true" tabindex="-1"></a><span class="fu">output</span><span class="kw">:</span></span>
+<span id="cb7-13"><a href="#cb7-13" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">verbosity</span><span class="kw">:</span><span class="at"> </span><span class="dv">2</span></span>
+<span id="cb7-14"><a href="#cb7-14" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">output_db</span><span class="kw">:</span><span class="at"> out.tdb</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>This will add the key <code>"excluded_model_contributions"</code> to all datasets that have the <code>"dft"</code> tag:</p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode json code-with-copy"><code class="sourceCode json"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">{</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>  <span class="dt">"components"</span><span class="fu">:</span> <span class="ot">[</span><span class="st">"CR"</span><span class="ot">,</span> <span class="st">"FE"</span><span class="ot">,</span> <span class="st">"VA"</span><span class="ot">]</span><span class="fu">,</span><span class="dt">"phases"</span><span class="fu">:</span> <span class="ot">[</span><span class="st">"BCC_A2"</span><span class="ot">]</span><span class="fu">,</span></span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>  <span class="dt">"solver"</span><span class="fu">:</span> <span class="fu">{</span><span class="dt">"mode"</span><span class="fu">:</span> <span class="st">"manual"</span><span class="fu">,</span> <span class="dt">"sublattice_site_ratios"</span><span class="fu">:</span> <span class="ot">[</span><span class="dv">1</span><span class="ot">,</span> <span class="dv">3</span><span class="ot">]</span><span class="fu">,</span></span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>             <span class="dt">"sublattice_configurations"</span><span class="fu">:</span> <span class="ot">[[[</span><span class="st">"CR"</span><span class="ot">,</span> <span class="st">"FE"</span><span class="ot">],</span> <span class="st">"VA"</span><span class="ot">]]</span><span class="fu">,</span></span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>  <span class="dt">"sublattice_occupancies"</span><span class="fu">:</span> <span class="ot">[[[</span><span class="dv">0</span><span class="er">.</span><span class="dv">5</span><span class="ot">,</span> <span class="dv">0</span><span class="er">.</span><span class="dv">5</span><span class="ot">],</span> <span class="fl">1.0</span><span class="ot">]]</span><span class="fu">},</span></span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>  <span class="dt">"conditions"</span><span class="fu">:</span> <span class="fu">{</span><span class="dt">"P"</span><span class="fu">:</span> <span class="dv">101325</span><span class="fu">,</span> <span class="dt">"T"</span><span class="fu">:</span> <span class="dv">300</span><span class="fu">},</span></span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a>  <span class="dt">"output"</span><span class="fu">:</span> <span class="st">"HM_MIX"</span><span class="fu">,</span></span>
+<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a>  <span class="dt">"values"</span><span class="fu">:</span> <span class="ot">[[[</span><span class="dv">10000</span><span class="ot">]]]</span><span class="fu">,</span></span>
+<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a>  <span class="dt">"excluded_model_contributions"</span><span class="fu">:</span> <span class="ot">[</span><span class="st">"idmix"</span><span class="ot">,</span> <span class="st">"mag"</span><span class="ot">]</span></span>
+<span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a><span class="fu">}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="common-mistakes-and-notes" class="level2">
+<h2 class="anchored" data-anchor-id="common-mistakes-and-notes">Common Mistakes and Notes</h2>
+<ol type="1">
+<li>A single element sublattice is different in a phase model (<code>[["A", "B"], ["A"]]]</code>) than a sublattice configuration (<code>[["A", "B"], "A"]</code>).</li>
+<li>Make sure you use the right units (<code>J/mole-atom</code>, mole fractions, Kelvin, Pascal)</li>
+<li>Mixing configurations should not have ideal mixing contributions.</li>
+<li>All types of data can have a <code>weight</code> key at the top level that will weight the standard deviation parameter in MCMC runs for that dataset. If a single dataset should have different weights applied, multiple datasets should be created.</li>
+</ol>
+
+
+
+</section>
+
+
+<a onclick="window.scrollTo(0, 0); return false;" role="button" id="quarto-back-to-top"><i class="bi bi-arrow-up"></i> Back to top</a><div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" role="doc-bibliography" id="quarto-bibliography"><h2 class="anchored quarto-appendix-heading">References</h2><div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list">
+<div id="ref-bocklund2019" class="csl-entry" role="listitem">
+Bocklund, Brandon, Richard Otis, Aleksei Egorov, Abdulmonem Obaied, Irina Roslyakova, and Zi-Kui Liu. 2019. <span>“ESPEI for Efficient Thermodynamic Database Development, Modification, and Uncertainty Quantification: Application to Cu–Mg.”</span> <em>MRS Communications</em> 9 (2): 618–27. <a href="https://doi.org/doi:10.1557/mrc.2019.59">https://doi.org/doi:10.1557/mrc.2019.59</a>.
+</div>
+</div></section><section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes"><h2 class="anchored quarto-appendix-heading">Footnotes</h2>
+
+<ol>
+<li id="fn1"><p><code>ZPF</code> after the "Zero Phase Fraction" method <span class="citation" data-cites="bocklund2019">(<a href="#ref-bocklund2019" role="doc-biblioref">Bocklund et al. 2019</a>)</span> used to compute the likelihood. "Zero phase fraction" is a little misleading as a name, since the prescribed phase compositions in the datasets actually correspond to the overall composition where the phase fraction of the desired phase should be <em>one</em>.<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+</ol>
+</section></div></main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const disableStylesheet = (stylesheets) => {
+    for (let i=0; i < stylesheets.length; i++) {
+      const stylesheet = stylesheets[i];
+      stylesheet.rel = 'prefetch';
+    }
+  }
+  const enableStylesheet = (stylesheets) => {
+    for (let i=0; i < stylesheets.length; i++) {
+      const stylesheet = stylesheets[i];
+      stylesheet.rel = 'stylesheet';
+    }
+  }
+  const manageTransitions = (selector, allowTransitions) => {
+    const els = window.document.querySelectorAll(selector);
+    for (let i=0; i < els.length; i++) {
+      const el = els[i];
+      if (allowTransitions) {
+        el.classList.remove('notransition');
+      } else {
+        el.classList.add('notransition');
+      }
+    }
+  }
+  const toggleGiscusIfUsed = (isAlternate, darkModeDefault) => {
+    const baseTheme = document.querySelector('#giscus-base-theme')?.value ?? 'light';
+    const alternateTheme = document.querySelector('#giscus-alt-theme')?.value ?? 'dark';
+    let newTheme = '';
+    if(darkModeDefault) {
+      newTheme = isAlternate ? baseTheme : alternateTheme;
+    } else {
+      newTheme = isAlternate ? alternateTheme : baseTheme;
+    }
+    const changeGiscusTheme = () => {
+      // From: https://github.com/giscus/giscus/issues/336
+      const sendMessage = (message) => {
+        const iframe = document.querySelector('iframe.giscus-frame');
+        if (!iframe) return;
+        iframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app');
+      }
+      sendMessage({
+        setConfig: {
+          theme: newTheme
+        }
+      });
+    }
+    const isGiscussLoaded = window.document.querySelector('iframe.giscus-frame') !== null;
+    if (isGiscussLoaded) {
+      changeGiscusTheme();
+    }
+  }
+  const toggleColorMode = (alternate) => {
+    // Switch the stylesheets
+    const alternateStylesheets = window.document.querySelectorAll('link.quarto-color-scheme.quarto-color-alternate');
+    manageTransitions('#quarto-margin-sidebar .nav-link', false);
+    if (alternate) {
+      enableStylesheet(alternateStylesheets);
+      for (const sheetNode of alternateStylesheets) {
+        if (sheetNode.id === "quarto-bootstrap") {
+          toggleBodyColorMode(sheetNode);
+        }
+      }
+    } else {
+      disableStylesheet(alternateStylesheets);
+      toggleBodyColorPrimary();
+    }
+    manageTransitions('#quarto-margin-sidebar .nav-link', true);
+    // Switch the toggles
+    const toggles = window.document.querySelectorAll('.quarto-color-scheme-toggle');
+    for (let i=0; i < toggles.length; i++) {
+      const toggle = toggles[i];
+      if (toggle) {
+        if (alternate) {
+          toggle.classList.add("alternate");     
+        } else {
+          toggle.classList.remove("alternate");
+        }
+      }
+    }
+    // Hack to workaround the fact that safari doesn't
+    // properly recolor the scrollbar when toggling (#1455)
+    if (navigator.userAgent.indexOf('Safari') > 0 && navigator.userAgent.indexOf('Chrome') == -1) {
+      manageTransitions("body", false);
+      window.scrollTo(0, 1);
+      setTimeout(() => {
+        window.scrollTo(0, 0);
+        manageTransitions("body", true);
+      }, 40);  
+    }
+  }
+  const isFileUrl = () => { 
+    return window.location.protocol === 'file:';
+  }
+  const hasAlternateSentinel = () => {  
+    let styleSentinel = getColorSchemeSentinel();
+    if (styleSentinel !== null) {
+      return styleSentinel === "alternate";
+    } else {
+      return false;
+    }
+  }
+  const setStyleSentinel = (alternate) => {
+    const value = alternate ? "alternate" : "default";
+    if (!isFileUrl()) {
+      window.localStorage.setItem("quarto-color-scheme", value);
+    } else {
+      localAlternateSentinel = value;
+    }
+  }
+  const getColorSchemeSentinel = () => {
+    if (!isFileUrl()) {
+      const storageValue = window.localStorage.getItem("quarto-color-scheme");
+      return storageValue != null ? storageValue : localAlternateSentinel;
+    } else {
+      return localAlternateSentinel;
+    }
+  }
+  const darkModeDefault = false;
+  let localAlternateSentinel = darkModeDefault ? 'alternate' : 'default';
+  // Dark / light mode switch
+  window.quartoToggleColorScheme = () => {
+    // Read the current dark / light value 
+    let toAlternate = !hasAlternateSentinel();
+    toggleColorMode(toAlternate);
+    setStyleSentinel(toAlternate);
+    toggleGiscusIfUsed(toAlternate, darkModeDefault);
+  };
+  // Ensure there is a toggle, if there isn't float one in the top right
+  if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
+    const a = window.document.createElement('a');
+    a.classList.add('top-right');
+    a.classList.add('quarto-color-scheme-toggle');
+    a.href = "";
+    a.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
+    const i = window.document.createElement("i");
+    i.classList.add('bi');
+    a.appendChild(i);
+    window.document.body.appendChild(a);
+  }
+  // Switch to dark mode if need be
+  if (hasAlternateSentinel()) {
+    toggleColorMode(true);
+  } else {
+    toggleColorMode(false);
+  }
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const onCopySuccess = function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  }
+  const getTextToCopy = function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+    text: getTextToCopy
+  });
+  clipboard.on('success', onCopySuccess);
+  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+    // For code content inside modals, clipBoardJS needs to be initialized with a container option
+    // TODO: Check when it could be a function (https://github.com/zenorocha/clipboard.js/issues/860)
+    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+      text: getTextToCopy,
+      container: window.document.getElementById('quarto-embedded-source-code-modal')
+    });
+    clipboardModal.on('success', onCopySuccess);
+  }
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp('/' + window.location.host + '/');
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+    const config = {
+      allowHTML: true,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start',
+    };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      // TODO in 1.5, we should make sure this works without a callout special case
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            div.style.left = 0;
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="../tutorials/custom_model_parameter_selection.html" class="pagination-link" aria-label="Generating Custom Model Parameters">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Generating Custom Model Parameters</span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="../how-to/specifying_priors.html" class="pagination-link" aria-label="MCMC Priors">
+        <span class="nav-page-text">MCMC Priors</span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">
+      &nbsp;
+    </div>   
+    <div class="nav-footer-center">
+<p>Copyright © Materials Genome Foundation</p>
+<div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/materialsgenomefoundation/espei.org/edit/main/how-to/dataset_schema.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/materialsgenomefoundation/espei.org/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div>
+    <div class="nav-footer-right">
+      &nbsp;
+    </div>
+  </div>
+</footer>
+
+
+
+
+</body></html>
