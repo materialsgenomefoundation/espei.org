@@ -643,7 +643,7 @@ This is a minor bugfix release.
 -   Several reference data fixes including support for single character
     elements (\'V\', \'B\', \'C\', \...)
 -   Support for using multiprocessing to parallelize MCMC runs, used by
-    default (@olivia-higgins)
+    default (\@olivia-higgins)
 -   Improved documentation for installing and developing ESPEI
 
 ## 0.3.post2 (2017-09-20)
