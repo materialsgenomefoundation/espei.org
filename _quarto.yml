@@ -22,7 +22,7 @@ website:
       - section: "Tutorials"
         contents:
           - tutorials/cu-mg-example/cu-mg-example.qmd
-          - tutorials/custom_model_parameter_selection.qmd
+          - tutorials/custom-model-parameter-selection/custom_model_parameter_selection.qmd
       - section: "How-To"
         contents:
           - auto: how-to/recipes

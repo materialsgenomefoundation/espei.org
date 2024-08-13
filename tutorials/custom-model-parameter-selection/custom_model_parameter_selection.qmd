@@ -1,8 +1,10 @@
 ---
 title: "Generating Custom Model Parameters"
+execute:
+  warning: false
 ---
 
-ESPEI\'s default parameter selection capabilities support fitting Gibbs
+ESPEI's default parameter selection capabilities support fitting Gibbs
 energy parameters (`G` parameters for endmembers, and `L` parameters for
 binary and ternary interations) from enthalpy, entropy, and heat
 capacity data. Using the `parameter_generation.fitting_description`
@@ -10,7 +12,7 @@ parameter, ESPEI can support fitting different types of models and data
 too. For example, the built-in molar volume fitting description can be
 used to fit molar volume parameters (`V0` and `VA`) to `V0` and `VM`
 data (see
-[`fitting_description` in YAML input schema](../reference/yaml_input_schema.qmd#fitting_description) for more details).
+[`fitting_description` in YAML input schema](../../reference/yaml_input_schema.qmd#fitting_description) for more details).
 
 Through these fitting descrptions, ESPEI can be extended to fit custom
 PyCalphad models and model parameters without changing any of the source
@@ -25,7 +27,7 @@ generated parameters for three types of elastic constant parameters
 using DFT data from the literature.
 
 **To run ESPEI and generate the output in this tutorial, download the
-files from [GitHub](https://github.com/bocklund/espei-elastic-parameter-generation)**.
+files from [GitHub]({{< var doc_repo_url >}}/tutorials/custom-model-parameter-selection)**.
 
 ## Implementing the elastic constant model
 
@@ -37,21 +39,22 @@ to use model parameters that PyCalphad doesn\'t have built-in support
 for. The `custom_elastic_model.py` file contains the implementation of
 an `ElasticModel` class that sublasses the PyCalphad `Model` class:
 
-``` python
+``` {python filename="custom_elastic_model.py"}
 import tinydb
 from pycalphad import Model
 class ElasticModel(Model):
-def build_phase(self, dbe):
-    phase = dbe.phases[self.phase_name]
-    param_search = dbe.search
-    for prop in ['C11', 'C12', 'C44']:
-        prop_param_query = (
-            (tinydb.where('phase_name') == phase.name) & \
-            (tinydb.where('parameter_type') == prop) & \
-            (tinydb.where('constituent_array').test(self._array_validity))
-            )
-        prop_val = self.redlich_kister_sum(phase, param_search, prop_param_query).subs(dbe.symbols)
-        setattr(self, prop, prop_val)
+    def build_phase(self, dbe):
+        super().build_phase(dbe)
+        phase = dbe.phases[self.phase_name]
+        param_search = dbe.search
+        for prop in ['C11', 'C12', 'C44']:
+            prop_param_query = (
+                (tinydb.where('phase_name') == phase.name) & \
+                (tinydb.where('parameter_type') == prop) & \
+                (tinydb.where('constituent_array').test(self._array_validity))
+                )
+            prop_val = self.redlich_kister_sum(phase, param_search, prop_param_query).subs(dbe.symbols)
+            setattr(self, prop, prop_val)
 ```
 
 This class overides the `build_phase` method of the `Model` class to add
@@ -85,7 +88,7 @@ define `FittingStep` classes that are 1:1 mappings between a data type
 and a parameter type and don\'t require and linearization or data/model
 transformation steps.
 
-``` python
+``` {python filename="custom_elastic_model.py"}
 from espei.parameter_selection.fitting_steps import AbstractLinearPropertyStep
 
 class StepElasticC11(AbstractLinearPropertyStep):
@@ -113,7 +116,7 @@ use the base PyCalphad `Model` class, but since that class doesn\'t know
 how to use our custom elastic constant parameters, we need to use the
 `model` keyword argument to tell ESPEI to use this model.
 
-``` python
+``` {python filename="custom_elastic_model.py"}
 from espei.parameter_selection.fitting_descriptions import ModelFittingDescription
 elastic_fitting_description = ModelFittingDescription([StepElasticC11, StepElasticC12, StepElasticC44], model=ElasticModel)
 ```
@@ -130,63 +133,26 @@ fractions to generate the output value are provided explictly. Other
 than the `"output"` key that must match one of the data types read by
 one of our fitting steps, there are no additional steps for ESPEI to be
 able to read these datasets. See
-[here](../reference/dataset_schema.qmd#non_equilibrium_thermochemical_data) for
+[here](../../reference/dataset_schema.qmd#non_equilibrium_thermochemical_data) for
 a complete description of these type of datasets. Here\'s an example for
 pure BCC Ti from the `elastic-datasets` directory:
 
-``` JSON
-{
-    "components": ["TI", "VA"],
-    "phases": ["BCC_A2"],
-    "output": "C11",
-    "values": [[[93]]],
-    "conditions": {"T": 298.15, "P": 101325},
-    "solver": {"mode": "manual", "sublattice_site_ratios": [1, 3], "sublattice_configurations": [["TI", "VA"]], "sublattice_occupancies": [[1.0, 1.0]]},
-    "reference": "Marker (2018)",
-    "bibtex": "marker2018binary_elastic",
-    "comment": "Values pulled from Table 4 (DFT calculations).",
-    "tags": []
-}
+``` {.JSON filename="elastic-datasets/1-unary/Ti/C11.json"}
+{{< include elastic-datasets/1-unary/Ti/C11.json >}}
 ```
 
 ## Running ESPEI
 
-The [phase models description](../reference/phase_models_schema.qmd) defined in
+The [phase models description](../../reference/phase_models_schema.qmd) defined in
 `phase_model.json` are the same as for regular runs of ESPEI:
 
-``` JSON
-{
-    "components": ["MO", "TI", "ZR", "VA"],
-    "phases": {
-        "BCC_A2": {
-            "sublattice_model": [["MO", "TI", "ZR"], ["VA"]],
-            "sublattice_site_ratios": [1, 3]
-        }
-    }
-}
+``` {.JSON filename="phase_models.json"}
+{{< include phase_models.json >}}
 ```
 
-The YAML file that generated parameters for the system described above
-with the elastic model is in `generate_parameters.yaml`:
-
-``` YAML
-system:
-  phase_models: phase_models.json
-  datasets: elastic-datasets
-generate_parameters:
-  excess_model: linear
-  ref_state: SGTE91
-  fitting_description: custom_elastic_model.elastic_fitting_description
-output:
-  output_db: Ti-elastic.tdb
-```
-
-The key difference compared to typical runs of ESPEI that fit Gibbs
-energy parameters is the `generate_parameters.fitting_description`
-entry, which is a fully qualified import string to our fitting
-description object. This is the import path for the object and can be
-anything that can be imported by the Python interpreter that ESPEI is
-installed under. In this case, we are importing the object
+We provide ESPEI a `fitting_description`, which is either the object (for
+Python) or a fully qualified import string to our fitting description object
+(when running via the command line). In this case, we are importing the object
 `elastic_fitting_description` from the `custom_elastic_model.py` file in
 the local directory. Note that this can be any local module *or* an
 object from any package installed, for example if you have pip installed
@@ -194,21 +160,49 @@ a package called `my_fitting_descriptions` that provides a
 `ModelFittingDescrption` object for your custom model called
 `my_fit_desc`, you would set
 `fitting_description: my_fitting_descriptions.my_fit_desc`. If you start
-a Python interpreter from the same place that you\'ll run ESPEI, you can
-see if ESPEI can detect the fitting description by running the code
+a Python interpreter from the same place that you'll run ESPEI, you can
+see if ESPEI can detect the fitting description by trying to import it, e.g. by
+`from custom_elastic_model import elastic_fitting_description`.
 
-``` python
+::: {.panel-tabset}
+## Python
+
+``` {python}
+import json
+from espei import generate_parameters
+from espei.datasets import load_datasets, recursive_glob
 from custom_elastic_model import elastic_fitting_description
+
+with open("phase_models.json") as fp:
+    phase_models = json.load(fp)
+datasets = load_datasets(recursive_glob("elastic-datasets"))
+dbf = generate_parameters(phase_models, datasets, "SGTE91", "linear", fitting_description=elastic_fitting_description)
 ```
 
-Finally, we can run this input file using ESPEI by running the command:
+## Shell
 
-``` shell
+The YAML file that generated parameters for the system described above
+with the elastic model is in `generate_parameters.yaml`.
+
+``` {.YAML filename="generate_parameters.yaml"}
+{{< include generate_parameters.yaml >}}
+```
+
+Note the use of `generate_parameters.fitting_description` entry.
+This is the import path for the object and can be anything that can be imported
+by the Python interpreter that ESPEI is installed under.
+
+We run ESPEI by running the command
+
+``` {.bash}
 espei --in generate_parameters.yaml
 ```
+:::
 
-That\'s it! You should now have a TDB `Ti-elastic.tdb` that has `C11`,
-`C22`, `C44` parameters for pure Ti, Mo, and Zr, and interaction
+
+That's it! You ran ESPEI via the Python code, you should have a `Database`
+object (or a `Ti-elastic.tdb` file if you ran via the command line) that has
+`C11`, `C22`, `C44` parameters for pure Ti, Mo, and Zr, and interaction
 paramters for Ti-Mo and Ti-Zr.
 
 ## Comparing the results
@@ -221,8 +215,7 @@ simpler in the version fit by ESPEI. Where the parameters generated are
 the same, they are close aside from some small differences that could be
 due to the weighting by Marker *et al.* (the data used in this tutorial
 are not weighted). Plots comparing the generated parameters (plotted as
-lines) in to the data (points) are generated using the
-`plot_model_comparisons.py` script and appear to show good agreement.
+lines) in to the data (points) are generated using the appear to show good agreement.
 
   -------------------------------------------------------------------------
   Param   Interaction   Ti-Mo                     Ti-Zr
@@ -242,8 +235,64 @@ lines) in to the data (points) are generated using the
           L1            0              0          0              0
   -------------------------------------------------------------------------
 
-![image](https://raw.github.com/bocklund/espei-elastic-parameter-generation/main/figures/C11.png)
+``` {python}
+#| code-fold: true
+import matplotlib.pyplot as plt
+import numpy as np
+from pycalphad import calculate
+from espei.core_utils import get_prop_data, filter_configurations, filter_temperatures, symmetry_filter
+from espei.sublattice_tools import canonicalize
 
-![image](https://raw.github.com/bocklund/espei-elastic-parameter-generation/main/figures/C12.png)
+def compare_data_to_model(dbf, comps, phase_name, configuration, output_property, datasets, x_axis_component, ax):
+    solver_qry = (tinydb.where("solver").test(symmetry_filter, configuration, None))
+    desired_data = get_prop_data(comps, phase_name, [output_property], datasets, additional_query=solver_qry)
+    desired_data = filter_configurations(desired_data, configuration, None)
+    desired_data = filter_temperatures(desired_data)
+    # we know that there's only one dataset and they are directly the absolute values with no reference state to worry about
 
-![image](https://raw.github.com/bocklund/espei-elastic-parameter-generation/main/figures/C44.png)
+    ds = desired_data[0]
+    exp_x_data = [occup[0][config[0].index(x_axis_component)] for config, occup in zip(ds["solver"]["sublattice_configurations"], ds["solver"]["sublattice_occupancies"])]  # assumption about the sublattice model here
+    exp_y_data = ds["values"]
+
+    x_comp_config_idx = canonicalize(configuration, None)[0].index(x_axis_component)
+    num_points = 1001
+    calc_x_data = np.linspace(0, 1, num_points)
+    # assumption about the configuration being ((A, B,), VA)
+    points = np.empty((num_points, 3))
+    points[:, x_comp_config_idx] = calc_x_data
+    points[:, 1 - x_comp_config_idx] = 1 - calc_x_data
+    points[:, 2] = np.ones_like(calc_x_data)
+    calc_res = calculate(dbf, comps, phase_name, N=1, P=101325, T=298.15, output=output_property, points=points, model=ElasticModel)
+    calc_y_data = calc_res[output_property].squeeze()
+
+    ax.plot(calc_x_data, calc_y_data)
+    ax.scatter(exp_x_data, exp_y_data)
+    ax.set_xlabel(f"X({x_axis_component.capitalize()})")
+    ax.set_xlim(0, 1)
+    ax.set_ylabel(output_property)
+    ax.set_title(f"{output_property}: {configuration}")
+
+output_property = "C11"
+fig, (ax_TiMo, ax_TiZr) = plt.subplots(ncols=2, figsize=(8,3))
+compare_data_to_model(dbf, ["MO", "TI", "VA"], "BCC_A2", (("MO", "TI"), "VA"), output_property, datasets, "MO", ax_TiMo)
+compare_data_to_model(dbf, ["TI", "ZR", "VA"], "BCC_A2", (("TI", "ZR"), "VA"), output_property, datasets, "ZR", ax_TiZr)
+ax_TiMo.set_ylim(0, 500)
+ax_TiZr.set_ylim(0, 200)
+fig.show()
+
+output_property = "C12"
+fig, (ax_TiMo, ax_TiZr) = plt.subplots(ncols=2, figsize=(8,3))
+compare_data_to_model(dbf, ["MO", "TI", "VA"], "BCC_A2", (("MO", "TI"), "VA"), output_property, datasets, "MO", ax_TiMo)
+compare_data_to_model(dbf, ["TI", "ZR", "VA"], "BCC_A2", (("TI", "ZR"), "VA"), output_property, datasets, "ZR", ax_TiZr)
+ax_TiMo.set_ylim(0, 200)
+ax_TiZr.set_ylim(0, 140)
+fig.show()
+
+output_property = "C44"
+fig, (ax_TiMo, ax_TiZr) = plt.subplots(ncols=2, figsize=(8,3))
+compare_data_to_model(dbf, ["MO", "TI", "VA"], "BCC_A2", (("MO", "TI"), "VA"), output_property, datasets, "MO", ax_TiMo)
+compare_data_to_model(dbf, ["TI", "ZR", "VA"], "BCC_A2", (("TI", "ZR"), "VA"), output_property, datasets, "ZR", ax_TiZr)
+ax_TiMo.set_ylim(0, 120)
+ax_TiZr.set_ylim(0, 70)
+fig.show()
+```
