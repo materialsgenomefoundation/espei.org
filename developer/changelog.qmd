@@ -546,8 +546,7 @@ several minor improvements.
     `chain` refers to individual chains. Additionally removed some
     redundancy in the parameters nested under the `mcmc` heading, e.g.
     `mcmc_steps` is now `iterations` and `mcmc_save_interval` is now
-    `save_interval` in the input file and Python API. See [Writing
-    Input](http://espei.org/en/latest/writing_input.html) documentation
+    `save_interval` in the input file and Python API. See [YAML Schema](../reference/yaml_input_schema.qmd) documentation
     for all of the updates.
 -   The default save interval is now 1, which is more reasonable for
     most MCMC systems with significant numbers of phase equilibria.
@@ -589,8 +588,7 @@ This is a minor bugfix release.
 -   Activity and single phase thermochemical data can now be included in
     MCMC fitting runs. Including single phase data can help anchor
     metastable phases to DFT data when they are not on the stable phase
-    diagram. See the [Gathering input
-    data](http://espei.org/en/latest/input_data.html) documentation for
+    diagram. See the [Gathering input data](../reference/dataset_schema.qmd) documentation for
     information on how to input activity data.
 -   Dataset checking has been improved. Now there are checks to make
     sure sublattice interactions are properly sorted and mole fractions
@@ -692,8 +690,7 @@ This is a minor bugfix release.
 ## 0.3 (2017-09-20)
 
 -   **ESPEI input is now described by a file.** This change is breaking.
-    Old command line arguments are not supported. See [Writing input
-    files](http://espei.org/en/latest/writing_input.html) for a full
+    Old command line arguments are not supported. See [Writing input files](../reference/yaml_input_schema.qmd) for a full
     description of all the inputs.
 -   New input options are supported, including modifying the number of
     chains and standard deviation from the mean
