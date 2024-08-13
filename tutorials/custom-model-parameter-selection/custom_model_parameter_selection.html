@@ -600,11 +600,11 @@ div.csl-indent {
 
 <p>ESPEI’s default parameter selection capabilities support fitting Gibbs energy parameters (<code>G</code> parameters for endmembers, and <code>L</code> parameters for binary and ternary interations) from enthalpy, entropy, and heat capacity data. Using the <code>parameter_generation.fitting_description</code> parameter, ESPEI can support fitting different types of models and data too. For example, the built-in molar volume fitting description can be used to fit molar volume parameters (<code>V0</code> and <code>VA</code>) to <code>V0</code> and <code>VM</code> data (see <a href="../../reference/yaml_input_schema.html#fitting_description"><code>fitting_description</code> in YAML input schema</a> for more details).</p>
 <p>Through these fitting descrptions, ESPEI can be extended to fit custom PyCalphad models and model parameters without changing any of the source code for PyCalphad or ESPEI. Here we will implement a PyCalphad model for BCC elastic stiffness coefficients, which can be uniquly described by three independent components of the elastic stiffness matrix due to the cubic symmetry of the BCC phase. We'll then use DFT data from <span class="citation" data-cites="marker2018">(<a href="#ref-marker2018" role="doc-biblioref">Marker et al. 2018</a>)</span> to fit these endmember and interaction parameters and compare the result to values in the original publication. At the end of this tutorial, you will have used ESPEI to generated parameters for three types of elastic constant parameters using DFT data from the literature.</p>
-<p><strong>To run ESPEI and generate the output in this tutorial, download the files from <a href="https://github.com/materialsgenomefoundation/espei.org/tutorials/custom-model-parameter-selection">GitHub</a></strong>.</p>
+<p><strong>To run ESPEI and generate the output in this tutorial, download the files from <a href="https://github.com/materialsgenomefoundation/espei.org/tree/main/tutorials/custom-model-parameter-selection">GitHub</a></strong>.</p>
 <section id="implementing-the-elastic-constant-model" class="level2">
 <h2 class="anchored" data-anchor-id="implementing-the-elastic-constant-model">Implementing the elastic constant model</h2>
 <p>Before we can fit parameters to data using ESPEI, we first need a PyCalphad model that can use the parameters. PyCalphad <code>Model</code> objects supports most of the typical Calphad model parameters that are implemented by the commercial Calphad software tools, but here we want to use model parameters that PyCalphad doesn't have built-in support for. The <code>custom_elastic_model.py</code> file contains the implementation of an <code>ElasticModel</code> class that sublasses the PyCalphad <code>Model</code> class:</p>
-<div id="2bf83902" class="cell" data-execution_count="1">
+<div id="436e6cf1" class="cell" data-execution_count="1">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> tinydb</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> pycalphad <span class="im">import</span> Model</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> ElasticModel(Model):</span>
@@ -627,7 +627,7 @@ div.csl-indent {
 <h2 class="anchored" data-anchor-id="implementing-a-fitting-description">Implementing a fitting description</h2>
 <p>The <code>ElasticModel</code> from the previous section is enough to PyCalphad to use <code>C11</code>, <code>C12</code>, and <code>C44</code> in a PyCalphad <code>Database</code> object to do calculations and calculate those properties with <code>equilibrium</code>. Now we need to tell ESPEI how to use read datasets for <code>C11</code>, <code>C12</code>, and <code>C44</code> data, and use this model to fit the corresponding parameters. The two concepts we need are a <code>FittingStep</code> and a <code>ModelFittingDescription</code>.</p>
 <p>A <code>FittingStep</code> is an abstract class provided by ESPEI that defines an API for how to fit a particular type of data and what parameters describe it. There's a 1:1 relationship between a concrete <code>FittingStep</code> and a data type. Fitting steps also have a 1:1 relationship with a parameter type, but note that multiple fitting steps can be used to different data types to a single parameter type. For example, Gibbs energy parameters (<code>G</code>) are fit in three fitting steps: heat capacity data (<code>CPM</code>), then entropy data (<code>SM</code>), then enthalpy data (<code>HM</code>). Below are the implementations for each of the three elastic parameters and data. We are using the <code>AbstractLinearPropertyStep</code> helper class from ESPEI, which is a convience class to make it easier to define <code>FittingStep</code> classes that are 1:1 mappings between a data type and a parameter type and don't require and linearization or data/model transformation steps.</p>
-<div id="d1c5355e" class="cell" data-execution_count="2">
+<div id="fa42bb79" class="cell" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> espei.parameter_selection.fitting_steps <span class="im">import</span> AbstractLinearPropertyStep</span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> StepElasticC11(AbstractLinearPropertyStep):</span>
@@ -643,7 +643,7 @@ div.csl-indent {
 <span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a>    data_types_read <span class="op">=</span> <span class="st">"C44"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>A <code>ModelFittingDescription</code> defines a series of fitting steps that are fit in order, and a PyCalphad model that can use a the parameters to model that data. Here we'll combine the elastic fitting steps to fit them in order of <code>C11</code>, then <code>C12</code>, then <code>C44</code>. The order of fitting doesn't matter in this case since the models are independent, but more complex cases might have dependencies requiring certain contributions to be fit before others (e.g.&nbsp;<code>V0</code> molar volume parameters need to be fit before <code>VA</code> parameters when fitting <code>VM</code> data). By default, ESPEI will use the base PyCalphad <code>Model</code> class, but since that class doesn't know how to use our custom elastic constant parameters, we need to use the <code>model</code> keyword argument to tell ESPEI to use this model.</p>
-<div id="d0e44f22" class="cell" data-execution_count="3">
+<div id="0dad4cf4" class="cell" data-execution_count="3">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> espei.parameter_selection.fitting_descriptions <span class="im">import</span> ModelFittingDescription</span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>elastic_fitting_description <span class="op">=</span> ModelFittingDescription([StepElasticC11, StepElasticC12, StepElasticC44], model<span class="op">=</span>ElasticModel)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
@@ -692,7 +692,7 @@ div.csl-indent {
 <ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-1-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-1" role="tab" aria-controls="tabset-1-1" aria-selected="true" aria-current="page">Python</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-2" role="tab" aria-controls="tabset-1-2" aria-selected="false">Shell</a></li></ul>
 <div class="tab-content">
 <div id="tabset-1-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-1-1-tab">
-<div id="243d5b8f" class="cell" data-execution_count="4">
+<div id="52de9f03" class="cell" data-execution_count="4">
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> json</span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> espei <span class="im">import</span> generate_parameters</span>
 <span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> espei.datasets <span class="im">import</span> load_datasets, recursive_glob</span>
@@ -816,7 +816,7 @@ div.csl-indent {
 </tr>
 </tbody>
 </table>
-<div id="21bdf4ce" class="cell" data-execution_count="5">
+<div id="4c0c5a18" class="cell" data-execution_count="5">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
