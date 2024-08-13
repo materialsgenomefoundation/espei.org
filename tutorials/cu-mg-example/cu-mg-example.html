@@ -84,7 +84,7 @@ div.csl-indent {
 <script src="../../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../../">
-<link href="../../tutorials/custom_model_parameter_selection.html" rel="next">
+<link href="../../tutorials/custom-model-parameter-selection/custom_model_parameter_selection.html" rel="next">
 <link href="../../quickstart.html" rel="prev">
 <link href="../../_static/ESPEI-logo.png" rel="icon" type="image/png">
 <script src="../../site_libs/quarto-html/quarto.js"></script>
@@ -205,7 +205,7 @@ div.csl-indent {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../tutorials/custom_model_parameter_selection.html" class="sidebar-item-text sidebar-link">
+  <a href="../../tutorials/custom-model-parameter-selection/custom_model_parameter_selection.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Generating Custom Model Parameters</span></a>
   </div>
 </li>
@@ -692,7 +692,7 @@ div.csl-indent {
 </div>
 <p>The calculation should be relatively quick, on the order of a minute of runtime. With the above command, only mininmal output (warnings) will be reported. You can increase the verbosity to report info messages by setting the <code>output.verbosity</code> key to <code>1</code> or debug messages with <code>2</code>.</p>
 <p>With the following code, we can look at the generated phase diagram and compare it to our data.</p>
-<div id="2cce5b33" class="cell" data-execution_count="1">
+<div id="32207208" class="cell" data-execution_count="1">
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># import everything we need in one spot</span></span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
 <span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
@@ -764,7 +764,7 @@ div.csl-indent {
 </div>
 <p>ESPEI defaults to run 1000 iterations and depends on calculating equilibrium in pycalphad several times for each iteration and the optimization is compute-bound. Fortunately, MCMC optimzations are embarrasingly parallel and ESPEI allows for parallelization using <a href="http://dask.pydata.org/">dask</a>.</p>
 <p>Finally, we can use the newly optimized database to plot the phase diagram</p>
-<div id="44b58b1a" class="cell" data-execution_count="2">
+<div id="d3c24f48" class="cell" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># load the database from after the MCMC run</span></span>
 <span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>dbf <span class="op">=</span> Database(<span class="st">"Cu-Mg-mcmc.tdb"</span>)</span>
 <span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>comps <span class="op">=</span> [<span class="st">"CU"</span>, <span class="st">"MG"</span>, <span class="st">"VA"</span>]</span>
@@ -792,7 +792,7 @@ div.csl-indent {
 <p>All of the MCMC results will be maintained in two output files, which are serialized NumPy arrays. The file names are set in the <code>run_mcmc.yaml</code> file. The filenames are set by <code>output.tracefile</code> and <code>output.probfile</code> (<a href="../../reference/yaml_input_schema.html#tracefile">documentation</a>) and the defaults are <code>trace.npy</code> and <code>lnprob.npy</code>, respectively.</p>
 <p>The <code>tracefile</code> contains all of the parameters that were proposed over all chains and iterations (the trace). The <code>probfile</code> contains all of calculated log probabilities for all chains and iterations (as negative numbers, by convention).</p>
 <p>There are several aspects of your data that you may wish to analyze. The next sections will explore some of the options.</p>
-<div id="033c8943" class="cell" data-execution_count="3">
+<div id="916f961f" class="cell" data-execution_count="3">
 <div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> espei.analysis <span class="im">import</span> truncate_arrays</span>
 <span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="co"># load our trace and lnprob files to use in later analysis steps</span></span>
 <span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>trace <span class="op">=</span> np.load(<span class="st">"trace.npy"</span>)</span>
@@ -802,7 +802,7 @@ div.csl-indent {
 <section id="probability-convergence" class="level3">
 <h3 class="anchored" data-anchor-id="probability-convergence">Probability convergence</h3>
 <p>First we’ll plot how the probability changes for all of the chains as a function of iterations. This gives a qualitative view of convergence. There are several quantitative metrics that we won’t explore here, such as autocorrelation. Qualitatively, this run does not appear converged after 115 iterations.</p>
-<div id="b41a5155" class="cell" data-execution_count="4">
+<div id="7f055e0d" class="cell" data-execution_count="4">
 <div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>iterations <span class="op">=</span> np.arange(<span class="dv">1</span>, trace.shape[<span class="dv">1</span>]<span class="op">+</span><span class="dv">1</span>)</span>
 <span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>fig, ax <span class="op">=</span> plt.subplots()</span>
 <span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>ax.plot(iterations, lnprob.T)</span>
@@ -820,7 +820,7 @@ div.csl-indent {
 </div>
 </div>
 <p>Next we’ll discard a number of iterations to account for the MCMC optimizer reaching the typical set.</p>
-<div id="98e4ece5" class="cell" data-execution_count="5">
+<div id="e814dc99" class="cell" data-execution_count="5">
 <div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>burn_in_iterations <span class="op">=</span> <span class="dv">1000</span></span>
 <span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>fig, ax <span class="op">=</span> plt.subplots()</span>
 <span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>ax.plot(iterations[burn_in_iterations:], lnprob[:,burn_in_iterations:].T)</span>
@@ -841,7 +841,7 @@ div.csl-indent {
 <section id="visualizing-the-trace-of-each-parameter" class="level3">
 <h3 class="anchored" data-anchor-id="visualizing-the-trace-of-each-parameter">Visualizing the trace of each parameter</h3>
 <p>We would like to see how each parameter changed during the iterations. For brevity in the number of plots we’ll plot all the chains for each parameter on the same plot. Here we are looking to see how the parameters explore the space and converge to a solution.</p>
-<div id="b6dd5347" class="cell" data-execution_count="6">
+<div id="5ad1c260" class="cell" data-execution_count="6">
 <div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>num_chains <span class="op">=</span> trace.shape[<span class="dv">0</span>]</span>
 <span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>num_parameters <span class="op">=</span> <span class="dv">3</span> <span class="co"># only plot the first three parameters, for all of them use `trace.shape[2]`</span></span>
 <span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> parameter <span class="kw">in</span> <span class="bu">range</span>(num_parameters):</span>
@@ -877,7 +877,7 @@ div.csl-indent {
 <section id="corner-plots" class="level3">
 <h3 class="anchored" data-anchor-id="corner-plots">Corner plots</h3>
 <p>In a corner plot, the distributions for each parameter are plotted along the diagonal and covariances between them under the diagonal. A more circular covariance means that parameters are not correlated to each other, while elongated shapes indicate that the two parameters are correlated. Strongly correlated parameters are expected for some parameters in Calphad models within phases or for phases in equilibrium, because increasing one parameter while decreasing another would give a similar error.</p>
-<div id="9e887589" class="cell" data-execution_count="7">
+<div id="bd17f23b" class="cell" data-execution_count="7">
 <div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> corner</span>
 <span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>fig <span class="op">=</span> plt.figure(figsize<span class="op">=</span>(<span class="dv">16</span>,<span class="dv">16</span>)) <span class="co"># this is a little condensed for the web view</span></span>
 <span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a><span class="co"># flatten the along the first dimension containing all the chains in parallel</span></span>
@@ -1491,7 +1491,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="../../tutorials/custom_model_parameter_selection.html" class="pagination-link" aria-label="Generating Custom Model Parameters">
+      <a href="../../tutorials/custom-model-parameter-selection/custom_model_parameter_selection.html" class="pagination-link" aria-label="Generating Custom Model Parameters">
         <span class="nav-page-text">Generating Custom Model Parameters</span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>

@@ -234,7 +234,7 @@ window.Quarto = {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./tutorials/custom_model_parameter_selection.html" class="sidebar-item-text sidebar-link">
+  <a href="./tutorials/custom-model-parameter-selection/custom_model_parameter_selection.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Generating Custom Model Parameters</span></a>
   </div>
 </li>
@@ -688,7 +688,7 @@ window.Quarto = {
 </section>
 <section id="q-how-do-i-analyze-my-results" class="level3">
 <h3 class="anchored" data-anchor-id="q-how-do-i-analyze-my-results">Q: How do I analyze my results?</h3>
-<p>A: By default, ESPEI will create <code>trace.npy</code> and <code>lnprob.npy</code> for the MCMC chain at the specified save interval and according to the save interval (defaults to ever iteration). These are created from arrays via <code>numpy.save()</code> and can thus be loaded with <code>numpy.load()</code>. Note that the arrays are preallocated with zeros. These filenames and settings can be changed using in the input file. You can then use these chains and corresponding log-probabilities to make corner plots, calculate autocorrelations, find optimal parameters for databases, etc.. Some examples are shown on the <a href="how-to/recipes.qmd">Recipes</a> page. Finally, you can use <code>espei.plot</code> functions such as <a href="./reference/api/plot.dataplot.html"><code>espei.plot.dataplot</code></a> in concert with pycalphad to plot phase diagrams with your input equilibria data. The <a href="./reference/api/plot.plot_endmember.html"><code>espei.plot.plot_endmember</code></a> and <a href="./reference/api/plot.plot_interaction.html"><code>espei.plot.plot_interaction</code></a> functions can be used to compare single-phase data (e.g.&nbsp;formation and mixing data) with the properties calculated from your database.</p>
+<p>A: By default, ESPEI will create <code>trace.npy</code> and <code>lnprob.npy</code> for the MCMC chain at the specified save interval and according to the save interval (defaults to ever iteration). These are created from arrays via <code>numpy.save()</code> and can thus be loaded with <code>numpy.load()</code>. Note that the arrays are preallocated with zeros. These filenames and settings can be changed using in the input file. You can then use these chains and corresponding log-probabilities to make corner plots, calculate autocorrelations, find optimal parameters for databases, etc.. Some examples are shown in the Recipes section. Finally, you can use <code>espei.plot</code> functions such as <a href="./reference/api/plot.dataplot.html"><code>espei.plot.dataplot</code></a> in concert with pycalphad to plot phase diagrams with your input equilibria data. The <a href="./reference/api/plot.plot_endmember.html"><code>espei.plot.plot_endmember</code></a> and <a href="./reference/api/plot.plot_interaction.html"><code>espei.plot.plot_interaction</code></a> functions can be used to compare single-phase data (e.g.&nbsp;formation and mixing data) with the properties calculated from your database.</p>
 </section>
 <section id="q-can-i-run-espei-on-a-supercomputer-supporting-mpi" class="level3">
 <h3 class="anchored" data-anchor-id="q-can-i-run-espei-on-a-supercomputer-supporting-mpi">Q: Can I run ESPEI on a supercomputer supporting MPI?</h3>

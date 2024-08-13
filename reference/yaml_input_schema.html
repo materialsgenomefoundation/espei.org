@@ -214,7 +214,7 @@ window.Quarto = {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../tutorials/custom_model_parameter_selection.html" class="sidebar-item-text sidebar-link">
+  <a href="../tutorials/custom-model-parameter-selection/custom_model_parameter_selection.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Generating Custom Model Parameters</span></a>
   </div>
 </li>
@@ -950,7 +950,7 @@ window.Quarto = {
 <span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a><span class="fu">fitting-description</span><span class="kw">:</span><span class="at"> espei.parameter_selection.fitting_descriptions.molar_volume_gibbs_energy_fitting_description</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>The <code>ModelFittingDescription</code> instance can be from any module that is importable from the Python environment where ESPEI is installed. For example, the Gibbs energy fitting description is importable as:</p>
 <div class="sourceCode" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> espei.parameter_selection.fitting_descriptions <span class="im">import</span> gibbs_energy_fitting_description</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>Because the fitting description given can be in <em>any</em> importable module, users can provide their own fitting descriptions that use ESPEI's built-in <span class="title-ref">FittingStep</span> objects, custom fitting steps, or a combination ESPEI's fitting steps and custom fitting steps. The <a href="../tutorials/custom_model_parameter_selection.html">Generating Custom Model Parameters</a> tutorial gives an example of how to fit a custom PyCalphad model that uses custom parameters for BCC elastic constants.</p>
+<p>Because the fitting description given can be in <em>any</em> importable module, users can provide their own fitting descriptions that use ESPEI's built-in <span class="title-ref">FittingStep</span> objects, custom fitting steps, or a combination ESPEI's fitting steps and custom fitting steps. The <a href="../tutorials/custom-model-parameter-selection/custom_model_parameter_selection.html">Generating Custom Model Parameters</a> tutorial gives an example of how to fit a custom PyCalphad model that uses custom parameters for BCC elastic constants.</p>
 </section>
 </section>
 <section id="mcmc" class="level2">
