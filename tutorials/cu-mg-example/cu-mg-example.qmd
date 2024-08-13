@@ -274,11 +274,13 @@ because increasing one parameter while decreasing another would give a
 similar error.
 
 ``` {python}
+#| warning: false
 import corner
-burn_in_iterations = 5
+burn_in_iterations = 50
+fig = plt.figure(figsize=(16,16)) # this is a little condensed for the web view
 # flatten the along the first dimension containing all the chains in parallel
-fig = corner.corner(trace[:, burn_in_iterations:, :].reshape(-1, trace.shape[-1]))
-plt.show()
+corner.corner(trace[:, burn_in_iterations:, :].reshape(-1, trace.shape[-1]), fig=fig)
+fig.show()
 ```
 
 Ultimately, there are many features to explore and we have only covered
