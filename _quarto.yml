@@ -25,7 +25,7 @@ website:
           - tutorials/custom_model_parameter_selection.qmd
       - section: "How-To"
         contents:
-          - how-to/recipes.qmd
+          - auto: how-to/recipes
           - how-to/specifying_priors.qmd
           - how-to/custom_unary_data.qmd
           - how-to/schedulers.qmd

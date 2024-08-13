@@ -7,9 +7,8 @@
 4. `quartodoc preview` (or your preferred command)
 
 ## TODO:
-- Make examples and recipes dynamic that run actual code, rather than static
+- Make examples and the remaining how-tos dynamic that run actual code, rather than static
 - Update png logos to the versions with transparency (for dark mode)
-- Recipes: does it make sense to convert them to be more self-contained, since they use different data?
 - Enable "tabbed" mode in tutorials and such for comparing command line vs. running interactively with Python code
 - API docs automation:
   - Make API docs more automated in terms of discovery. Using `__all__` and/or pointing to modules with things well documented should simplify.
