@@ -67,31 +67,55 @@ Some common examples in YAML format are as follows:
 
 ``` YAML
 # normal prior, centered on parameter, standard deviation of 0.25*parameter
-prior:
-  name: normal
-  loc_relative: 1.0
-  scale_relative: 0.25
+mcmc:
+  prior:
+    name: normal
+    loc_relative: 1.0
+    scale_relative: 0.25
 
 # uniform prior from 0 to 2*parameter (or negative(2*parameter) to 0)
-prior:
-  name: uniform
-  loc_shift_relative: -1.0
-  scale_relative: 2.0
+mcmc:
+  prior:
+    name: uniform
+    loc_shift_relative: -1.0
+    scale_relative: 2.0
 
 # triangular prior, centered on parameter, from -0.5*parameter to 0.5*parameter
-prior:
-  name: triangular
-  loc_shift_relative: -0.5
-  scale_relative: 1.0
+mcmc:
+  prior:
+    name: triangular
+    loc_shift_relative: -0.5
+    scale_relative: 1.0
 ```
 
 Graphically, these are shown below:
 
-<figure>
-<img src="../_static/prior-example.png" alt="../_static/prior-example.png" />
-<figcaption>Example priors compared to initialized
-parameters.</figcaption>
-</figure>
+``` {python}
+#| code-fold: true
+#| warning: false
+import numpy as np
+import matplotlib.pyplot as plt
+from espei.priors import PriorSpec
+
+initial_parameters = PriorSpec(name="normal", loc_relative=1.0, scale_relative=0.10)
+normal_prior = PriorSpec(name="normal", loc_relative=1.0, scale_relative=0.25)
+uniform_prior = PriorSpec(name="uniform", loc_shift_relative=-1.0, scale_relative=2.0)
+triangular_prior = PriorSpec(name="triangular", loc_shift_relative=-0.5, scale_relative=1.0)
+
+initial_param_value = 10000
+param_values = np.linspace(-5000, 25000, 1001)
+
+fig, ax = plt.subplots()
+ax.plot(param_values, initial_parameters.get_prior(initial_param_value).pdf(param_values), label="initialization, chain $\\sigma$=0.1")
+ax.plot(param_values, normal_prior.get_prior(initial_param_value).pdf(param_values), label="normal prior")
+ax.plot(param_values, uniform_prior.get_prior(initial_param_value).pdf(param_values), label="uniform prior")
+ax.plot(param_values, triangular_prior.get_prior(initial_param_value).pdf(param_values), label="triangular prior")
+ax.set_xlabel("Parmeter value")
+ax.set_ylabel("Probability density")
+ax.set_title(f"Initial value: {initial_param_value}")
+ax.legend()
+fig.show()
+```
 
 As a side note: the priors in YAML files can be passed as Python
 dictionaries, e.g.:
