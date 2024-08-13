@@ -3,8 +3,7 @@
 ## Building the docs
 1. Install `quarto` from [quarto.org](https://quarto.org/docs/get-started/)
 2. `pip install -r requirements.txt` (installs ESPEI and `quartodoc`)
-3. `quartodoc build` to generate `reference/api` docs
-4. `quartodoc preview` (or your preferred command)
+3. `quartodoc build && quarto preview` to generate `reference/api` docs and preview the site
 
 ## TODO:
 - Update png logos to the versions with transparency (for dark mode)
