@@ -376,7 +376,7 @@ Because the fitting description given can be in *any* importable module,
 users can provide their own fitting descriptions that use ESPEI\'s
 built-in [FittingStep]{.title-ref} objects, custom fitting steps, or a
 combination ESPEI\'s fitting steps and custom fitting steps.
-The [Generating Custom Model Parameters](../tutorials/custom_model_parameter_selection.qmd)
+The [Generating Custom Model Parameters](../tutorials/custom-model-parameter-selection/custom_model_parameter_selection.qmd)
 tutorial gives an example of how to fit a custom PyCalphad model that
 uses custom parameters for BCC elastic constants.
 

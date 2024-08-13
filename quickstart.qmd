@@ -118,7 +118,7 @@ arrays are preallocated with zeros. These filenames and settings can be
 changed using in the input file. You can then use these chains and
 corresponding log-probabilities to make corner plots, calculate
 autocorrelations, find optimal parameters for databases, etc.. Some
-examples are shown on the [Recipes](how-to/recipes.qmd) page.
+examples are shown in the Recipes section.
 Finally, you can use `espei.plot`
 functions such as [`espei.plot.dataplot`](reference/api/plot.dataplot.qmd) in concert with pycalphad to plot phase diagrams with
 your input equilibria data. The
