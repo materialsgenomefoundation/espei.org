@@ -7,8 +7,7 @@
 ### Improvements
 
 -   Migrate to PyCalphad Workspace
-    ([\@bocklund](https://github.com/bocklund) - `256`{.interpreted-text
-    role="issue"})
+    ([\@bocklund](https://github.com/bocklund) - [issue 256](https://github.com/phasesresearchlab/espei/issues/256))
     -   PyCalphad\'s `IsolatedPhase` feature improves accuracy and
         elimintes the need for a heuristic to perform constrained
         equilibria when computing the likelihood for phase diagram data.
@@ -23,16 +22,14 @@
 ### Dependencies
 
 -   Update minimum required PyCalphad version to 0.11
-    ([\@bocklund](https://github.com/bocklund) - `259`{.interpreted-text
-    role="issue"})
+    ([\@bocklund](https://github.com/bocklund) - [issue 259](https://github.com/phasesresearchlab/espei/issues/259))
 -   Add NumPy 2.0 support ([\@bocklund](https://github.com/bocklund) -
-    `255`{.interpreted-text role="issue"})
+    [issue 255](https://github.com/phasesresearchlab/espei/issues/255))
 
 ### Deprecations
 
 -   Remove code scheduled for deprecation in ESPEI 0.9: deprecations
-    ([\@bocklund](https://github.com/bocklund) - `257`{.interpreted-text
-    role="issue"})
+    ([\@bocklund](https://github.com/bocklund) - [issue 257](https://github.com/phasesresearchlab/espei/issues/257))
     -   `espei.plot`: `plot_parameters` is replaced with
         `plot_interaction` and `plot_endmember`. `eqdataplot` and
         `multiplot` are replaced with using `dataplot` combined with the
