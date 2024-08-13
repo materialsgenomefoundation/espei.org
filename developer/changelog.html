@@ -582,7 +582,7 @@ ul.task-list li input[type="checkbox"] {
 <section id="improvements" class="level3">
 <h3 class="anchored" data-anchor-id="improvements">Improvements</h3>
 <ul>
-<li>Migrate to PyCalphad Workspace (<a href="https://github.com/bocklund">@bocklund</a> - <code class="interpreted-text" role="issue">256</code>)
+<li>Migrate to PyCalphad Workspace (<a href="https://github.com/bocklund">@bocklund</a> - <a href="https://github.com/phasesresearchlab/espei/issues/256">issue 256</a>)
 <ul>
 <li>PyCalphad's <code>IsolatedPhase</code> feature improves accuracy and elimintes the need for a heuristic to perform constrained equilibria when computing the likelihood for phase diagram data.</li>
 <li>ESPEI users will likely see a small 2-4x performance regression in MCMC as some of the heavily optimized code paths in ESPEI were removed in favor of the versions implemented in <code>Workspace</code>. We are looking in to further optimizations and utilizing Jansson derivatives to compute likelihood gradients that will enable us to use more performant optimization and MCMC methods.</li>
@@ -592,14 +592,14 @@ ul.task-list li input[type="checkbox"] {
 <section id="dependencies" class="level3">
 <h3 class="anchored" data-anchor-id="dependencies">Dependencies</h3>
 <ul>
-<li>Update minimum required PyCalphad version to 0.11 (<a href="https://github.com/bocklund">@bocklund</a> - <code class="interpreted-text" role="issue">259</code>)</li>
-<li>Add NumPy 2.0 support (<a href="https://github.com/bocklund">@bocklund</a> - <code class="interpreted-text" role="issue">255</code>)</li>
+<li>Update minimum required PyCalphad version to 0.11 (<a href="https://github.com/bocklund">@bocklund</a> - <a href="https://github.com/phasesresearchlab/espei/issues/259">issue 259</a>)</li>
+<li>Add NumPy 2.0 support (<a href="https://github.com/bocklund">@bocklund</a> - <a href="https://github.com/phasesresearchlab/espei/issues/255">issue 255</a>)</li>
 </ul>
 </section>
 <section id="deprecations" class="level3">
 <h3 class="anchored" data-anchor-id="deprecations">Deprecations</h3>
 <ul>
-<li>Remove code scheduled for deprecation in ESPEI 0.9: deprecations (<a href="https://github.com/bocklund">@bocklund</a> - <code class="interpreted-text" role="issue">257</code>)
+<li>Remove code scheduled for deprecation in ESPEI 0.9: deprecations (<a href="https://github.com/bocklund">@bocklund</a> - <a href="https://github.com/phasesresearchlab/espei/issues/257">issue 257</a>)
 <ul>
 <li><code>espei.plot</code>: <code>plot_parameters</code> is replaced with <code>plot_interaction</code> and <code>plot_endmember</code>. <code>eqdataplot</code> and <code>multiplot</code> are replaced with using <code>dataplot</code> combined with the relevant PyCalphad phase diagram plotting code.</li>
 <li>ESPEI YAML input: <code>scheduler: "None"</code> is replaced by <code>scheduler: null</code></li>

@@ -2,138 +2,138 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://materialsgenomefoundation.github.io/espei.org/tutorials/cu_mg_example.html</loc>
-    <lastmod>2024-08-13T01:20:03.848Z</lastmod>
+    <lastmod>2024-08-13T01:25:37.812Z</lastmod>
   </url>
   <url>
     <loc>https://materialsgenomefoundation.github.io/espei.org/index.html</loc>
-    <lastmod>2024-08-13T01:20:03.844Z</lastmod>
+    <lastmod>2024-08-13T01:25:37.812Z</lastmod>
   </url>
   <url>
     <loc>https://materialsgenomefoundation.github.io/espei.org/developer/changelog.html</loc>
-    <lastmod>2024-08-13T01:20:03.844Z</lastmod>
+    <lastmod>2024-08-13T01:25:37.808Z</lastmod>
   </url>
   <url>
     <loc>https://materialsgenomefoundation.github.io/espei.org/how-to/schedulers.html</loc>
-    <lastmod>2024-08-13T01:20:03.844Z</lastmod>
+    <lastmod>2024-08-13T01:25:37.812Z</lastmod>
   </url>
   <url>
     <loc>https://materialsgenomefoundation.github.io/espei.org/how-to/custom_unary_data.html</loc>
-    <lastmod>2024-08-13T01:20:03.844Z</lastmod>
+    <lastmod>2024-08-13T01:25:37.812Z</lastmod>
   </url>
   <url>
     <loc>https://materialsgenomefoundation.github.io/espei.org/reference/phase_models_schema.html</loc>
-    <lastmod>2024-08-13T01:20:03.844Z</lastmod>
+    <lastmod>2024-08-13T01:25:37.812Z</lastmod>
   </url>
   <url>
     <loc>https://materialsgenomefoundation.github.io/espei.org/reference/api/datasets.recursive_glob.html</loc>
-    <lastmod>2024-08-13T01:20:58.324Z</lastmod>
+    <lastmod>2024-08-13T01:26:35.253Z</lastmod>
   </url>
   <url>
     <loc>https://materialsgenomefoundation.github.io/espei.org/reference/api/index.html</loc>
-    <lastmod>2024-08-13T01:20:58.292Z</lastmod>
+    <lastmod>2024-08-13T01:26:35.213Z</lastmod>
   </url>
   <url>
     <loc>https://materialsgenomefoundation.github.io/espei.org/reference/api/error_functions.residual_base.residual_function_registry.html</loc>
-    <lastmod>2024-08-13T01:20:58.332Z</lastmod>
+    <lastmod>2024-08-13T01:26:35.261Z</lastmod>
   </url>
   <url>
     <loc>https://materialsgenomefoundation.github.io/espei.org/reference/api/utils.database_symbols_to_fit.html</loc>
-    <lastmod>2024-08-13T01:20:58.376Z</lastmod>
+    <lastmod>2024-08-13T01:26:35.305Z</lastmod>
   </url>
   <url>
     <loc>https://materialsgenomefoundation.github.io/espei.org/reference/api/error_functions.residual_base.ResidualFunction.html</loc>
-    <lastmod>2024-08-13T01:20:58.348Z</lastmod>
+    <lastmod>2024-08-13T01:26:35.277Z</lastmod>
   </url>
   <url>
     <loc>https://materialsgenomefoundation.github.io/espei.org/reference/api/generate_parameters.html</loc>
-    <lastmod>2024-08-13T01:20:58.312Z</lastmod>
+    <lastmod>2024-08-13T01:26:35.241Z</lastmod>
   </url>
   <url>
     <loc>https://materialsgenomefoundation.github.io/espei.org/reference/api/utils.optimal_parameters.html</loc>
-    <lastmod>2024-08-13T01:20:58.384Z</lastmod>
+    <lastmod>2024-08-13T01:26:35.313Z</lastmod>
   </url>
   <url>
     <loc>https://materialsgenomefoundation.github.io/espei.org/reference/api/error_functions.activity_error.ActivityResidual.html</loc>
-    <lastmod>2024-08-13T01:20:58.352Z</lastmod>
+    <lastmod>2024-08-13T01:26:35.281Z</lastmod>
   </url>
   <url>
     <loc>https://materialsgenomefoundation.github.io/espei.org/reference/api/plot.plot_interaction.html</loc>
-    <lastmod>2024-08-13T01:20:58.404Z</lastmod>
+    <lastmod>2024-08-13T01:26:35.333Z</lastmod>
   </url>
   <url>
     <loc>https://materialsgenomefoundation.github.io/espei.org/reference/api/parameter_selection.fitting_steps.html</loc>
-    <lastmod>2024-08-13T01:20:58.372Z</lastmod>
+    <lastmod>2024-08-13T01:26:35.301Z</lastmod>
   </url>
   <url>
     <loc>https://materialsgenomefoundation.github.io/espei.org/quickstart.html</loc>
-    <lastmod>2024-08-13T01:20:03.844Z</lastmod>
+    <lastmod>2024-08-13T01:25:37.812Z</lastmod>
   </url>
   <url>
     <loc>https://materialsgenomefoundation.github.io/espei.org/installation.html</loc>
-    <lastmod>2024-08-13T01:20:03.844Z</lastmod>
+    <lastmod>2024-08-13T01:25:37.812Z</lastmod>
   </url>
   <url>
     <loc>https://materialsgenomefoundation.github.io/espei.org/reference/dataset_schema.html</loc>
-    <lastmod>2024-08-13T01:20:03.844Z</lastmod>
+    <lastmod>2024-08-13T01:25:37.812Z</lastmod>
   </url>
   <url>
     <loc>https://materialsgenomefoundation.github.io/espei.org/reference/api/datasets.load_datasets.html</loc>
-    <lastmod>2024-08-13T01:20:58.320Z</lastmod>
+    <lastmod>2024-08-13T01:26:35.249Z</lastmod>
   </url>
   <url>
     <loc>https://materialsgenomefoundation.github.io/espei.org/reference/api/plot.plot_endmember.html</loc>
-    <lastmod>2024-08-13T01:20:58.412Z</lastmod>
+    <lastmod>2024-08-13T01:26:35.349Z</lastmod>
   </url>
   <url>
     <loc>https://materialsgenomefoundation.github.io/espei.org/reference/api/run_espei.html</loc>
-    <lastmod>2024-08-13T01:20:58.316Z</lastmod>
+    <lastmod>2024-08-13T01:26:35.245Z</lastmod>
   </url>
   <url>
     <loc>https://materialsgenomefoundation.github.io/espei.org/reference/api/error_functions.zpf_error.ZPFResidual.html</loc>
-    <lastmod>2024-08-13T01:20:58.356Z</lastmod>
+    <lastmod>2024-08-13T01:26:35.285Z</lastmod>
   </url>
   <url>
     <loc>https://materialsgenomefoundation.github.io/espei.org/reference/api/error_functions.equilibrium_thermochemical_error.EquilibriumPropertyResidual.html</loc>
-    <lastmod>2024-08-13T01:20:58.360Z</lastmod>
+    <lastmod>2024-08-13T01:26:35.289Z</lastmod>
   </url>
   <url>
     <loc>https://materialsgenomefoundation.github.io/espei.org/reference/api/error_functions.non_equilibrium_thermochemical_error.FixedConfigurationPropertyResidual.html</loc>
-    <lastmod>2024-08-13T01:20:58.364Z</lastmod>
+    <lastmod>2024-08-13T01:26:35.293Z</lastmod>
   </url>
   <url>
     <loc>https://materialsgenomefoundation.github.io/espei.org/reference/api/analysis.truncate_arrays.html</loc>
-    <lastmod>2024-08-13T01:20:58.332Z</lastmod>
+    <lastmod>2024-08-13T01:26:35.257Z</lastmod>
   </url>
   <url>
     <loc>https://materialsgenomefoundation.github.io/espei.org/reference/api/plot.dataplot.html</loc>
-    <lastmod>2024-08-13T01:20:58.392Z</lastmod>
+    <lastmod>2024-08-13T01:26:35.321Z</lastmod>
   </url>
   <url>
     <loc>https://materialsgenomefoundation.github.io/espei.org/reference/api/parameter_selection.fitting_descriptions.ModelFittingDescription.html</loc>
-    <lastmod>2024-08-13T01:20:58.368Z</lastmod>
+    <lastmod>2024-08-13T01:26:35.297Z</lastmod>
   </url>
   <url>
     <loc>https://materialsgenomefoundation.github.io/espei.org/reference/yaml_input_schema.html</loc>
-    <lastmod>2024-08-13T01:20:03.844Z</lastmod>
+    <lastmod>2024-08-13T01:25:37.812Z</lastmod>
   </url>
   <url>
     <loc>https://materialsgenomefoundation.github.io/espei.org/how-to/specifying_priors.html</loc>
-    <lastmod>2024-08-13T01:20:03.844Z</lastmod>
+    <lastmod>2024-08-13T01:25:37.812Z</lastmod>
   </url>
   <url>
     <loc>https://materialsgenomefoundation.github.io/espei.org/how-to/recipes.html</loc>
-    <lastmod>2024-08-13T01:20:03.844Z</lastmod>
+    <lastmod>2024-08-13T01:25:37.812Z</lastmod>
   </url>
   <url>
     <loc>https://materialsgenomefoundation.github.io/espei.org/developer/contributing.html</loc>
-    <lastmod>2024-08-13T01:20:03.844Z</lastmod>
+    <lastmod>2024-08-13T01:25:37.812Z</lastmod>
   </url>
   <url>
     <loc>https://materialsgenomefoundation.github.io/espei.org/developer/design.html</loc>
-    <lastmod>2024-08-13T01:20:03.844Z</lastmod>
+    <lastmod>2024-08-13T01:25:37.812Z</lastmod>
   </url>
   <url>
     <loc>https://materialsgenomefoundation.github.io/espei.org/tutorials/custom_model_parameter_selection.html</loc>
-    <lastmod>2024-08-13T01:20:03.848Z</lastmod>
+    <lastmod>2024-08-13T01:25:37.812Z</lastmod>
   </url>
 </urlset>
