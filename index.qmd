@@ -49,12 +49,28 @@ that are compatible with pycalphad can be used without making any
 modifications to ESPEI\'s code. Performing Bayesian parameter estimation
 for arbitrary multicomponent thermodynamic data is supported.
 
-<figure>
-<img src="_static/cu-mg-mcmc-phase-diagram.png"
-alt="_static/cu-mg-mcmc-phase-diagram.png" />
-<figcaption>Cu-Mg phase diagram from a database created with and
-optimized by ESPEI. See the [Cu-Mg Example](tutorials/cu_mg_example.qmd).</figcaption>
-</figure>
+The following Cu-Mg phase diagram was plotted from a database created with and
+optimized by ESPEI.
+See the [Cu-Mg Example](tutorials/cu-mg-example/cu-mg-example.qmd) to try it yourself!
+```{python}
+#| echo: false
+#| warning: false
+from pycalphad import Database, binplot, variables as v
+from espei.datasets import load_datasets, recursive_glob
+from espei.plot import dataplot
+datasets = load_datasets(recursive_glob("tutorials/cu-mg-example/input-data"))
+dbf = Database("tutorials/cu-mg-example/Cu-Mg-mcmc.tdb")
+comps = ["CU", "MG", "VA"]
+phases = list(dbf.phases.keys())
+conds = {v.P: 101325, v.T: (500, 1500, 10), v.X("MG"): (0, 1, 0.02)}
+
+# plot the phase diagram and data
+ax = binplot(dbf, comps, phases, conds)
+dataplot(comps, phases, conds, datasets, ax=ax)
+fig = ax.figure
+fig.show()
+```
+
 
 # History
 

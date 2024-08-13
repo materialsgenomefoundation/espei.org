@@ -21,7 +21,7 @@ website:
 # TODO: changelog
       - section: "Tutorials"
         contents:
-          - tutorials/cu_mg_example.qmd
+          - tutorials/cu-mg-example/cu-mg-example.qmd
           - tutorials/custom_model_parameter_selection.qmd
       - section: "How-To"
         contents:
