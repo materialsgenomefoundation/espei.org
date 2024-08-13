@@ -13,10 +13,11 @@ output:
   probfile:  lnprob.npy
   logfile:   mcmc-log.txt
 mcmc:
-  iterations: 1000
+  iterations: 2000
   save_interval: 1
   scheduler: null  # don't parallelize, just run on one core
   input_db: Cu-Mg-generated.tdb
+  chains_per_parameter: 4
   prior:
     name: normal
     loc_relative: 1.0

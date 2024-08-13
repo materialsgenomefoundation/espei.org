@@ -233,14 +233,28 @@ as autocorrelation. Qualitatively, this run does not appear converged
 after 115 iterations.
 
 ``` {python}
+iterations = np.arange(1, trace.shape[1]+1)
 fig, ax = plt.subplots()
-ax.plot(lnprob.T)
+ax.plot(iterations, lnprob.T)
 ax.set_title("log-probability convergence")
 ax.set_xlabel("iterations")
 ax.set_ylabel("lnprob")
 ax.set_yscale("symlog")  # log-probabilties are often negative, symlog gives log scale for negative numbers
 fig.show()
 ```
+
+Next we'll discard a number of iterations to account for the MCMC optimizer reaching the typical set.
+```{python}
+burn_in_iterations = 1000
+fig, ax = plt.subplots()
+ax.plot(iterations[burn_in_iterations:], lnprob[:,burn_in_iterations:].T)
+ax.set_title("log-probability convergence")
+ax.set_xlabel("iterations")
+ax.set_ylabel("lnprob")
+fig.show()
+```
+
+After discarding the first `{python} burn_in_iterations` iterations as burn-in, we can see the chains are mixing well and exploring near the mode of the distribution.
 
 ### Visualizing the trace of each parameter
 
@@ -274,9 +288,8 @@ because increasing one parameter while decreasing another would give a
 similar error.
 
 ``` {python}
-#| warning: false
+#| warning:  false
 import corner
-burn_in_iterations = 50
 fig = plt.figure(figsize=(16,16)) # this is a little condensed for the web view
 # flatten the along the first dimension containing all the chains in parallel
 corner.corner(trace[:, burn_in_iterations:, :].reshape(-1, trace.shape[-1]), fig=fig)
