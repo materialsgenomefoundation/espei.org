@@ -7,7 +7,7 @@ website:
   title: "ESPEI"
   sidebar:
     logo: "_static/ESPEI-logo-withtext.png"
-    title: "ESPEI v0.8.10"
+    title: "ESPEI v0.9.0"
     style: "floating"
     search: true
     collapse-level: 2
