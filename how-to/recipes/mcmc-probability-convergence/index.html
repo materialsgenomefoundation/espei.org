@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.5.56">
+<meta name="generator" content="quarto-1.5.57">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -64,7 +64,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../../../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../../../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../../../">
-<link href="../../../how-to/recipes/mcmc-parameter-traces/index.html" rel="next">
+<link href="../../../how-to/recipes/zpf-driving-forces/index.html" rel="next">
 <link href="../../../how-to/recipes/mcmc-corner-plots/index.html" rel="prev">
 <link href="../../../_static/ESPEI-logo.png" rel="icon" type="image/png">
 <script src="../../../site_libs/quarto-html/quarto.js"></script>
@@ -217,14 +217,20 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
+  <a href="../../../how-to/recipes/plot-thermochemical-data/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Plot Thermochemical Data</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
   <a href="../../../how-to/recipes/plot-phase-diagram-data/index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Plot phase diagram data</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../../how-to/recipes/plot-thermochemical-data/index.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Plot Thermochemical Data</span></a>
+  <a href="../../../how-to/recipes/mcmc-parameter-traces/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">MCMC Parameter Trace Plots</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -237,12 +243,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <div class="sidebar-item-container"> 
   <a href="../../../how-to/recipes/mcmc-probability-convergence/index.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text">MCMC Probability Convergence Plots</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../../how-to/recipes/mcmc-parameter-traces/index.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">MCMC Parameter Trace Plots</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -571,7 +571,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>Convergence can be qualitatively estimated by looking at how the log-probability changes for all of the chains as a function of iterations.</p>
 <p>Some metrics exist to help estimate convergence, but they should be used with caution, especialy ones that depend on multiple <em>independent</em> chains, as ensemble MCMC methods like the one used by ESPEI do not have independent chains.</p>
 <p>Plotting these can also be helpful to estimate how many iterations to discard as burn-in, e.g.&nbsp;in the <a href="../../../how-to/recipes/mcmc-corner-plots/index.html">corner plot example</a>.</p>
-<div id="c4c6bb5e" class="cell" data-execution_count="1">
+<div id="979ff9aa" class="cell" data-execution_count="1">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -598,7 +598,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 <p>we can zoom in using a linear scale to inspect more closely:</p>
-<div id="6081a8ea" class="cell" data-execution_count="2">
+<div id="7976a95b" class="cell" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>fig, ax <span class="op">=</span> plt.subplots()</span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>ax.plot(lnprob.T)</span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>ax.set_title(<span class="st">"log-probability convergence"</span>)</span>
@@ -1189,8 +1189,8 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="../../../how-to/recipes/mcmc-parameter-traces/index.html" class="pagination-link" aria-label="MCMC Parameter Trace Plots">
-        <span class="nav-page-text">MCMC Parameter Trace Plots</span> <i class="bi bi-arrow-right-short"></i>
+      <a href="../../../how-to/recipes/zpf-driving-forces/index.html" class="pagination-link" aria-label="Plot ZPF Driving Forces">
+        <span class="nav-page-text">Plot ZPF Driving Forces</span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
