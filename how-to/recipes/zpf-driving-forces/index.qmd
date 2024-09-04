@@ -39,8 +39,13 @@ Xs = []
 Ts = []
 dfs = []
 for data, data_driving_forces in zip(zpf_data, driving_forces):
+    # zpf_data have (ragged) shape (len(datasets), len(phase_regions), len(vertices))
+    # while driving_forces have (ragged) shape (len(datasets), len(vertices)), concatenating along the phase regions dimension
+    # so we need an offset to account for phase veritices from previous phase regions
+    driving_force_offset = 0
     for phase_region in data["phase_regions"]:
-        for vertex, df in zip(phase_region.vertices, data_driving_forces):
+        for vertex, df in zip(phase_region.vertices, data_driving_forces[driving_force_offset:]):
+            driving_force_offset += 1
             comp_cond = vertex.comp_conds
             if vertex.has_missing_comp_cond:
                 # No composition to plot
