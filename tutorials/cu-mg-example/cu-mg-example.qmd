@@ -224,6 +224,22 @@ lnprob = np.load("lnprob.npy")
 trace, lnprob = truncate_arrays(trace, lnprob)
 ```
 
+
+``` {python}
+from espei.utils import database_symbols_to_fit, optimal_parameters
+# load our trace and lnprob files to use in later analysis steps
+trace = np.load("trace.npy")
+lnprob = np.load("lnprob.npy")
+trace, lnprob = truncate_arrays(trace, lnprob)
+
+dbf = Database("Cu-Mg-generated.tdb")
+opt_params = dict(zip(database_symbols_to_fit(dbf), optimal_parameters(trace, lnprob)))
+# Update the symbols in the database, this database can now be used in PyCalphad calculations
+dbf.symbols.update(opt_params)
+# dbf.to_file("Cu-Mg-mcmc-2.tdb")  # if desired, write out the database
+
+```
+
 ### Probability convergence
 
 First we'll plot how the probability changes for all of the chains as a

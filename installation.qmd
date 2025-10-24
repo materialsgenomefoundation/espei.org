@@ -57,7 +57,7 @@ We reccomend using [uv](https://docs.astral.sh/uv/) to develop ESPEI,
 which manages virtual environments for you.
 To install a development version of ESPEI and run the test suite:
 
-``` shell
+``` bash
 git clone https://github.com/phasesresearchlab/espei.git
 uv sync
 uv run pytest
@@ -75,7 +75,7 @@ the `pyproject.toml` file) and then `uv sync`.
 
 To build and then open documentation, run
 
-``` shell
+``` bash
 uv run sphinx-build --fail-on-warning --keep-going docs/ docs/_build
 uv run python -m http.server -d docs/_build
 ```
