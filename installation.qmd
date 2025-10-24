@@ -44,13 +44,45 @@ conda install -c conda-forge espei
 
 ## Development versions {#installing-development-versions}
 
-To make changes to the ESPEI source code, the development version must
-be installed. If you\'ll need to make changes to pycalphad
-simultaneously, follow the [instructions to install the development
-version of
-pycalphad](https://pycalphad.org/docs/latest/INSTALLING.html#development-versions-advanced-users)
-first.
+To make changes to the ESPEI source code, the development version must be installed.
 
+ESPEI uses [Git](https://git-scm.com/book/en/v2) and
+[GitHub](https://github.com/PhasesResearchLab/ESPEI) for version
+control. Windows users: if you do not have a working version of Git,
+[download it here](https://git-scm.com/downloads) first.
+
+### uv (recommended)
+
+We reccomend using [uv](https://docs.astral.sh/uv/) to develop ESPEI,
+which manages virtual environments for you.
+To install a development version of ESPEI and run the test suite:
+
+``` bash
+git clone https://github.com/phasesresearchlab/espei.git
+uv sync
+uv run pytest
+```
+
+If the test suite passes, you are ready to start using the development
+version or making changes yourself! See the
+[guide for contributing to ESPEI](developer/contributing.qmd) to learn more.
+If any tests fail, please report the failure to the
+[ESPEI issue tracker on GitHub](https://github.com/phasesresearchlab/espei/issues).
+
+To upgrade your development version to the latest version, run
+`git pull` from the top level ESPEI directory (the directory containing
+the `pyproject.toml` file) and then `uv sync`.
+
+To build and then open documentation, run
+
+``` bash
+uv run sphinx-build --fail-on-warning --keep-going docs/ docs/_build
+uv run python -m http.server -d docs/_build
+```
+
+### pip (manual setup)
+
+If you want to manage your own environment using `pip`, you can still do so.
 We strongly recommend that users interested in developing packages work
 in a virtual environment. The steps below will create an environment
 called `calphad-dev`, which can be entered using
@@ -58,10 +90,10 @@ called `calphad-dev`, which can be entered using
 `activate calphad-dev\bin\activate` on Windows. The environment name is
 arbitrary - you can use whatever name you prefer.
 
-ESPEI uses [Git](https://git-scm.com/book/en/v2) and
-[GitHub](https://github.com/PhasesResearchLab/ESPEI) for version
-control. Windows users: if you do not have a working version of Git,
-[download it here](https://git-scm.com/downloads) first.
+If you\'ll need to make changes to pycalphad
+simultaneously, follow the
+[instructions to install the development version of pycalphad](https://pycalphad.org/docs/latest/INSTALLING.html#development-versions-advanced-users)
+first.
 
 To install the latest development version of ESPEI using pip:
 
@@ -80,13 +112,3 @@ you can run the automated tests by running
 ``` bash
 pytest
 ```
-
-If the test suite passes, you are ready to start using the development
-version or making changes yourself! See the
-[guide for contributing to ESPEI](developer/contributing.qmd) to learn more. If any tests fail, please report the failure
-to the [ESPEI issue tracker on
-GitHub](https://github.com/phasesresearchlab/espei/issues).
-
-To upgrade your development version to the latest version, run
-`git pull` from the top level ESPEI directory (the directory containing
-the `setup.py` file).
