@@ -1,5 +1,5 @@
-[!IMPORTANT]
-This repository is archived. The contents have been merged into the main [repository](https://github.com/PhasesResearchLab/ESPEI)
+> [!IMPORTANT]
+> This repository is archived. The contents have been merged into the main [repository](https://github.com/PhasesResearchLab/ESPEI)
 
 
 # espei.org Quarto site
